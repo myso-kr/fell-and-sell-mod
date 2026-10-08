@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{74B62E1B-CDE0-4C8D-8365-711358D45EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellAndSell.Mod", "src\FellAndSell.Mod\FellAndSell.Mod.csproj", "{4F0F974E-35D4-4F96-B920-B5665EFC1E2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F0F974E-35D4-4F96-B920-B5665EFC1E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0F974E-35D4-4F96-B920-B5665EFC1E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0F974E-35D4-4F96-B920-B5665EFC1E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0F974E-35D4-4F96-B920-B5665EFC1E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4F0F974E-35D4-4F96-B920-B5665EFC1E2D} = {74B62E1B-CDE0-4C8D-8365-711358D45EA4}
+	EndGlobalSection
+EndGlobal
