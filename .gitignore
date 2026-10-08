@@ -16,3 +16,6 @@ UserLibs/
 .env
 .env.*
 local.props
+.venv/
+__pycache__/
+*.py[cod]

@@ -5,4 +5,6 @@
 - Add IL2CPP MelonMod entry point and build configuration.
 - Establish translation, font, extraction and documentation directories.
 - Add verification and mod-only ZIP packaging.
-- No translation functionality or in-game compatibility verification yet.
+- Verify loader and mod entry point on game 1.7.1 / Steam build 25480096.
+- Add local extraction of 1243 English localization entries with stable table/ID keys.
+- No translation functionality or Korean rendering verification yet.

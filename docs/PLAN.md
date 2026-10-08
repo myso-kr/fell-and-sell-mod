@@ -9,4 +9,7 @@
 5. Implement TMP Hangul font fallback and verify menu and scene transitions.
 6. Verify in-game rendering and uninstall behavior, then produce a release archive.
 
-Current status: step 1 only. No in-game verification or translation is claimed.
+Current status: steps 1 and 2 complete. Step 3 has identified English Game/UI
+tables and numeric entry IDs; runtime hooks and fonts still need investigation.
+Entry-point execution is verified; Korean translation and rendering are not.
+See [game survey](GAME-SURVEY.md) for build and extraction details.
