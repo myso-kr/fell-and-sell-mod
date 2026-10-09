@@ -18,7 +18,7 @@ home: true
 
 <dl class="ledger">
 <div><dt>Translated entries</dt><dd>1,243 / 1,243</dd></div>
-<div><dt>Patch version</dt><dd>0.3.0</dd></div>
+<div><dt>Patch version</dt><dd>0.4.0</dd></div>
 <div><dt>Verified game</dt><dd>1.7.1</dd></div>
 </dl>
 
@@ -75,6 +75,14 @@ Version-tag builds prepare a draft prerelease for review, not a public download.
 The mod adds its own files and changes localization templates in memory. It does
 not patch original game binaries or implement save editing. Close the game and
 remove its DLL and `UserData/FellAndSell/` to uninstall the Korean patch.
+
+## Exploration helper preview
+
+v0.4.0 adds nearby pickup, a read-only dungeon map, route display and automatic movement.
+All new features default off. F8 opens settings, F9 toggles the map and F10 starts/stops movement.
+The owner verified the base menu, Korean panel and input return after closing it;
+dungeon helper gameplay checks remain pending. Achievements retain their existing handling.
+[Controls and scope](EXPANSION.md)
 
 ## Help improve the patch
 

@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>FellAndSellMod</AssemblyName>
     <RootNamespace>FellAndSell.Mod</RootNamespace>
-    <Description>Korean language patch for Fell &amp; Sell.</Description>
+    <Description>Korean language patch and exploration helper preview for Fell &amp; Sell.</Description>
   </PropertyGroup>
   <ItemGroup>
     <!-- Download only the official package; runtime dependencies are provided by the installed loader. -->

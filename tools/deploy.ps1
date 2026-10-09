@@ -10,6 +10,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Build failed.' }
 New-Item -ItemType Directory -Path (Join-Path $gameRoot 'Mods'), (Join-Path $gameRoot 'UserData/FellAndSell/locale/ko'), (Join-Path $gameRoot 'UserData/FellAndSell/fonts') -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $projectRoot 'src/FellAndSell.Mod/bin/Release/net6.0/FellAndSellMod.dll') -Destination (Join-Path $gameRoot 'Mods') -Force
 Copy-Item -LiteralPath (Join-Path $projectRoot 'locale/ko/strings.json') -Destination (Join-Path $gameRoot 'UserData/FellAndSell/locale/ko') -Force
+Copy-Item -LiteralPath (Join-Path $projectRoot 'locale/ko/mod-ui.json') -Destination (Join-Path $gameRoot 'UserData/FellAndSell/locale/ko') -Force
 foreach ($fontFile in @('NotoSansCJKkr-Regular.otf', 'OFL-Noto.txt')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot "locale/fonts/$fontFile") -Destination (Join-Path $gameRoot 'UserData/FellAndSell/fonts') -Force
 }

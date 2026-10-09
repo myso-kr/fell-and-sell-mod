@@ -35,6 +35,8 @@ jobs:
         run: python tools/check-repository.py --tag "$env:RELEASE_TAG"
       - name: Translation validator tests
         run: python -m unittest discover -s tests
+      - name: Movement safety and reflection tests (no game required)
+        run: dotnet test tests/FellAndSell.Mod.Tests -c Release --nologo
       - name: Build and package
         shell: pwsh
         run: ./tools/package.ps1

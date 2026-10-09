@@ -13,7 +13,7 @@ Steam판 **Fell & Sell**을 한국어로 표시하는 MelonLoader 기반 비공�
 
 ## 번역 범위와 검증 상태
 
-v0.3.0은 추출된 번역 테이블 **1,243개 항목 전체**를 다룹니다.
+v0.4.0은 추출된 번역 테이블 **1,243개 항목 전체**를 다룹니다.
 Game 테이블 1,128개와 UI 테이블 115개로, 아이템·제작법·효과·튜토리얼·대화·퀘스트를
 포함합니다. 영어 원문을 기준으로 일본어 번역과 항목 ID를 비교해 맥락을 확인했습니다.
 고유명사와 기호만 있는 항목은 필요한 경우 그대로 유지했습니다.
@@ -24,6 +24,13 @@ Windows 11, 게임 1.7.1 / Steam 빌드 25480096, MelonLoader 0.7.3 x64에서
 표시 검수 완료를 확인했습니다. 전반적인 플레이·일본어 전환·제거 테스트는 별도
 확인 항목입니다. 번역 테이블 밖의 문구와 이후 게임 업데이트는 추가 작업이 필요할 수 있습니다.
 
+## 탐험 도우미 프리뷰
+
+v0.4.0에는 주변 자동줍기·모드 지도·경로 표시·자동 이동 코드가 추가됐습니다.
+새 기능은 기본 꺼짐이며 **신규 기능의 인게임 검증은 아직 완료하지 않았습니다.**
+F8 설정, F9 지도, F10 이동/정지를 사용합니다. 게임의 도전과제 처리는 유지합니다.
+[상세 조작과 범위](../EXPANSION.md)를 확인하세요.
+
 ## 설치
 
 1. Steam에서 **Fell & Sell → 속성 → 설치된 파일 → 찾아보기**를 엽니다.
@@ -31,7 +38,7 @@ Windows 11, 게임 1.7.1 / Steam 빌드 25480096, MelonLoader 0.7.3 x64에서
 2. [MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3)를
    해당 폴더에 설치합니다. 로더는 패치 ZIP에 포함하지 않습니다.
 3. [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases)에 배포본이 올라오면
-   `fell-and-sell-mod-v0.3.0.zip`을 받아 게임 폴더에 압축을 풉니다.
+   `fell-and-sell-mod-v0.4.0.zip`을 받아 게임 폴더에 압축을 풉니다.
    GitHub의 Source code ZIP은 설치용 패치가 아닙니다. 배포본이 아직 없다면
    [CI 빌드](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml)의
    성공한 실행에서 아티팩트를 받을 수 있습니다. GitHub 로그인이 필요하며 보관 기간은
@@ -64,7 +71,7 @@ Fell & Sell/
 
 `MelonLoader/Latest.log`에서 다음 내용을 확인하세요.
 
-- `Fell & Sell Korean Patch v0.3.0`
+- `Fell & Sell Korean Patch v0.4.0`
 - `i18n: loaded 1243 Korean entries`
 - `i18n: installed raw and formatted string hooks`
 - `font: verified 699 Hangul glyphs; missing=0`

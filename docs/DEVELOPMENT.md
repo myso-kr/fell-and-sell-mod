@@ -17,13 +17,17 @@ git clone https://github.com/myso-kr/fell-and-sell-mod.git
 cd fell-and-sell-mod
 dotnet build FellAndSell.Mod.sln -c Release
 python -m unittest discover -s tests
+dotnet test tests/FellAndSell.Mod.Tests -c Release
 pwsh -NoProfile -File tools/verify.ps1
 pwsh -NoProfile -File tools/package.ps1
 ```
 
-`dist/fell-and-sell-mod-v0.3.0.zip` and its `.sha256` contain the installable package.
+`dist/fell-and-sell-mod-v0.4.0.zip` and its `.sha256` contain the installable package.
 The version comes from Directory.Build.props; the MelonInfo version in Plugin.cs
 must be kept in sync. Builds and fixture tests need no game installation.
+Internal plans and design live in [.spec](https://github.com/myso-kr/fell-and-sell-mod/tree/main/.spec).
+Installed metadata can be checked separately with `tools/check-anchors.py --assemblies <interop-path>`
+after installing `tools/requirements-anchors.txt`. No path reports SKIP, not a verified game.
 
 ## Extract translation context locally
 

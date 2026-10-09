@@ -14,5 +14,18 @@
     "scope": "In-game text display",
     "reported_by": "project owner",
     "reported_on": "2026-10-09"
+  },
+  "extension_review": {
+    "startup_and_panel": {
+      "verified": true,
+      "reported_by": "project owner",
+      "reported_on": "2026-10-09",
+      "scope": "Base menu, F8 Korean labels/buttons, movement/look return after closing"
+    },
+    "mod_ui_glyphs": 98,
+    "pickup": "pending",
+    "map": "pending",
+    "route": "pending",
+    "auto_movement": "pending"
   }
 }

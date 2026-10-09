@@ -1,0 +1,49 @@
+{
+  "Assembly-CSharp": {
+    "Il2Cpp.PlayerAutoPickup": ["_Instance_k__BackingField", "pickupRadius", "TryPickup", "IsInventoryOpen"],
+    "Il2Cpp.FirstPersonController": ["_Instance_k__BackingField", "HandleMovement", "IsPlayerBlocked"],
+    "Il2Cpp.PlayerInputHandler": ["_Instance_k__BackingField", "MovementInput", "IsInputsBlocked", "IsPlayerActionBlocked"],
+    "Il2Cpp.PlayerStats": ["_Instance_k__BackingField", "IsDead", "IsInCombat", "CurrentHealth"],
+    "Il2Cpp.CustomDungeonGenerator": ["isGenerating", "navMeshSurface"],
+    "Il2Cpp.DungeonMinimapManager": ["_instance", "HasActiveMap", "IsInDungeon", "CurrentMapData", "GetActiveEnemies"],
+    "Il2CppFellSell.Minimap.DungeonMapLayoutData": ["currentFloor", "tileSize", "rooms", "corridors", "stairs", "chests", "startRoom", "endRoom", "bossRoom"],
+    "Il2CppFellSell.Minimap.DungeonMinimapRoomInfo": ["bounds", "type", "worldCenter"],
+    "Il2CppFellSell.Minimap.DungeonMinimapCorridorInfo": ["bounds"],
+    "Il2CppFellSell.Minimap.DungeonMinimapStairInfo": ["bounds"],
+    "Il2CppFellSell.Minimap.DungeonMinimapChestInfo": ["worldPosition", "isOpened"]
+  },
+  "UnityEngine.AIModule": {
+    "UnityEngine.AI.NavMesh": ["CalculatePathFilterInternal", "SamplePositionFilter_Injected"],
+    "UnityEngine.AI.NavMeshPath": ["ClearCorners", "corners", "status"],
+    "UnityEngine.AI.NavMeshHit": ["position"]
+  },
+  "UnityEngine.PhysicsModule": {
+    "UnityEngine.Physics": ["RaycastAll"],
+    "UnityEngine.Collider": ["bounds"],
+    "UnityEngine.RaycastHit": ["transform"]
+  },
+  "Unity.AI.Navigation": {"Unity.AI.Navigation.NavMeshSurface": ["agentTypeID"]},
+  "UnityEngine.IMGUIModule": {
+    "UnityEngine.GUI": ["skin", "color", "matrix", "Label", "Box", "Button"],
+    "UnityEngine.GUIStyle": [".ctor", "normal"],
+    "UnityEngine.GUIStyleState": ["background"],
+    "UnityEngine.GUIContent": [".ctor", "none"],
+    "UnityEngine.GUIUtility": ["RotateAroundPivot"],
+    "UnityEngine.Event": ["current", "type", "button", "mousePosition", "Use"],
+    "UnityEngine.GUISkin": ["font"]
+  },
+  "UnityEngine.UIModule": {"UnityEngine.Canvas": ["renderMode", "sortingOrder", "pixelPerfect"]},
+  "Unity.TextMeshPro": {"Il2CppTMPro.TextMeshProUGUI": [".ctor"], "Il2CppTMPro.TMP_Text": ["font", "fontSize", "text"]},
+  "UnityEngine.InputLegacyModule": {"UnityEngine.Input": ["GetKeyDown"]},
+  "UnityEngine.CoreModule": {
+    "UnityEngine.Object": ["op_Implicit", "DontDestroyOnLoad"],
+    "UnityEngine.Transform": ["position", "IsChildOf", "InverseTransformDirection"],
+    "UnityEngine.Behaviour": ["isActiveAndEnabled"],
+    "UnityEngine.Camera": ["main", "WorldToScreenPoint"],
+    "UnityEngine.Application": ["isFocused"],
+    "UnityEngine.Cursor": ["lockState", "visible"],
+    "UnityEngine.Time": ["timeScale"],
+    "UnityEngine.Screen": ["width", "height"],
+    "UnityEngine.Texture2D": ["whiteTexture"]
+  }
+}

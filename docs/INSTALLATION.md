@@ -17,7 +17,7 @@ Download the loader from its [official release](https://github.com/LavaGang/Melo
 Project packages are listed under [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases).
 Before a public release exists, use the latest successful
 [CI build](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml).
-Sign in to GitHub, download the `fell-and-sell-mod-v0.3.0` artifact and extract
+Sign in to GitHub, download the `fell-and-sell-mod-v0.4.0` artifact and extract
 the outer artifact archive first. Install the mod ZIP inside it, not the outer
 archive. CI artifacts are kept for 30 days. [Download instructions](DOWNLOADS.md)
 include a gh command; [building locally](DEVELOPMENT.md) is also supported.
@@ -27,7 +27,7 @@ include a gh command; [building locally](DEVELOPMENT.md) is also supported.
 Download the `.zip.sha256` beside the ZIP. From the download directory in PowerShell:
 
 ```powershell
-$archive = 'fell-and-sell-mod-v0.3.0.zip'
+$archive = 'fell-and-sell-mod-v0.4.0.zip'
 $expected = ((Get-Content -LiteralPath ($archive + '.sha256') -Raw).Trim() -split '\s+')[0]
 $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash
 if ($actual -ine $expected) { throw 'Package checksum mismatch.' }
@@ -49,7 +49,7 @@ identity of its publisher. Obtain both from the same project release or CI run.
 
 The catalog is loaded at startup; restart after editing translations. The Korean
 overlay applies automatically to matching entries. There is no language toggle,
-font-scale setting or added Korean language-menu entry in v0.3.0.
+font-scale setting or added Korean language-menu entry in v0.4.0.
 
 ## Update
 

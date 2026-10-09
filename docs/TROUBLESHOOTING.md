@@ -6,7 +6,8 @@ lang: en
 # Troubleshooting
 
 Start by recording game version, Steam build, MelonLoader version and mod version.
-The currently tested combination is 1.7.1 / 25480096 / 0.7.3 x64 / 0.3.0.
+Translation startup and the F8 panel have been checked with
+1.7.1 / 25480096 / 0.7.3 x64 / 0.4.0. Exploration-helper gameplay is a preview.
 
 ## Find the logs
 
@@ -63,6 +64,19 @@ Full table coverage does not guarantee every layout fits. Send a screenshot,
 the displayed sentence, expected meaning and reproduction steps. For effect
 errors, include the numerical value and item/effect name. Translations are keyed
 by stable table/entry IDs rather than English phrases.
+
+## F8 panel or movement problems
+
+The panel uses the bundled Noto font and its own TMP Canvas. Check
+`panel: Noto glyph check 98; missing=0`. The panel temporarily suppresses player
+actions while open; closing it with F8 or Esc returns control. It does not change
+the game's persistent input-block flag. Native inventory/pause screens can still
+block movement according to the game's rules.
+
+The map appears only for a generated dungeon, not the town or main menu. Enable
+route guidance and choose a map target before starting automatic movement.
+Partial/invalid routes cannot start movement. Any feature failure reports its
+name in Latest.log; report that entry and the screen state.
 
 ## Known limits
 

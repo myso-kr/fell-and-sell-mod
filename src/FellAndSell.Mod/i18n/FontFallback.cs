@@ -8,6 +8,18 @@ internal static class FontFallback
     private static object? _font;
     private static bool _failed;
     private static bool _reportedText;
+    internal static object PanelFont => _font ?? throw new InvalidOperationException("TMP Korean font not ready");
+    internal static void VerifyPanelGlyphs(IEnumerable<char> glyphs)
+    {
+        Register();
+        var characters = new string(glyphs.Where(character => !char.IsWhiteSpace(character)).Distinct().ToArray());
+        var add = PanelFont.GetType().GetMethods().Single(method => method.Name == "TryAddCharacters"
+            && method.GetParameters().Length == 3 && method.GetParameters()[0].ParameterType == typeof(string));
+        object?[] arguments = [characters, null, false];
+        var success = (bool)add.Invoke(PanelFont, arguments)!;
+        MelonLogger.Msg($"panel: Noto glyph check {characters.Length}; missing={((string?)arguments[1])?.Length ?? 0}");
+        if (!success) throw new InvalidOperationException("Panel Noto font cannot render authored text");
+    }
 
     internal static void Register()
     {

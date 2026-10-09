@@ -32,6 +32,12 @@ def check(tag=""):
     glyphs = {c for value in catalog.values() for c in value if '\uac00' <= c <= '\ud7a3' or '\u3130' <= c <= '\u318f'}
     if len(glyphs) != metadata["hangul_glyphs"]:
         errors.append("Hangul count differs from release metadata")
+    ui = json.loads((ROOT / "locale/ko/mod-ui.json").read_text(encoding="utf-8"))
+    if any(not isinstance(value, str) or not value.strip() for value in ui.values()):
+        errors.append("Mod UI catalog contains an empty or non-string label")
+    ui_glyphs = {c for value in ui.values() for c in value if not c.isspace()}
+    if len(ui_glyphs) != metadata["extension_review"]["mod_ui_glyphs"]:
+        errors.append("Mod UI glyph count differs from release metadata")
     for name in ("README.md", "docs/index.md", "docs/ko/index.md", "docs/ko/README.md"):
         text = (ROOT / name).read_text(encoding="utf-8")
         if current not in text or str(sum(metadata["translation_counts"].values())) not in text.replace(",", ""):

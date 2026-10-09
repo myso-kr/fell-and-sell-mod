@@ -13,7 +13,7 @@ A MelonLoader language mod for the Steam version of **Fell & Sell**.
 
 The site publishes from `main /docs`; see [Pages setup](docs/PAGES.md) for local preview and maintenance.
 
-**v0.3.0 covers all 1,243 extracted localization entries**: 1,128 Game entries
+**v0.4.0 covers all 1,243 extracted localization entries**: 1,128 Game entries
 and 115 UI entries. Items, crafting recipes, effects, tutorials, dialogue and
 quests are translated. English provides the meaning; Japanese provides additional
 context. Proper names and punctuation-only entries are intentionally retained.
@@ -35,7 +35,7 @@ or publisher. The game is required separately. See [NOTICE](NOTICE).
    Use the directory containing `Fell & Sell.exe`.
 2. Install [MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3)
    into that directory, following the loader's instructions. It is not bundled.
-3. Download `fell-and-sell-mod-v0.3.0.zip` from the project's
+3. Download `fell-and-sell-mod-v0.4.0.zip` from the project's
    [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases), when published,
    and extract it over the game directory. The repository source ZIP is not an
    installable mod. Before a public release exists, download the ZIP from a successful
@@ -71,7 +71,7 @@ binaries or implement save editing. Uninstall MelonLoader separately if desired.
 
 ## Troubleshooting and feedback
 
-Check `MelonLoader/Latest.log` for `Fell & Sell Korean Patch v0.3.0`,
+Check `MelonLoader/Latest.log` for `Fell & Sell Korean Patch v0.4.0`,
 `i18n: loaded 1243 Korean entries`, installed string hooks, and
 `font: verified 699 Hangul glyphs; missing=0`.
 
@@ -93,7 +93,7 @@ pwsh -NoProfile -File tools/package.ps1
 ```
 
 CI runs the same package build and uploads the ZIP, SHA-256 file and release notes
-as `fell-and-sell-mod-v0.3.0`, retained for 30 days. GitHub sign-in is required
+as `fell-and-sell-mod-v0.4.0`, retained for 30 days. GitHub sign-in is required
 for Actions artifact downloads. The Release workflow rebuilds an existing `vX.Y.Z`
 tag and attaches its package to a draft prerelease for maintainer review.
 [Downloads](docs/DOWNLOADS.md) explains both routes.
@@ -114,11 +114,15 @@ fonts appear after scene loads. Unknown IDs retain the selected base language.
 [Translation decisions](docs/TRANSLATION.md) record the glossary and source
 inconsistencies. There is no translation toggle or font-size setting in this version.
 
-## Planned expansion
+## Exploration helper preview
 
-[The expansion design](docs/EXPANSION.md) covers nearby auto-pickup, current-floor
-map reveal, route guidance and auto movement, with achievements preserved. These
-features are planned and are not included in v0.3.0.
+[v0.4.0 adds an exploration helper](docs/EXPANSION.md): native nearby pickup,
+a read-only dungeon map with markers, NavMesh routes and manually started automatic movement.
+New features default off. F8 opens settings, F9 toggles the map and F10 starts/stops movement.
+Achievements retain the game's existing behaviour. Extension gameplay verification is pending;
+the earlier text review applies to the Korean translation, not these new features.
+Internal plans, decisions and implementation status live in
+[.spec/](https://github.com/myso-kr/fell-and-sell-mod/tree/main/.spec).
 
 ## License
 

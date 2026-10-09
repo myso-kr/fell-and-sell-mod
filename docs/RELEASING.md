@@ -34,7 +34,7 @@ verified game/build, loader, table counts and glyph count. Change those values o
 with actual local evidence. Keep known limitations visible in both languages.
 
 ```powershell
-python tools/check-repository.py --tag v0.3.0
+python tools/check-repository.py --tag v0.4.0
 python -m unittest discover -s tests
 python tools/check-translations.py --require-complete
 pwsh -NoProfile -File tools/package.ps1
@@ -52,14 +52,14 @@ checks explicitly. Review the generated notes and package before tagging.
 Push an existing version tag after the reviewed commit is on main:
 
 ```powershell
-git tag v0.3.0
-git push origin v0.3.0
+git tag v0.4.0
+git push origin v0.4.0
 ```
 
 Or rerun the Release workflow for an existing tag using gh:
 
 ```powershell
-gh workflow run release.yml -f tag=v0.3.0
+gh workflow run release.yml -f tag=v0.4.0
 gh run list --workflow release.yml --limit 5
 ```
 

@@ -36,6 +36,11 @@ UI {metadata['translation_counts']['UI']}. Recorded local glyph check:
 
 GitHub Actions builds and verifies the ZIP and SHA-256 without the game installed.
 This does not replace in-game testing. {visual}
+The earlier text review applies to the Korean translation. The project owner also
+confirmed the base menu, F8 Korean labels/buttons and movement/look restoration
+after closing the panel on 2026-10-09. New exploration-helper gameplay remains
+under verification. F8 settings, F9 map, F10 start/stop;
+all new features default off, achievements retain the game's existing behaviour.
 Broader gameplay, Japanese switching and uninstall checks remain unrecorded;
 this is a preview build.
 

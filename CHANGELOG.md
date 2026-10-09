@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## 0.4.0 — exploration helper preview
+
+- Add default-off nearby pickup extension with native pickup rules, temporary radius and line-of-sight gating.
+- Add a read-only dungeon map with rooms, corridors, stairs, chest/exit/boss markers and optional loaded enemies.
+- Add NavMesh route display, map pins and complete-path automatic movement through the normal controller.
+- Restore temporary input/radius state; stop on manual input, combat, damage, menus, death, loss of focus or no progress.
+- Preserve the game's existing achievement handling; add Korean settings and F8/F9/F10 controls.
+- Follow sibling conventions: pure decisions, read boundaries, one automation writer and feature folders.
+- Collect internal plans and design under `.spec/`; add game-independent safety tests and metadata-only anchor checks.
+- New extension gameplay verification remains pending. Translation display confirmation below predates this extension.
+
 - Record project-owner confirmation of completed in-game text display review on 2026-10-09.
 
 - Share an Actions package build between CI and tag releases, and retain verified CI artifacts for 30 days.

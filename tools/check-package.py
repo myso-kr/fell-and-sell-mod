@@ -15,6 +15,7 @@ def check(archive: Path):
     with ZipFile(archive) as package:
         names = set(package.namelist())
         payloads = {
+            "UserData/FellAndSell/locale/ko/mod-ui.json": "locale/ko/mod-ui.json",
             "UserData/FellAndSell/locale/ko/strings.json": "locale/ko/strings.json",
             "UserData/FellAndSell/fonts/NotoSansCJKkr-Regular.otf": "locale/fonts/NotoSansCJKkr-Regular.otf",
             "UserData/FellAndSell/fonts/OFL-Noto.txt": "locale/fonts/OFL-Noto.txt",

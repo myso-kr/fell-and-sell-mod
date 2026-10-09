@@ -17,7 +17,7 @@ separate. Current builds are previews with complete extracted-table coverage.
 
 1. Sign in to GitHub and open the CI workflow above.
 2. Select a **successful main-branch run** and confirm its commit/version.
-3. Under **Artifacts**, download `fell-and-sell-mod-v0.3.0`.
+3. Under **Artifacts**, download `fell-and-sell-mod-v0.4.0`.
 4. Extract the outer artifact ZIP. It contains the installable mod ZIP, its
    `.zip.sha256` and `release-notes.md`.
 5. Check the SHA-256 and extract the **inner mod ZIP** into the game directory.
@@ -30,8 +30,8 @@ See [GitHub's artifact download guide](https://docs.github.com/en/actions/how-to
 
 ```text
 Downloaded Actions artifact/
-├─ fell-and-sell-mod-v0.3.0.zip        install this inner ZIP
-├─ fell-and-sell-mod-v0.3.0.zip.sha256
+├─ fell-and-sell-mod-v0.4.0.zip        install this inner ZIP
+├─ fell-and-sell-mod-v0.4.0.zip.sha256
 └─ release-notes.md
 ```
 
@@ -39,13 +39,13 @@ With an authenticated gh CLI, replace `RUN_ID` with the successful run's ID:
 
 ```powershell
 gh run list --repo myso-kr/fell-and-sell-mod --workflow ci.yml --branch main --status success --limit 5
-gh run download RUN_ID --repo myso-kr/fell-and-sell-mod -n fell-and-sell-mod-v0.3.0 --dir download
+gh run download RUN_ID --repo myso-kr/fell-and-sell-mod -n fell-and-sell-mod-v0.4.0 --dir download
 ```
 
 ## CI 아티팩트 받기
 
 GitHub에 로그인한 뒤 **Actions → CI → main 브랜치의 성공한 실행 → Artifacts**에서
-`fell-and-sell-mod-v0.3.0`을 받으세요. 보관 기간은 30일입니다.
+`fell-and-sell-mod-v0.4.0`을 받으세요. 보관 기간은 30일입니다.
 바깥 ZIP을 풀면 패치 ZIP·SHA-256·릴리스 노트가 나옵니다. 체크섬을 확인한 뒤
 **안쪽 패치 ZIP**을 게임 폴더에 풉니다. Source code ZIP은 설치용이 아닙니다.
 MelonLoader는 별도로 설치하고 Steam으로 실행하세요.
