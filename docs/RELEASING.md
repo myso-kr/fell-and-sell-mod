@@ -1,3 +1,8 @@
+---
+title: "Maintainer release procedure"
+lang: en
+---
+
 # Maintainer release procedure
 
 This document prepares a reviewable public repository and release. It does not
@@ -23,8 +28,9 @@ claim that repository visibility, GitHub Pages or a release has already been cha
 After the owner authorizes public publication, change repository visibility to
 Public and confirm anonymous access. Enable Issues and, if desired, GitHub private
 vulnerability reporting. The CI badge will then be readable publicly. These docs
-live in the repository; there is no configured Pages site. Do not publish website
-links until a site actually exists.
+are also configured as a Jekyll site under `docs/`. Enable Pages from `main /docs`
+using [the Pages guide](PAGES.md). Do not claim the site is live before deployment
+and anonymous access are verified.
 
 ## Package release
 

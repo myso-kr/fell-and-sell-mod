@@ -19,3 +19,9 @@ local.props
 .venv/
 __pycache__/
 *.py[cod]
+
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/

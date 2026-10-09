@@ -1,3 +1,8 @@
+---
+title: "Implementation plan"
+lang: en
+---
+
 # Implementation plan
 
 1. Scaffold: IL2CPP MelonMod entry point, reproducible build, packaging and Git.

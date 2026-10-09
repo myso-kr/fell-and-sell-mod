@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% assign title = page.title | default: site.title %}
+  {% assign description = page.description | default: site.description %}
+  <title>{{ title | escape }} — Fell &amp; Sell</title>
+  <meta name="description" content="{{ description | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {% if page.home %}
+  <link rel="alternate" hreflang="en" href="{{ '/' | absolute_url }}">
+  <link rel="alternate" hreflang="ko" href="{{ '/ko/' | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:locale" content="{% if page.lang == 'ko' %}ko_KR{% else %}en_US{% endif %}">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f7f3e9">
+  <meta name="theme-color" content="#171d19" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+{% assign ko = false %}{% if page.lang == 'ko' %}{% assign ko = true %}{% endif %}
+<a class="skip" href="#content">{% if ko %}본문으로 이동{% else %}Skip to content{% endif %}</a>
+<header class="top">
+  <a class="brand" translate="no" href="{% if ko %}{{ '/ko/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">Fell <span>&amp;</span> Sell <small>KO PATCH</small></a>
+  <nav aria-label="{% if ko %}주 메뉴{% else %}Main navigation{% endif %}">
+    <a href="{% if ko %}{{ '/ko/guide/' | relative_url }}{% else %}{{ '/INSTALLATION.html' | relative_url }}{% endif %}">{% if ko %}설치{% else %}Install{% endif %}</a>
+    <a href="{{ '/guide/' | relative_url }}">{% if ko %}문서{% else %}Docs{% endif %}</a>
+    <a href="https://github.com/myso-kr/fell-and-sell-mod">GitHub</a>
+  </nav>
+  <nav class="languages" aria-label="{% if ko %}홈 언어{% else %}Home language{% endif %}">
+    <a lang="en" hreflang="en" href="{{ '/' | relative_url }}" {% if page.home and ko == false %}aria-current="page"{% endif %}>EN</a>
+    <a lang="ko" hreflang="ko" href="{{ '/ko/' | relative_url }}" {% if page.home and ko %}aria-current="page"{% endif %}>한국어</a>
+  </nav>
+</header>
+<main id="content" tabindex="-1">{{ content }}</main>
+<footer>
+  <p>{% if ko %}myso-kr의 비공식 팬 패치입니다. 게임 개발사·배급사의 공식 패치가 아니며 게임은 별도로 필요합니다.{% else %}An unofficial fan patch by myso-kr. Not endorsed by the game developer or publisher. The game is required separately.{% endif %}</p>
+  <p><a href="https://github.com/myso-kr/fell-and-sell-mod/blob/main/LICENSE">MIT</a> · Noto Sans CJK KR / SIL OFL 1.1 · <a href="https://github.com/myso-kr/fell-and-sell-mod/blob/main/THIRD-PARTY.md">{% if ko %}라이선스 고지{% else %}Third-party notices{% endif %}</a></p>
+</footer>
+</body>
+</html>

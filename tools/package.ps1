@@ -18,7 +18,11 @@ foreach ($fontFile in @('NotoSansCJKkr-Regular.otf', 'OFL-Noto.txt')) {
 foreach ($document in @('README.md', 'CHANGELOG.md', 'LICENSE', 'NOTICE', 'THIRD-PARTY.md', 'CONTRIBUTING.md', 'SECURITY.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot $document) -Destination $stage
 }
-Copy-Item -LiteralPath (Join-Path $projectRoot 'docs') -Destination (Join-Path $stage 'docs') -Recurse
+$docsStage = Join-Path $stage 'docs'
+New-Item -ItemType Directory -Path $docsStage -Force | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $projectRoot 'docs') -Force |
+    Where-Object { $_.Name -in @('_layouts', 'assets', 'ko') -or $_.Extension -in @('.md', '.html', '.yml') } |
+    ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $docsStage -Recurse }
 New-Item -ItemType Directory -Path (Join-Path $stage 'locale/fonts') -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $projectRoot 'locale/fonts/OFL-Noto.txt') -Destination (Join-Path $stage 'locale/fonts')
 $archive = Join-Path $dist "fell-and-sell-mod-v$version.zip"

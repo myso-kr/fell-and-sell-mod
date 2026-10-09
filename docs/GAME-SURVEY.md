@@ -1,3 +1,8 @@
+---
+title: "Game survey — 2026-10-09"
+lang: en
+---
+
 # Game survey — 2026-10-09
 
 ## Verified runtime

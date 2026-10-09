@@ -1,3 +1,8 @@
+---
+title: "Installation, updates and removal"
+lang: en
+---
+
 # Installation, updates and removal
 
 ## Requirements

@@ -1,3 +1,9 @@
+---
+title: "Documentation"
+lang: en
+permalink: /guide/
+---
+
 # Documentation
 
 | Document | Purpose |
@@ -12,8 +18,9 @@
 | [Conventions](CONVENTIONS.md) | Source and package structure |
 | [Plan](PLAN.md) | Implementation status and remaining review |
 | [Releasing](RELEASING.md) | Maintainer publication checklist |
-| [Contributing](../CONTRIBUTING.md) | Translation and code contributions |
-| [Security](../SECURITY.md) | Private security reporting |
-| [Changelog](../CHANGELOG.md) | Changes by version |
+| [Contributing](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CONTRIBUTING.md) | Translation and code contributions |
+| [Security](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md) | Private security reporting |
+| [Changelog](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) | Changes by version |
 
-The guides are repository documents. No GitHub Pages deployment is assumed.
+The same Markdown guides serve the repository and the Jekyll Pages site.
+[Pages setup and maintenance](PAGES.md) describes build validation and deployment.

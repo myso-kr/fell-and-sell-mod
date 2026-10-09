@@ -1,0 +1,22 @@
+title: "Fell & Sell Korean patch"
+description: "Unofficial Korean language patch for Fell & Sell. Installation, translation coverage and development documentation."
+url: "https://myso-kr.github.io"
+baseurl: "/fell-and-sell-mod"
+lang: en
+repository: myso-kr/fell-and-sell-mod
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle

@@ -1,9 +1,15 @@
+---
+title: "Fell & Sell 한국어 패치"
+lang: ko
+permalink: /ko/guide/
+---
+
 # Fell & Sell 한국어 패치
 
 Steam판 **Fell & Sell**을 한국어로 표시하는 MelonLoader 기반 비공식 모드입니다.
 
-[영어 README](../../README.md) · [다운로드](https://github.com/myso-kr/fell-and-sell-mod/releases) ·
-[변경 이력](../../CHANGELOG.md) · [문제 신고](https://github.com/myso-kr/fell-and-sell-mod/issues)
+[영어 README](https://github.com/myso-kr/fell-and-sell-mod/blob/main/README.md) · [다운로드](https://github.com/myso-kr/fell-and-sell-mod/releases) ·
+[변경 이력](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) · [문제 신고](https://github.com/myso-kr/fell-and-sell-mod/issues)
 
 ## 번역 범위와 검증 상태
 
@@ -68,12 +74,12 @@ Fell & Sell/
 
 `locale/ko/strings.json`의 값을 수정하고 PR을 보내주세요. 숫자 ID 키, 자리표시자,
 서식 태그와 버튼 토큰을 유지해야 합니다. [번역 기준](../TRANSLATION.md)과
-[기여 안내](../../CONTRIBUTING.md)에 용어와 검사 방법이 있습니다.
+[기여 안내](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CONTRIBUTING.md)에 용어와 검사 방법이 있습니다.
 
 ## 저작권과 라이선스
 
 myso-kr의 비공식 팬 프로젝트로, 게임 개발사·배급사의 공식 패치가 아닙니다.
 프로젝트 코드와 작성한 번역 기여분은 원본 게임 콘텐츠의 권리를 전제로
-[MIT](../../LICENSE)로 제공합니다. 게임명과 원본 콘텐츠의 권리는 각 권리자에게 있습니다.
+[MIT](https://github.com/myso-kr/fell-and-sell-mod/blob/main/LICENSE)로 제공합니다. 게임명과 원본 콘텐츠의 권리는 각 권리자에게 있습니다.
 동봉한 Noto Sans CJK KR 글꼴은 SIL OFL 1.1이며 라이선스 문서를 함께 배포합니다.
-[고지](../../NOTICE) · [외부 구성 요소](../../THIRD-PARTY.md)
+[고지](https://github.com/myso-kr/fell-and-sell-mod/blob/main/NOTICE) · [외부 구성 요소](https://github.com/myso-kr/fell-and-sell-mod/blob/main/THIRD-PARTY.md)

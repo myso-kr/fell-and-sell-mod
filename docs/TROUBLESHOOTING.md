@@ -1,3 +1,8 @@
+---
+title: "Troubleshooting"
+lang: en
+---
+
 # Troubleshooting
 
 Start by recording game version, Steam build, MelonLoader version and mod version.
@@ -67,4 +72,4 @@ by stable table/entry IDs rather than English phrases.
 Use [Issues](https://github.com/myso-kr/fell-and-sell-mod/issues). Include versions,
 other installed mods, steps, expected/actual behavior, and relevant log excerpts.
 Remove usernames, personal paths, tokens and unrelated private data before posting.
-Security concerns belong in [the private reporting process](../SECURITY.md).
+Security concerns belong in [the private reporting process](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md).

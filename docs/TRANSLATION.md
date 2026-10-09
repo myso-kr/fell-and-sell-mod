@@ -1,3 +1,8 @@
+---
+title: "Korean translation decisions"
+lang: en
+---
+
 # Korean translation decisions
 
 English is the semantic baseline; Japanese is a context reference joined by

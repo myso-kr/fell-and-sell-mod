@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a bilingual Jekyll Pages site, custom responsive layout, dark mode and site-link checks.
+
 - Add English and Korean public-facing guides, installation/troubleshooting and contribution instructions.
 - Document runtime anchors, release checks and private security reporting.
 - Add bilingual issue forms and a pull request template.

@@ -1,3 +1,8 @@
+---
+title: "Directory conventions"
+lang: en
+---
+
 # Directory conventions
 
 | Directory | Contents |
