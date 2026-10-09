@@ -17,16 +17,13 @@ public sealed class TargetTests
         Assert.Equal(new Point(2, 0, 2), target.Goal);
     }
     [Fact]
-    public void CancelSuppressesDefaultUntilFloorReset()
+    public void RightClickReturnsToDefaultExit()
     {
         var target = new Target();
         target.Default(new Point(1, 0, 1));
         target.Cancel();
         target.Default(new Point(1, 0, 1));
-        Assert.Null(target.Goal);
-        target.Reset();
-        target.Default(new Point(3, 0, 3));
-        Assert.Equal(new Point(3, 0, 3), target.Goal);
+        Assert.Equal(new Point(1, 0, 1), target.Goal);
     }
     [Fact]
     public void ManualSelectionAfterCancelResumesGuidance()

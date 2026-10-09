@@ -11,6 +11,9 @@
     <Compile Include="../../src/FellAndSell.Mod/autoplay/Snapshot.cs" Link="linked/Snapshot.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Follow.cs" Link="linked/Follow.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Target.cs" Link="linked/Target.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/guide/Search.cs" Link="linked/Search.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/map/Snapshot.cs" Link="linked/MapSnapshot.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/map/Height.cs" Link="linked/Height.cs" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />

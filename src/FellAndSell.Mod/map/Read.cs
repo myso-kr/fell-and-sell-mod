@@ -33,7 +33,8 @@ internal static class Read
         {
             var bounds = Reflect.Get(element, "bounds")!;
             var kind = group == "rooms" ? Reflect.Get(element, "type")!.ToString()! : group;
-            tiles.Add(new(Number(bounds, "x"), Number(bounds, "y"), Number(bounds, "width"), Number(bounds, "height"), kind));
+            float? height = group == "rooms" ? State.Position(Reflect.Get(element, "worldCenter")!).Y : null;
+            tiles.Add(new(Number(bounds, "x"), Number(bounds, "y"), Number(bounds, "width"), Number(bounds, "height"), kind, height));
         }
         var markers = new List<Marker>();
         foreach (var name in new[] { "startRoom", "endRoom", "bossRoom" })

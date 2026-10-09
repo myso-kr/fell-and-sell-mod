@@ -82,7 +82,8 @@
   "UnityEngine.AIModule": {
     "UnityEngine.AI.NavMesh": [
       "CalculatePathFilterInternal",
-      "SamplePositionFilter_Injected"
+      "SamplePositionFilter_Injected",
+      "CalculatePath"
     ],
     "UnityEngine.AI.NavMeshPath": [
       "ClearCorners",

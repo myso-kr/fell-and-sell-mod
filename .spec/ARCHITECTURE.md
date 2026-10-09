@@ -51,3 +51,7 @@ CI의 순수 테스트 통과와 실제 게임 기능 확인은 별도 상태로
 ## Panel pointer input
 
 `panel/Pointer.cs` is a pure press/release state machine. `Widget.Tick` reads screen-pixel mouse input once per update; shared Hit rectangles also position the TMP labels and visual boxes. Rendering performs no settings writes and saves/restores GUI.matrix. Toggle logs include the preference name and value.
+
+## Route endpoint search
+
+`guide/Search.cs` projects endpoints within a 2.25m bound, deduplicates nine nearby destination samples, and ranks complete routes before partial routes, then endpoint error and native route length. Native NavMesh supplies every connection. No room-graph shortcut bridges walls or disconnected meshes. `map/Height.cs` uses a clicked room world elevation. Right-click clears only the selected target and restores the default floor trigger; movement stops until explicitly started again.

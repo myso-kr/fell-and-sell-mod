@@ -15,7 +15,7 @@ internal static class Route
     private static readonly Dictionary<string, string> Diagnostics = [];
     internal static void Select(Point goal) { Clear(); Target.Select(goal); _next = 0; }
     internal static void Clear() { Target.Reset(); Corners = []; Complete = false; Status = "idle"; Diagnostics.Clear(); }
-    internal static void Cancel() { Clear(); Target.Cancel(); Move.Stop(); }
+    internal static void Cancel() { Clear(); Move.Stop(); _next = 0; }
     internal static void Tick(Snapshot state)
     {
         if (!Config.Guide) { _enabled = false; Complete = false; return; }
@@ -46,27 +46,32 @@ internal static class Route
             var vector = Anchors.Type("UnityEngine.Vector3");
             var sample = Reflect.Method(nav, "SamplePositionFilter_Injected", vector.MakeByRefType(),
                 hit.MakeByRefType(), typeof(float), typeof(int), typeof(int));
-            object?[] source = [State.Vector(feet), Activator.CreateInstance(hit), 2f, agent, 1];
-            object?[] target = [State.Vector(Goal.Value), Activator.CreateInstance(hit), 2f, agent, 1];
-            var sourceFound = (bool)sample.Invoke(null, source)!;
-            var targetFound = (bool)sample.Invoke(null, target)!;
-            Diagnose("sample", $"{agent}:{sourceFound}:{targetFound}", $"agent={agent} mask=1 feet={feet} goal={Goal.Value} sourceFound={sourceFound} targetFound={targetFound}");
-            if (!sourceFound || !targetFound) { Set([], sourceFound ? "targetMissing" : "sourceMissing", false); return; }
-            var from = Reflect.Get(source[1]!, "position")!;
-            var to = Reflect.Get(target[1]!, "position")!;
-            if (MathF.Abs(State.Position(to).Y - Goal.Value.Y) > 1.25f
-                || MathF.Abs(State.Position(from).Y - feet.Y) > 1.25f) { Set([], "heightMismatch", false); return; }
-            var calculate = nav.GetMethods().Single(value => value.Name == "CalculatePathFilterInternal");
-            _costs ??= Activator.CreateInstance(calculate.GetParameters()[5].ParameterType,
+            // Agent 0 has a retained native CalculatePath wrapper. Avoid its restored
+            // QueryFilter/Span wrapper where the game's default agent suffices.
+            var filtered = agent != 0;
+            var calculate = filtered ? nav.GetMethods().Single(value => value.Name == "CalculatePathFilterInternal")
+                : Reflect.Method(nav, "CalculatePath", vector, vector, typeof(int), pathType);
+            if (filtered) _costs ??= Activator.CreateInstance(calculate.GetParameters()[5].ParameterType,
                 [Enumerable.Repeat(1f, 32).ToArray()]);
-            Reflect.Call(path, "ClearCorners");
-            var success = (bool)calculate.Invoke(null, [from, to, path, agent, 1, _costs])!;
-            var status = Reflect.Get(path, "status")!.ToString()!;
-            var corners = ((System.Collections.IEnumerable)Reflect.Get(path, "corners")!).Cast<object>()
-                .Select(State.Position).ToArray();
-            Diagnose("path", $"{agent}:{success}:{status}:{corners.Length}", $"agent={agent} from={State.Position(from)} to={State.Position(to)} result={success} status={status} corners={corners.Length}");
-            Set(corners, status == "PathComplete" && success ? "complete" : status == "PathPartial" ? "partial" : "invalid",
-                success && status == "PathComplete" && corners.Length >= 2);
+            Point? Sample(Point point)
+            {
+                object?[] args = [State.Vector(point), Activator.CreateInstance(hit), Search.Radius, agent, 1];
+                return (bool)sample.Invoke(null, args)! ? State.Position(Reflect.Get(args[1]!, "position")!) : null;
+            }
+            Result Calculate(Point from, Point to)
+            {
+                Reflect.Call(path, "ClearCorners");
+                var arguments = filtered ? new object?[] { State.Vector(from), State.Vector(to), path, agent, 1, _costs }
+                    : [State.Vector(from), State.Vector(to), 1, path];
+                var success = (bool)calculate.Invoke(null, arguments)!;
+                var status = Reflect.Get(path, "status")!.ToString()!;
+                var corners = Sequence.Items(Reflect.Get(path, "corners")).Select(State.Position).ToArray();
+                return new(corners, status == "PathComplete" && success ? "complete" : status == "PathPartial" ? "partial" : "invalid");
+            }
+            var result = Search.Find(feet, Goal.Value, Sample, Calculate);
+            Diagnose("path", $"{agent}:{result.Status}:{result.Corners.Length}",
+                $"agent={agent} feet={feet} goal={Goal.Value} from={result.Start} to={result.End} status={result.Status} corners={result.Corners.Length}");
+            Set(result.Corners, result.Status, result.Complete);
         }
     }
     private static void Set(Point[] corners, string status, bool complete) { Corners = corners; Status = status; Complete = complete; }

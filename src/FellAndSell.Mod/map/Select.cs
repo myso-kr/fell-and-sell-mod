@@ -40,9 +40,10 @@ internal static class Select
         if (MathF.Abs(determinant) < 0.00000001f) return;
         u -= N(origin, "x"); v -= N(origin, "y");
         var goal = new Point((u * d - b * v) / determinant, Guide.Ground.Position(Supervisor.Current.Position).Y, (a * v - u * c) / determinant);
+        goal = Height.Resolve(goal, Read.Current);
         var nearest = Read.Current?.Markers.Where(marker => marker.Kind is "chest" or "endRoom" or "bossRoom")
-            .OrderBy(marker => marker.Position.Distance(goal)).FirstOrDefault();
-        if (nearest is { } marker && marker.Position.Distance(goal) < 3) goal = marker.Position;
+            .OrderBy(marker => marker.Position.Horizontal(goal)).FirstOrDefault();
+        if (nearest is { } marker && marker.Position.Horizontal(goal) < 3) goal = marker.Position;
         Guide.Move.Stop(); Guide.Route.Select(goal);
     }
 }
