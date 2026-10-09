@@ -17,6 +17,7 @@ permalink: /guide/
 | [Runtime anchors](ANCHORS.md) | API dependencies and update checks |
 | [Game survey](GAME-SURVEY.md) | Observed game versions and runtime evidence |
 | [Conventions](CONVENTIONS.md) | Source and package structure |
+| [확장 설계](EXPANSION.md) | Planned pickup, map reveal, route guidance and auto movement |
 | [Plan](PLAN.md) | Implementation status and remaining review |
 | [Releasing](RELEASING.md) | Maintainer publication checklist |
 | [Contributing](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CONTRIBUTING.md) | Translation and code contributions |

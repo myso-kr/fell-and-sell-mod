@@ -22,3 +22,10 @@ separate workflows. Runtime checks are available. The project owner confirmed
 in-game text display review on 2026-10-09. Broader gameplay, Japanese switching
 and uninstall tests remain separate checks; their completion is not recorded.
 See [game survey](GAME-SURVEY.md) for build and extraction details.
+
+## Planned mod expansion
+
+The owner requested nearby auto-pickup, map reveal, route guidance and auto movement,
+with achievements preserved. These are planned, not part of v0.3.0.
+See [the evidence and design](EXPANSION.md) and
+[the implementation checklist](https://github.com/myso-kr/fell-and-sell-mod/blob/main/mod-expansion-plan.md).

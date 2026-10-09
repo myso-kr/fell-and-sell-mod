@@ -114,6 +114,12 @@ fonts appear after scene loads. Unknown IDs retain the selected base language.
 [Translation decisions](docs/TRANSLATION.md) record the glossary and source
 inconsistencies. There is no translation toggle or font-size setting in this version.
 
+## Planned expansion
+
+[The expansion design](docs/EXPANSION.md) covers nearby auto-pickup, current-floor
+map reveal, route guidance and auto movement, with achievements preserved. These
+features are planned and are not included in v0.3.0.
+
 ## License
 
 Project code and authored translation contributions are provided under
