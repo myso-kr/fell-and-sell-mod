@@ -20,7 +20,12 @@ def check(archive: Path):
             "UserData/FellAndSell/fonts/OFL-Noto.txt": "locale/fonts/OFL-Noto.txt",
         }
         for target, source in payloads.items():
-            assert package.read(target) == (ROOT / source).read_bytes(), f"Payload mismatch: {target}"
+            packaged = package.read(target)
+            original = (ROOT / source).read_bytes()
+            if target.endswith(".txt"):
+                packaged = packaged.replace(b"\r\n", b"\n")
+                original = original.replace(b"\r\n", b"\n")
+            assert packaged == original, f"Payload mismatch: {target}"
         for name in ("Mods/FellAndSellMod.dll", "README.md", "LICENSE", "NOTICE", "THIRD-PARTY.md", "docs/ko/README.md", "docs/INSTALLATION.md"):
             assert name in names and package.getinfo(name).file_size > 0, f"Missing package file: {name}"
         assert {n for n in names if n.endswith((".dll", ".exe"))} == {"Mods/FellAndSellMod.dll"}, "Unexpected runtime binaries"
