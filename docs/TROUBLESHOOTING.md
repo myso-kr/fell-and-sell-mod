@@ -95,3 +95,8 @@ Use [Issues](https://github.com/myso-kr/fell-and-sell-mod/issues). Include versi
 other installed mods, steps, expected/actual behavior, and relevant log excerpts.
 Remove usernames, personal paths, tokens and unrelated private data before posting.
 Security concerns belong in [the private reporting process](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md).
+
+F8 toggles log their saved values, for example `settings: RouteGuide=True` and
+`settings: EnemyMarkers=True`. Route destination clicks require route guidance
+to be enabled and F8 to be closed. If a toggle does not change, include the
+`settings:` lines from `MelonLoader/Latest.log` in the report.

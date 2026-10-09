@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Include="../../src/FellAndSell.Mod/Reflect.cs" Link="linked/Reflect.cs" />
     <Compile Include="../../src/FellAndSell.Mod/Sequence.cs" Link="linked/Sequence.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/panel/Pointer.cs" Link="linked/Pointer.cs" />
     <Compile Include="../../src/FellAndSell.Mod/autoplay/Snapshot.cs" Link="linked/Snapshot.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Follow.cs" Link="linked/Follow.cs" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />

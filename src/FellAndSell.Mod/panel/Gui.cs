@@ -16,16 +16,21 @@ internal static class Gui
             _fill = Activator.CreateInstance(style)!;
             Reflect.Set(Reflect.Get(_fill, "normal")!, "background", Anchors.Static("UnityEngine.Texture2D", "whiteTexture"));
         }
-        try { draw(); }
-        finally { Tmp.End(); }
+        var matrix = Reflect.Member(GUI, "matrix")!;
+        var previous = Reflect.Read(matrix, null);
+        try
+        {
+            ((System.Reflection.PropertyInfo)matrix).SetValue(null, Anchors.Static("UnityEngine.Matrix4x4", "identity"));
+            draw();
+        }
+        finally { ((System.Reflection.PropertyInfo)matrix).SetValue(null, previous); Tmp.End(); }
     }
     private static object Rect(float x, float y, float width, float height) =>
         Activator.CreateInstance(Anchors.Type("UnityEngine.Rect"), x, y, width, height)!;
-    internal static bool Button(float x, float y, float width, string text)
+    internal static void Button(float x, float y, float width, string text)
     {
         Tmp.Label(x + 8, y + 4, width - 16, 24, text);
-        return (bool)Reflect.Method(GUI, "Button", Anchors.Type("UnityEngine.Rect"), typeof(string))
-            .Invoke(null, [Rect(x, y, width, 28), ""])!;
+        Box(x, y, width, 28);
     }
     internal static void Label(float x, float y, float width, string text) => Tmp.Label(x, y, width, 28, text);
     internal static void Box(float x, float y, float width, float height) =>

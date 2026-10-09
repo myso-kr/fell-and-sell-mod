@@ -8,10 +8,10 @@ internal static class Config
     private static MelonPreferences_Category _category = null!;
     private static MelonPreferences_Entry<bool> _pickup = null!, _map = null!, _guide = null!, _enemies = null!;
     private static MelonPreferences_Entry<float> _radius = null!;
-    internal static bool Pickup { get => _pickup.Value; set { _pickup.Value = value; Save(); } }
-    internal static bool Map { get => _map.Value; set { _map.Value = value; Save(); } }
-    internal static bool Guide { get => _guide.Value; set { _guide.Value = value; Save(); } }
-    internal static bool Enemies { get => _enemies.Value; set { _enemies.Value = value; Save(); } }
+    internal static bool Pickup { get => _pickup.Value; set { _pickup.Value = value; Save("NearbyPickup", value); } }
+    internal static bool Map { get => _map.Value; set { _map.Value = value; Save("MapOverlay", value); } }
+    internal static bool Guide { get => _guide.Value; set { _guide.Value = value; Save("RouteGuide", value); } }
+    internal static bool Enemies { get => _enemies.Value; set { _enemies.Value = value; Save("EnemyMarkers", value); } }
     internal static float Radius => Math.Clamp(_radius.Value, 1f, 4f);
     internal static void Load()
     {
@@ -23,5 +23,9 @@ internal static class Config
         _radius = _category.CreateEntry("PickupRadius", 3f, description: "Nearby pickup radius in metres, clamped to 1–4.");
         Ready = true;
     }
-    private static void Save() => _category.SaveToFile();
+    private static void Save(string name, bool value)
+    {
+        _category.SaveToFile();
+        MelonLogger.Msg($"settings: {name}={value}");
+    }
 }

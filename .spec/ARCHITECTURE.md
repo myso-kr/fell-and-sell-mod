@@ -47,3 +47,7 @@ CI의 순수 테스트 통과와 실제 게임 기능 확인은 별도 상태로
 ## Native map integration
 
 `map/Layer.cs` owns child RawImage/marker objects beneath the native M map and minimap. It copies `_fullMapBuffer` into its own Texture2D and leaves discovery data and the original texture unchanged. `Select.cs` converts a click through the native RectTransform and WorldToMapNormalized affine transform; drags over 6 pixels are ignored. `autoplay/Exec.cs` closes the native map through CloseMap before an explicit movement start. Runtime dungeon validation is pending.
+
+## Panel pointer input
+
+`panel/Pointer.cs` is a pure press/release state machine. `Widget.Tick` reads screen-pixel mouse input once per update; shared Hit rectangles also position the TMP labels and visual boxes. Rendering performs no settings writes and saves/restores GUI.matrix. Toggle logs include the preference name and value.
