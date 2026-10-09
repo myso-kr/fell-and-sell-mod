@@ -7,7 +7,7 @@
 - [x] 공통 메뉴·대응 언어 전환·현재 위치·문서/다운로드 화면·목차·모바일 코드 표현을 개선한다.
 - [x] 기존 `.html` 주소와 DOWNLOAD.html 별칭을 유지하고 공개 기술 본문 경계를 강화한다.
 - [x] 렌더링/핵심 URL/언어/제목/공개 상태 및 모바일·다크 모드·키보드 동선을 CI 검사로 고정한다.
-- [ ] 로컬 사이트·패키지 검사 후 커밋/푸시하고 Actions·실제 Pages 배포를 확인한다.
+- [x] 로컬 사이트·패키지 검사 후 커밋/푸시하고 Actions·실제 Pages 배포를 확인한다.
 
 공개 릴리스는 현재 없으므로 성공한 main 빌드로 안내한다. 기존 draft 릴리스의 게시 작업은 포함하지 않는다. 게임 코드와 실행 중인 게임 파일 교체는 필요하지 않다.
 
@@ -25,4 +25,18 @@
 
 ## 배포
 
-로컬 검증 완료. main 푸시 후 CI·Documentation·Pages 및 공개 URL을 확인한다.
+개선 커밋 `ba653875b71ec9042856b5b7e7ac2778ed849ad0`을 main에 푸시했다.
+
+- [CI 37941290567](https://github.com/myso-kr/fell-and-sell-mod/actions/runs/37941290567): 성공. 패키지·체크섬·44개 C# 테스트·5개 Python 테스트 포함.
+- [Documentation 37941290211](https://github.com/myso-kr/fell-and-sell-mod/actions/runs/37941290211): 정적 20페이지·Chromium 90뷰 검사 성공.
+- [Pages 37941289448](https://github.com/myso-kr/fell-and-sell-mod/actions/runs/37941289448): 성공. Pages API도 해당 커밋 `built`, 오류 없음.
+- 공개 본문 15개와 이전 주소 5개 모두 HTTP 200. canonical·언어·버전·본문 구조 확인.
+- 새 v0.4.0 CI 아티팩트가 만료되지 않았음을 확인. 공개 릴리스 게시 작업 없음.
+
+추가 정리: 첫 배포의 Gemfile 경고는 로컬 잠금 의존성을 Pages 이미지에서 찾지 못해서
+발생했다. `tools/pages`로 로컬 개발 Gemfile/lockfile을 이동하고 kramdown을
+[Pages의 2.4.0](https://pages.github.com/versions/)에 맞췄다. [Pages action](https://github.com/actions/jekyll-build-pages/blob/main/entrypoint.sh)은
+소스 폴더의 Gemfile을 `bundle check`한 후 별도의 번들된 런타임으로 빌드하므로,
+이동 후에는 개발용 lockfile과 배포 런타임을 혼동하지 않는다. 새 위치에서 로컬
+빌드·20페이지 정적 검사·저장소 검사도 통과했다. 이 최종 정리 역시 main에 푸시하고
+배포 상태와 경고 제거 여부를 확인한다.

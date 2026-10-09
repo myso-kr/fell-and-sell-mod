@@ -36,8 +36,8 @@ GEM
       sass (~> 3.4)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    kramdown (2.5.2)
-      rexml (>= 3.4.4)
+    kramdown (2.4.0)
+      rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (4.0.4)
@@ -69,6 +69,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.10.0)
   jekyll-relative-links (= 0.6.1)
+  kramdown (= 2.4.0)
   kramdown-parser-gfm (= 1.1.0)
 
 BUNDLED WITH

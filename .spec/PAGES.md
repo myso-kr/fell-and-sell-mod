@@ -51,8 +51,8 @@ alongside layout, CSS and guides. Technical records and build caches stay out.
 ## Local checks
 
 ```powershell
-bundle install --gemfile docs/Gemfile
-bundle exec --gemfile docs/Gemfile jekyll build --source docs --destination generated/site
+bundle install --gemfile tools/pages/Gemfile
+bundle exec --gemfile tools/pages/Gemfile jekyll build --source docs --destination generated/site
 python tools/check-repository.py
 python tools/check-site.py generated/site
 python -m pip install -r tools/requirements-site.txt
@@ -64,6 +64,13 @@ Use `--channel msedge` with an installed Edge browser instead of downloading
 Chromium locally. The browser tool serves the rendered files through an isolated
 request fixture and never follows external download links. CI installs pinned
 Playwright and Chromium on Ubuntu. Keep generated screenshots ignored.
+
+Ruby development dependencies and their lockfile live under `tools/pages`, outside
+the published source. Jekyll 3.10.0, relative-links 0.6.1, GFM parser 1.1.0 and
+kramdown 2.4.0 match the [GitHub Pages dependency list](https://pages.github.com/versions/).
+The Pages action uses its bundled runtime rather than this Windows lockfile. Keeping
+the local Gemfile in the source previously caused `bundle check` to warn about
+local transitive gems unavailable in the Pages image; the build still succeeded.
 
 The static checker covers all 20 output pages, fragments/assets, exact canonical
 routes, heading hierarchy, seven locale pairs, unique menu destinations, current
