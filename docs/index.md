@@ -12,7 +12,7 @@ home: true
 <p class="lead">Items, recipes, quests and conversations in Korean. A language patch for the Steam game Fell &amp; Sell, built on MelonLoader.</p>
 
 <div class="actions">
-<a class="button" href="https://github.com/myso-kr/fell-and-sell-mod/releases">Browse releases</a>
+<a class="button" href="{{ '/DOWNLOADS.html' | relative_url }}">Download a build</a>
 <a class="button secondary" href="{{ '/INSTALLATION.html' | relative_url }}">Installation guide</a>
 </div>
 
@@ -55,7 +55,10 @@ Fell & Sell/
 ```
 
 Use a packaged release ZIP, not GitHub's source-code archive. If a package has
-not yet been published, the [build guide](DEVELOPMENT.md) explains how to make one.
+not yet been published, download a successful CI artifact using the
+[download guide](DOWNLOADS.md). GitHub sign-in is required; artifacts expire after
+30 days. CI builds the DLL, mod ZIP and checksum without a game installation.
+Version-tag builds prepare a draft prerelease for review, not a public download.
 [Installation and checksums](INSTALLATION.md) cover updating and removal.
 
 ## What has been checked

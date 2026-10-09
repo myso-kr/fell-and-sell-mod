@@ -1,5 +1,9 @@
 # Third-party components
 
+GitHub Actions builds include the same authored catalog and unchanged licensed font
+as local packages. CI artifacts and release ZIPs exclude game, loader and interop
+binaries; the package checker verifies this layout and keeps the font notice.
+
 - MelonLoader 0.7.3: Apache-2.0, https://github.com/LavaGang/MelonLoader.
   Referenced through NuGet for compilation and installed separately by users.
   Not bundled in mod packages.

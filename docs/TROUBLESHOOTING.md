@@ -19,6 +19,14 @@ Expected mod messages include 1,243 loaded entries, installed raw/formatted hook
 and 699 Hangul glyphs with `missing=0`. The number of observed fonts or text
 components can vary by scene and launch timing; these are diagnostics, not fixed requirements.
 
+## Downloaded files do not contain Mods or UserData
+
+GitHub Actions wraps the package in an artifact download. Extract that outer ZIP
+first, then install the inner `fell-and-sell-mod-vX.Y.Z.zip`. Do not install a
+source-code archive, release-notes file or outer artifact as the mod.
+An expired CI artifact requires a newer successful run or a public release.
+[Downloads](DOWNLOADS.md) explains the two ZIP layers.
+
 ## Mod does not load or game fails to start
 
 Confirm the DLL is directly under Mods and the loader is installed beside the

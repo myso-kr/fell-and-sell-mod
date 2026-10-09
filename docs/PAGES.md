@@ -75,6 +75,13 @@ repository publication. Making the repository public also exposes its Git histor
 
 See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
+## Mod builds and site deployment are separate
+
+CI and Release build the mod through the reusable Build package workflow.
+Documentation validates the rendered site; GitHub's pages-build-deployment job
+publishes `main /docs`. A CI artifact is not a Pages deployment or a public release.
+[Downloads](DOWNLOADS.md) and [release procedure](RELEASING.md) describe those paths.
+
 ## Design and maintenance
 
 The original CSS uses a paper-colored background, forest-green links and concise

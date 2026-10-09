@@ -62,6 +62,15 @@ do not infer visual correctness from logs alone.
 ## CI
 
 GitHub Actions builds on windows-latest with .NET SDK 8 and Python 3.12, runs
-validator fixtures and packages the mod. Source tables are deliberately absent,
+repository/version/document consistency checks and validator fixtures, builds the
+DLL, verifies packaged payloads and checksum, then uploads ZIP, SHA-256 and release
+notes for 30 days. CI and Release share `.github/workflows/build.yml`.
+
+The CI workflow runs on main pushes, PRs and manual dispatch. Release runs for
+`v*` tags or a manually selected existing tag, validates the version and creates
+a draft prerelease with the same package. It does not overwrite published releases.
+[Downloads](DOWNLOADS.md) explains artifact retrieval.
+
+Source tables are deliberately absent,
 so full extracted-source coverage is a local maintainer check. CI does not install
 or run the game. See [release procedure](RELEASING.md).

@@ -32,7 +32,10 @@ Windows 11, 게임 1.7.1 / Steam 빌드 25480096, MelonLoader 0.7.3 x64에서
 3. [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases)에 배포본이 올라오면
    `fell-and-sell-mod-v0.3.0.zip`을 받아 게임 폴더에 압축을 풉니다.
    GitHub의 Source code ZIP은 설치용 패치가 아닙니다. 배포본이 아직 없다면
-   [개발 안내](../DEVELOPMENT.md)를 따라 빌드할 수 있습니다.
+   [CI 빌드](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml)의
+   성공한 실행에서 아티팩트를 받을 수 있습니다. GitHub 로그인이 필요하며 보관 기간은
+   30일입니다. 바깥 아티팩트 ZIP을 먼저 풀고, 안에 있는 패치 ZIP을 게임 폴더에 풉니다.
+   [다운로드 안내](../DOWNLOADS.md)에 자세한 방법과 gh 명령이 있습니다.
 4. **Steam으로 게임을 실행**합니다. 한국어 번역이 자동 적용됩니다.
    게임 언어 메뉴에는 한국어 항목이 따로 추가되지 않습니다. 영어 또는 일본어를 선택해도
    같은 한국어 카탈로그가 적용되며, 새로 추가된 미등록 항목은 선택한 원래 언어로 표시됩니다.
@@ -69,6 +72,13 @@ Fell & Sell/
 확인하세요. 어색한 번역과 잘리는 문구도 [이슈](https://github.com/myso-kr/fell-and-sell-mod/issues)로
 알려주세요. 게임·모드 버전, 화면 이름, 재현 방법, 관련 로그나 스크린샷을 함께 보내면
 확인하기 쉽습니다. 로그를 공개하기 전에 개인 경로와 민감한 정보를 가려주세요.
+
+## Actions 빌드와 릴리스
+
+CI는 게임 설치 없이 검사·DLL 빌드·패키징을 수행하고 ZIP·SHA-256·릴리스 노트를
+보관합니다. 버전 태그의 Release 워크플로는 같은 빌드를 수행한 뒤 패키지를 릴리스
+초안에 첨부합니다. 초안은 일반 사용자에게 공개되지 않으며 검토 후 게시합니다.
+CI 성공은 모든 게임 화면의 플레이 검수를 의미하지 않습니다.
 
 ## 번역 수정에 참여하기
 

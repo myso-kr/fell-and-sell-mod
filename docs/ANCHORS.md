@@ -24,6 +24,10 @@ Implementation paths prefixed `I18n/` are under `src/FellAndSell.Mod/`.
 The runtime game name contains `&`; the app.info and Player.log folder use the
 sanitized `Fell _ Sell`. Do not substitute one for the other.
 
+Actions compiles and packages this mod without game assemblies because it resolves
+these APIs at runtime. CI checks do not validate runtime anchors; a game update
+still needs local inspection and play.
+
 After an update, record the new build and Unity version, allow the loader to
 regenerate interop if needed, re-extract source tables and run complete coverage
 validation. Check initialization errors, translation hits, font glyph coverage,

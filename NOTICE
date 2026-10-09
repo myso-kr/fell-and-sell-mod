@@ -1,3 +1,6 @@
 Fell & Sell Korean Patch is an unofficial fan-made mod by myso-kr.
 It is not affiliated with or endorsed by the game's developer or publisher.
 Game names and assets belong to their respective owners.
+Mod packages built locally or by GitHub Actions contain authored translations,
+project documentation and the unchanged OFL-licensed Noto font. The game,
+MelonLoader and generated game interop binaries are not bundled.

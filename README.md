@@ -36,7 +36,9 @@ or publisher. The game is required separately. See [NOTICE](NOTICE).
 3. Download `fell-and-sell-mod-v0.3.0.zip` from the project's
    [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases), when published,
    and extract it over the game directory. The repository source ZIP is not an
-   installable mod. If no packaged release exists, follow [the build guide](docs/DEVELOPMENT.md).
+   installable mod. Before a public release exists, download the ZIP from a successful
+   [CI build](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml)
+   using [the download guide](docs/DOWNLOADS.md).
 4. Start the game **through Steam**. The Korean overlay applies automatically
    to matching localization entries, including when English or Japanese is selected.
    There is no separate Korean option in the game's language menu.
@@ -87,6 +89,12 @@ dotnet build FellAndSell.Mod.sln -c Release
 python -m unittest discover -s tests
 pwsh -NoProfile -File tools/package.ps1
 ```
+
+CI runs the same package build and uploads the ZIP, SHA-256 file and release notes
+as `fell-and-sell-mod-v0.3.0`, retained for 30 days. GitHub sign-in is required
+for Actions artifact downloads. The Release workflow rebuilds an existing `vX.Y.Z`
+tag and attaches its package to a draft prerelease for maintainer review.
+[Downloads](docs/DOWNLOADS.md) explains both routes.
 
 The resulting archive and SHA-256 file are under `dist/`. Game files are not
 needed for compilation or fixture tests. Source extraction and full translation

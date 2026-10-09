@@ -13,7 +13,7 @@ permalink: /ko/
 <p class="lead">아이템과 제작법, 퀘스트와 대화를 한국어로. Steam판 Fell &amp; Sell을 위한 MelonLoader 기반 언어 모드입니다.</p>
 
 <div class="actions">
-<a class="button" href="https://github.com/myso-kr/fell-and-sell-mod/releases">릴리스 확인</a>
+<a class="button" href="{{ '/DOWNLOADS.html' | relative_url }}">빌드 받기</a>
 <a class="button secondary" href="{{ '/ko/guide/' | relative_url }}">설치 안내</a>
 </div>
 
@@ -54,7 +54,10 @@ Fell & Sell/
 ```
 
 GitHub의 Source code ZIP은 설치용 패치가 아닙니다. 배포본이 아직 없다면
-[개발 안내](../DEVELOPMENT.md)에서 빌드 방법을 확인하세요.
+[다운로드 안내](../DOWNLOADS.md)를 따라 성공한 CI 아티팩트를 받을 수 있습니다.
+GitHub 로그인이 필요하며 아티팩트는 30일 동안 보관합니다. 바깥 ZIP을 먼저 풀고
+안에 있는 패치 ZIP을 설치하세요. Actions는 게임 설치 없이 DLL·ZIP·체크섬을 만들고,
+버전 태그 빌드는 검토용 릴리스 초안을 준비합니다. 초안은 일반 사용자에게 공개되지 않습니다.
 [한국어 설치·제거 안내](README.md)와 [체크섬 확인 방법](../INSTALLATION.md)도 제공합니다.
 
 ## 확인한 범위

@@ -1,0 +1,62 @@
+name: Build package
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        type: string
+        default: ''
+    outputs:
+      version:
+        value: ${{ jobs.package.outputs.version }}
+      artifact_name:
+        value: ${{ jobs.package.outputs.artifact_name }}
+permissions:
+  contents: read
+jobs:
+  package:
+    name: Windows mod package
+    runs-on: windows-latest
+    outputs:
+      version: ${{ steps.metadata.outputs.version }}
+      artifact_name: ${{ steps.metadata.outputs.artifact_name }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.release_tag || github.sha }}
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Repository, version and public-document consistency
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: python tools/check-repository.py --tag "$env:RELEASE_TAG"
+      - name: Translation validator tests
+        run: python -m unittest discover -s tests
+      - name: Build and package
+        shell: pwsh
+        run: ./tools/package.ps1
+      - name: Verify package and checksum
+        run: python tools/check-package.py
+      - name: Compose release notes
+        run: python tools/release-notes.py --output dist/release-notes.md
+      - name: Artifact metadata
+        id: metadata
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content -LiteralPath Directory.Build.props
+          $version = $props.Project.PropertyGroup.Version
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "artifact_name=fell-and-sell-mod-v$version" >> $env:GITHUB_OUTPUT
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.metadata.outputs.artifact_name }}
+          path: |
+            dist/*.zip
+            dist/*.zip.sha256
+            dist/release-notes.md
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0

@@ -9,7 +9,9 @@ lang: en
 |---|---|
 | src/ | C# mod running under MelonLoader's IL2CPP runtime |
 | locale/ | Authored translations and licensed fonts |
-| tools/ | Build, verification and packaging commands |
+| tools/ | Build, repository/package checks, notes and packaging commands |
+| .github/workflows/ | Shared package build, CI, tag releases and docs validation |
+| release-metadata.json | Committed tested game/build, coverage and glyph counts |
 | generated/ | Ignored extraction and inspection output |
 | tests/ | Game-independent translation-validator fixtures |
 | docs/ | User guides, runtime notes and publication procedure |

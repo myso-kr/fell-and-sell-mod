@@ -10,5 +10,9 @@ safe demonstration. Remove personal data. There is no guaranteed response time.
 This fan project has no formal security support SLA; fixes target the latest
 published version. Older versions are not maintained as separate support branches.
 
+Use packages from this repository's successful Actions runs or public Releases.
+CI artifacts expire after 30 days and contain a ZIP plus its SHA-256 checksum; a
+checksum does not prove publisher identity. Draft releases are not public downloads.
+
 Ordinary translation, installation and layout reports should use public Issues.
 For a loader vulnerability, also use the loader project's own reporting policy.

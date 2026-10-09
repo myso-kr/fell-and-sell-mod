@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Share an Actions package build between CI and tag releases, and retain verified CI artifacts for 30 days.
+- Check version, public claims, catalog counts, package payloads and checksum; generate release notes from recorded metadata.
+- Build version-tag packages into draft prereleases and document artifact downloads in both languages.
+
 - Add a bilingual Jekyll Pages site, custom responsive layout, dark mode and site-link checks.
 
 - Add English and Korean public-facing guides, installation/troubleshooting and contribution instructions.

@@ -58,6 +58,13 @@ python -m venv .venv
 `generated/strings.en.json` and `generated/extraction-report.json` are ignored.
 No source strings or game assemblies are committed.
 
+## Automated package checks
+
+The recorded target values also live in `release-metadata.json` for release notes.
+GitHub Actions builds without the game and checks versions, catalog counts,
+package payloads, font notices and SHA-256. The runtime observations below remain
+local game evidence, separate from CI success.
+
 ## Translation runtime verification
 
 The generated localization API exposes `TableEntry.Table`, `KeyId`,

@@ -1,0 +1,13 @@
+{
+  "game_version": "1.7.1",
+  "steam_build": "25480096",
+  "unity_version": "6000.3.10f1",
+  "loader_version": "0.7.3",
+  "verified_os": "Windows 11",
+  "translation_counts": {
+    "Game": 1128,
+    "UI": 115
+  },
+  "hangul_glyphs": 699,
+  "visual_review_complete": false
+}

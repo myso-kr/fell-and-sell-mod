@@ -26,9 +26,11 @@ and validation. For a gameplay-sensitive hook change, report the exact game buil
 and in-game evidence, distinguishing log checks from visual review.
 
 ```powershell
+python tools/check-repository.py
 python -m unittest discover -s tests
 pwsh -NoProfile -File tools/verify.ps1
 pwsh -NoProfile -File tools/package.ps1
+python tools/check-package.py
 ```
 
 With a local extraction, also run:
@@ -39,6 +41,12 @@ python tools/check-translations.py --require-complete
 
 Fixture tests and compilation do not require the game. CI cannot verify source
 coverage without locally extracted tables or exercise a retail game session.
+CI uploads a verified package for review on each successful run; see
+[downloads](docs/DOWNLOADS.md). Downloading Actions artifacts requires GitHub sign-in.
+The Release workflow prepares a draft from a version tag; publishing the draft is
+a separate maintainer action. Update `release-metadata.json` when verified game
+metadata, translation counts or glyph counts change.
+
 Do not commit `generated/`, `dist/`, local logs, credentials or game files.
 
 ## Review and licensing

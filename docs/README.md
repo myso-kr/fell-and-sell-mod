@@ -9,6 +9,7 @@ permalink: /guide/
 | Document | Purpose |
 |---|---|
 | [한국어 안내](ko/README.md) | Korean installation, status and feedback guide |
+| [Downloads / 다운로드](DOWNLOADS.md) | CI artifacts, release assets and gh retrieval |
 | [Installation](INSTALLATION.md) | Package verification, install, update and uninstall |
 | [Troubleshooting](TROUBLESHOOTING.md) | Diagnosis and useful bug reports |
 | [Development](DEVELOPMENT.md) | Build, extraction, tests and deployment |

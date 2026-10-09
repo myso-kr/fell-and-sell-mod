@@ -15,7 +15,12 @@ The verified target is game 1.7.1 / Steam build 25480096 on Windows 11.
 Other game versions, loaders and operating systems are unverified.
 Download the loader from its [official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3).
 Project packages are listed under [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases).
-A package may not yet be published; [building from source](DEVELOPMENT.md) is also supported.
+Before a public release exists, use the latest successful
+[CI build](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml).
+Sign in to GitHub, download the `fell-and-sell-mod-v0.3.0` artifact and extract
+the outer artifact archive first. Install the mod ZIP inside it, not the outer
+archive. CI artifacts are kept for 30 days. [Download instructions](DOWNLOADS.md)
+include a gh command; [building locally](DEVELOPMENT.md) is also supported.
 
 ## Verify a package
 
@@ -29,7 +34,7 @@ if ($actual -ine $expected) { throw 'Package checksum mismatch.' }
 ```
 
 A matching hash confirms the ZIP matches the accompanying checksum, not the
-identity of its publisher. Obtain both from the project release.
+identity of its publisher. Obtain both from the same project release or CI run.
 
 ## Install
 

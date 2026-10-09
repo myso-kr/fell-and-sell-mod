@@ -16,7 +16,9 @@ lang: en
 
 Current status: steps 1–5 implemented, including all 1243 translations,
 English/Japanese context, formatting hooks and licensed dynamic Hangul fallback.
-Release packaging and runtime checks are available. Step 6 still needs visual
+GitHub Actions builds verified installable packages, retains CI artifacts for
+30 days and prepares version-tag draft prereleases. Pages and mod builds use
+separate workflows. Runtime checks are available. Step 6 still needs visual
 review of gameplay screens and uninstall testing. Runtime logs and glyph checks
 do not establish that every screen's layout fits.
 See [game survey](GAME-SURVEY.md) for build and extraction details.
