@@ -9,7 +9,8 @@
     "Il2Cpp.FirstPersonController": [
       "_Instance_k__BackingField",
       "HandleMovement",
-      "IsPlayerBlocked"
+      "IsPlayerBlocked",
+      "CharacterController"
     ],
     "Il2Cpp.PlayerInputHandler": [
       "_Instance_k__BackingField",
@@ -73,6 +74,9 @@
     "Il2Cpp.DungeonMinimapHUD": [
       "_Instance_k__BackingField",
       "_mapRawImage"
+    ],
+    "Il2Cpp.NextFloorTrigger": [
+      "OnTriggerEnter"
     ]
   },
   "UnityEngine.AIModule": {
@@ -98,7 +102,8 @@
     ],
     "UnityEngine.RaycastHit": [
       "transform"
-    ]
+    ],
+    "UnityEngine.CharacterController": []
   },
   "Unity.AI.Navigation": {
     "Unity.AI.Navigation.NavMeshSurface": [

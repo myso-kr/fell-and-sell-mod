@@ -8,6 +8,8 @@ internal static class Select
     internal static void Tick(object manager)
     {
         if (!Window.Open || !Config.Guide || Panel.Widget.Visible) { _pressed = null; return; }
+        if ((bool)Reflect.Method(Anchors.Type("UnityEngine.Input"), "GetMouseButtonDown", typeof(int)).Invoke(null, [1])!)
+        { _pressed = null; Guide.Route.Cancel(); return; }
         var mouse = State.Position(Anchors.Static("UnityEngine.Input", "mousePosition")!);
         if ((bool)Reflect.Method(Anchors.Type("UnityEngine.Input"), "GetMouseButtonDown", typeof(int)).Invoke(null, [0])!) _pressed = mouse;
         if (!(bool)Reflect.Method(Anchors.Type("UnityEngine.Input"), "GetMouseButtonUp", typeof(int)).Invoke(null, [0])!) return;
@@ -37,7 +39,7 @@ internal static class Select
         var determinant = a * d - b * c;
         if (MathF.Abs(determinant) < 0.00000001f) return;
         u -= N(origin, "x"); v -= N(origin, "y");
-        var goal = new Point((u * d - b * v) / determinant, Supervisor.Current.Position.Y, (a * v - u * c) / determinant);
+        var goal = new Point((u * d - b * v) / determinant, Guide.Ground.Position(Supervisor.Current.Position).Y, (a * v - u * c) / determinant);
         var nearest = Read.Current?.Markers.Where(marker => marker.Kind is "chest" or "endRoom" or "bossRoom")
             .OrderBy(marker => marker.Position.Distance(goal)).FirstOrDefault();
         if (nearest is { } marker && marker.Position.Distance(goal) < 3) goal = marker.Position;

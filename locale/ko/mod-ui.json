@@ -25,5 +25,8 @@
   "Following": "이동 중",
   "Arrived": "도착",
   "Blocked": "막힘 · 정지",
-  "Cancelled": "중단됨"
+  "Cancelled": "중단됨",
+  "sourceMissing": "플레이어 발밑 이동 영역 없음",
+  "targetMissing": "목적지 주변 이동 영역 없음",
+  "heightMismatch": "다른 높이의 이동 영역 · 이동 불가"
 }

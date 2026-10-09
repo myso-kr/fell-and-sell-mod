@@ -68,7 +68,7 @@ by stable table/entry IDs rather than English phrases.
 ## F8 panel or movement problems
 
 The panel uses the bundled Noto font and its own TMP Canvas. Check
-`panel: Noto glyph check 95; missing=0`. The panel temporarily suppresses player
+`panel: Noto glyph check 102; missing=0`. The panel temporarily suppresses player
 actions while open; closing it with F8 or Esc returns control. It does not change
 the game's persistent input-block flag. Native inventory/pause screens can still
 block movement according to the game's rules.
@@ -100,3 +100,6 @@ F8 toggles log their saved values, for example `settings: RouteGuide=True` and
 `settings: EnemyMarkers=True`. Route destination clicks require route guidance
 to be enabled and F8 to be closed. If a toggle does not change, include the
 `settings:` lines from `MelonLoader/Latest.log` in the report.
+
+For unreachable routes, include the `route:` diagnostics. These distinguish
+source/target sampling, agent ID, snapped endpoints and native path status.
