@@ -1,6 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Add English and Korean public-facing guides, installation/troubleshooting and contribution instructions.
+- Document runtime anchors, release checks and private security reporting.
+- Add bilingual issue forms and a pull request template.
+- Include the linked documentation in mod archives.
+
 ## 0.3.0 — complete extracted-table translation
+
+Verified on game 1.7.1 / Steam build 25480096 with MelonLoader 0.7.3 x64.
+Startup checks loaded 1243 entries and verified 699 Hangul glyphs with no missing glyphs.
 
 - Translate all 1243 entries (1128 Game and 115 UI), using Japanese as context.
 - Complete items, furniture recipes, combat effects, tutorials, dialogue and quests.

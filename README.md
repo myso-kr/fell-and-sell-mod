@@ -1,64 +1,110 @@
 # Fell & Sell — Korean patch
 
-MelonLoader-based Korean language patch for the Steam game **Fell & Sell**.
+A MelonLoader language mod for the Steam version of **Fell & Sell**.
 
-**Status: full extracted-table Korean translation, v0.3.0.** All 1243 English
-entries are translated: 1128 Game entries and 115 UI entries, including items,
-crafting recipes, effects, tutorials, dialogue and quests. English and Japanese
-are compared by table/entry ID for translation context.
+[![CI](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml/badge.svg)](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 
-Verified on game 1.7.1 / Steam build 25480096 with MelonLoader 0.7.3:
-translation hooks execute and the dynamic Noto font covers the authored Hangul.
-Visual layout and every gameplay screen still require in-game review. Coverage
-refers to the extracted localization tables; hardcoded text is not guaranteed.
+**[한국어 안내](docs/ko/README.md)** · [Documentation](docs/README.md) ·
+[Releases](https://github.com/myso-kr/fell-and-sell-mod/releases) · [Changelog](CHANGELOG.md)
 
-## Build
+**v0.3.0 covers all 1,243 extracted localization entries**: 1,128 Game entries
+and 115 UI entries. Items, crafting recipes, effects, tutorials, dialogue and
+quests are translated. English provides the meaning; Japanese provides additional
+context. Proper names and punctuation-only entries are intentionally retained.
 
-Use .NET SDK 8 to build the `net6.0` mod for MelonLoader 0.7.3's IL2CPP runtime:
+Tested on Windows 11, game **1.7.1 / Steam build 25480096**, Unity 6000.3.10f1
+(IL2CPP), and MelonLoader **0.7.3 x64**. Runtime checks confirm translation hooks,
+1,243 loaded entries, 699 supported Hangul glyphs and 20 Korean TMP components.
+Every gameplay screen's layout has not yet been visually reviewed. Text outside
+the extracted tables and future game updates may require additional work.
+
+This is an unofficial fan project by myso-kr, not endorsed by the game developer
+or publisher. The game is required separately. See [NOTICE](NOTICE).
+
+## Install
+
+1. In Steam, open **Fell & Sell → Properties → Installed Files → Browse**.
+   Use the directory containing `Fell & Sell.exe`.
+2. Install [MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3)
+   into that directory, following the loader's instructions. It is not bundled.
+3. Download `fell-and-sell-mod-v0.3.0.zip` from the project's
+   [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases), when published,
+   and extract it over the game directory. The repository source ZIP is not an
+   installable mod. If no packaged release exists, follow [the build guide](docs/DEVELOPMENT.md).
+4. Start the game **through Steam**. The Korean overlay applies automatically
+   to matching localization entries, including when English or Japanese is selected.
+   There is no separate Korean option in the game's language menu.
+
+```text
+Fell & Sell/
+├─ Fell & Sell.exe
+├─ MelonLoader/                         installed separately
+├─ Mods/FellAndSellMod.dll
+└─ UserData/FellAndSell/
+   ├─ locale/ko/strings.json
+   └─ fonts/
+      ├─ NotoSansCJKkr-Regular.otf
+      └─ OFL-Noto.txt
+```
+
+The archive also carries documentation, notices and license texts. Keep font
+license notices with redistributed copies. For checksum verification and a
+complete update/removal guide, see [installation](docs/INSTALLATION.md).
+
+## Update or remove
+
+Close the game before replacing the mod DLL, catalog and font with a newer package.
+To remove the Korean patch, delete `Mods/FellAndSellMod.dll` and
+`UserData/FellAndSell/`. Keep files belonging to other mods. The patch adds files
+and changes localization tables in memory; it does not patch the game's original
+binaries or implement save editing. Uninstall MelonLoader separately if desired.
+
+## Troubleshooting and feedback
+
+Check `MelonLoader/Latest.log` for `Fell & Sell Korean Patch v0.3.0`,
+`i18n: loaded 1243 Korean entries`, installed string hooks, and
+`font: verified 699 Hangul glyphs; missing=0`.
+
+See [troubleshooting](docs/TROUBLESHOOTING.md) for missing text, square glyphs,
+startup problems and reports after game updates. Report awkward translations,
+clipping and crashes through [Issues](https://github.com/myso-kr/fell-and-sell-mod/issues).
+Include the game/mod versions, affected screen and relevant log excerpts.
+Remove personal paths and credentials before sharing logs.
+
+## Build and contribute
+
+Build with .NET SDK 8 targeting the loader's `net6.0` runtime. Python 3.12 runs
+the validator tests; PowerShell 7 runs the build tools.
 
 ```powershell
 dotnet build FellAndSell.Mod.sln -c Release
-pwsh -NoProfile -File tools/verify.ps1
+python -m unittest discover -s tests
 pwsh -NoProfile -File tools/package.ps1
 ```
 
-The NuGet loader reference is for compilation only; loader binaries are not shipped.
-Unity and game APIs are resolved from the installed loader's generated interop
-assemblies at runtime; game assemblies are not needed to build the project.
+The resulting archive and SHA-256 file are under `dist/`. Game files are not
+needed for compilation or fixture tests. Source extraction and full translation
+coverage checks require a local game installation; see
+[development](docs/DEVELOPMENT.md) and [CONTRIBUTING](CONTRIBUTING.md).
 
-## Development installation
+## How it works
 
-Install [MelonLoader](https://github.com/LavaGang/MelonLoader) separately into the
-folder containing `Fell & Sell.exe`. Extract the package over that folder.
-It adds `Mods/FellAndSellMod.dll`, `UserData/FellAndSell/locale/ko/strings.json`,
-and the licensed font under `UserData/FellAndSell/fonts/`.
-Start through Steam. Check `MelonLoader/Latest.log` for `i18n: loaded 1243 Korean
-entries`, installed string hooks and `font: verified ... missing=0`.
-The patch overlays either English or Japanese (or another selected locale).
-New entries absent from the catalog retain the selected base language.
-A separate Korean entry in the language menu is not implemented.
+Harmony hooks intercept Unity.Localization entries by table name and numeric ID,
+then replace their templates before formatting. A dynamic **Noto Sans CJK KR**
+font provides Hangul through TextMeshPro fallback assets. It registers again as
+fonts appear after scene loads. Unknown IDs retain the selected base language.
 
-For local development, close the game and deploy:
+[Runtime anchors](docs/ANCHORS.md) describe the game APIs this depends on.
+[Translation decisions](docs/TRANSLATION.md) record the glossary and source
+inconsistencies. There is no translation toggle or font-size setting in this version.
 
-```powershell
-pwsh -NoProfile -File tools/deploy.ps1 -GameDir 'C:\Program Files (x86)\Steam\steamapps\common\Fell & Sell'
-python -m unittest discover -s tests
-.\.venv\Scripts\python.exe tools/check-translations.py --require-complete
-```
+## License
 
-The last command requires the local English/Japanese extraction described in
-[game survey](docs/GAME-SURVEY.md). Translations preserve placeholders, rich text
-tags and button labels; missing entries use the game's original text.
-
-Remove those added mod files to uninstall the mod. Remove the separately installed
-loader according to its own instructions if desired.
-
-## Project
-
-The directory and archive conventions follow the sibling `combolands-mod` project,
-but this game is IL2CPP, so its Mono `net472` build and hooks are not copied.
-The runtime identifies `Art Games Studio SA` / `Fell & Sell`; these values are
-used in the MelonGame attribute. The sanitized name in `app.info` differs.
-
-See [game survey and extraction](docs/GAME-SURVEY.md), [plan](docs/PLAN.md), [conventions](docs/CONVENTIONS.md) and
-[third-party notes](THIRD-PARTY.md). Code is MIT licensed.
+Project code and authored translation contributions are provided under
+[MIT](LICENSE), subject to the rights in the underlying game material.
+Noto Sans CJK KR is distributed unchanged under the **SIL Open Font License 1.1**,
+with its [license text](locale/fonts/OFL-Noto.txt). Game names and original content
+remain with their owners. MelonLoader and HarmonyX are installed separately;
+game binaries and generated interop assemblies are not distributed.
+See [third-party components](THIRD-PARTY.md).

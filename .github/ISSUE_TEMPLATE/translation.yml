@@ -1,0 +1,25 @@
+name: Translation feedback / 번역 제안
+description: Wrong meaning, awkward wording or clipped text / 오역·어색한 표현·잘리는 문구
+title: "[Translation] "
+labels: []
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Game and mod versions / 게임·모드 버전
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Screen and current text / 화면과 현재 문구
+      description: Include item, quest or menu name and a screenshot if useful; numeric ID if known.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested wording and reason / 수정안과 이유
+      description: Explain meaning or layout context. Preserve placeholders, numbers and formatting tags.
+    validations:
+      required: true

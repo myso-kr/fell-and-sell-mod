@@ -15,9 +15,12 @@ Copy-Item -LiteralPath (Join-Path $projectRoot 'locale/ko/strings.json') -Destin
 foreach ($fontFile in @('NotoSansCJKkr-Regular.otf', 'OFL-Noto.txt')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot "locale/fonts/$fontFile") -Destination (Join-Path $stage 'UserData/FellAndSell/fonts')
 }
-foreach ($document in @('README.md', 'CHANGELOG.md', 'LICENSE', 'NOTICE', 'THIRD-PARTY.md')) {
+foreach ($document in @('README.md', 'CHANGELOG.md', 'LICENSE', 'NOTICE', 'THIRD-PARTY.md', 'CONTRIBUTING.md', 'SECURITY.md')) {
     Copy-Item -LiteralPath (Join-Path $projectRoot $document) -Destination $stage
 }
+Copy-Item -LiteralPath (Join-Path $projectRoot 'docs') -Destination (Join-Path $stage 'docs') -Recurse
+New-Item -ItemType Directory -Path (Join-Path $stage 'locale/fonts') -Force | Out-Null
+Copy-Item -LiteralPath (Join-Path $projectRoot 'locale/fonts/OFL-Noto.txt') -Destination (Join-Path $stage 'locale/fonts')
 $archive = Join-Path $dist "fell-and-sell-mod-v$version.zip"
 Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $archive -Force
 $hash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()

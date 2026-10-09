@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report / 보안 제보
+    url: https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md
+    about: Use private reporting for security concerns / 보안 문제는 비공개로 제보하세요.
