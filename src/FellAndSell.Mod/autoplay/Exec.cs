@@ -3,6 +3,10 @@ namespace FellAndSell.Mod.Autoplay;
 // Game writes stay here. Input is leased only around the normal HandleMovement call.
 internal static class Exec
 {
+    internal static void CloseMap()
+    {
+        if (Map.Window.Open) Reflect.Call(Anchors.Instance("DungeonMapWindow")!, "CloseMap");
+    }
     internal static void PickupRadius(object owner, float radius) => Reflect.Set(owner, "pickupRadius", radius);
     private static object? _input, _original;
     private static object? _cursorLock;

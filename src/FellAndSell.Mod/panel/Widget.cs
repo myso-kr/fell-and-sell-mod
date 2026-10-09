@@ -48,6 +48,7 @@ internal static class Widget
     private static void RequestStart()
     {
         if (Visible) TogglePanel();
+        Log.Guard("map-close", Exec.CloseMap);
         StartRequested = true;
     }
 }

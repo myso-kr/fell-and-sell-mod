@@ -11,12 +11,14 @@ internal static class Supervisor
         {
             Log.Guard("pickup-restore", Pickup.Restore);
             Guide.Move.Stop();
+            Log.Guard("map-overlay", Map.Overlay.Reset);
             Current = default;
             return;
         }
         if (!Log.Guard("state", () => Current = State.Read(Panel.Widget.Visible))) { Current = default; Guide.Move.Stop(); }
         if (!Log.Guard("pickup", () => Pickup.Tick(Current))) Log.Guard("pickup-restore", Pickup.Restore);
         Log.Guard("map", Map.Read.Tick);
+        Log.Guard("map-overlay", Map.Overlay.Tick);
         Log.Guard("route", () => Guide.Route.Tick(Current));
         if (Panel.Widget.StartRequested)
         {
@@ -28,12 +30,11 @@ internal static class Supervisor
     internal static void Draw()
     {
         if (!Config.Ready) return;
-        if (!Panel.Widget.Visible && !(Config.Map && Map.Read.Current != null)
+        if (!Panel.Widget.Visible
             && !(Config.Guide && Guide.Route.Corners.Length >= 2)) { Log.Guard("panel-hide", Panel.Tmp.Hide); return; }
         Log.Guard("gui-font", () => Panel.Gui.WithFont(() =>
         {
             Log.Guard("panel", Panel.Widget.Draw);
-            Log.Guard("map-overlay", Map.Overlay.Draw);
             Log.Guard("route-overlay", Guide.Overlay.Draw);
         }));
     }
@@ -46,6 +47,7 @@ internal static class Supervisor
         Log.Guard("pickup-restore", Pickup.Restore);
         Guide.Route.Clear();
         Map.Read.Clear();
+        Log.Guard("map-overlay", Map.Overlay.Reset);
         Current = default;
         State.Player = State.Input = State.Pickup = null;
         Panel.Widget.Visible = false;

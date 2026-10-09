@@ -43,3 +43,7 @@
 `tests/FellAndSell.Mod.Tests`는 순수 소스를 링크하고 게임 없이 실행한다.
 `tools/check-anchors.py`는 설치된 DLL을 메타데이터로만 읽는다.
 CI의 순수 테스트 통과와 실제 게임 기능 확인은 별도 상태로 기록한다.
+
+## Native map integration
+
+`map/Layer.cs` owns child RawImage/marker objects beneath the native M map and minimap. It copies `_fullMapBuffer` into its own Texture2D and leaves discovery data and the original texture unchanged. `Select.cs` converts a click through the native RectTransform and WorldToMapNormalized affine transform; drags over 6 pixels are ignored. `autoplay/Exec.cs` closes the native map through CloseMap before an explicit movement start. Runtime dungeon validation is pending.

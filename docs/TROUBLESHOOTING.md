@@ -68,7 +68,7 @@ by stable table/entry IDs rather than English phrases.
 ## F8 panel or movement problems
 
 The panel uses the bundled Noto font and its own TMP Canvas. Check
-`panel: Noto glyph check 98; missing=0`. The panel temporarily suppresses player
+`panel: Noto glyph check 95; missing=0`. The panel temporarily suppresses player
 actions while open; closing it with F8 or Esc returns control. It does not change
 the game's persistent input-block flag. Native inventory/pause screens can still
 block movement according to the game's rules.

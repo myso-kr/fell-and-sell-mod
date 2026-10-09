@@ -6,7 +6,7 @@ internal static class Overlay
 {
     internal static void Draw()
     {
-        if (!Config.Guide || Route.Corners.Length < 2) return;
+        if (!Config.Guide || Route.Corners.Length < 2 || Map.Window.Open) return;
         var camera = Anchors.Static("UnityEngine.Camera", "main");
         if (!Alive.Is(camera)) return;
         var height = Convert.ToSingle(Anchors.Static("UnityEngine.Screen", "height"));

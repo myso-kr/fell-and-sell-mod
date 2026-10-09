@@ -13,7 +13,8 @@ internal static class Anchors
             : name == "UnityEngine.Input" || name == "UnityEngine.KeyCode" ? "UnityEngine.InputLegacyModule"
             : name.StartsWith("UnityEngine.GUI", StringComparison.Ordinal) || name == "UnityEngine.Event" ? "UnityEngine.IMGUIModule"
             : name == "UnityEngine.Font" ? "UnityEngine.TextRenderingModule"
-            : name == "UnityEngine.Canvas" || name == "UnityEngine.RenderMode" ? "UnityEngine.UIModule"
+            : name.StartsWith("UnityEngine.UI.", StringComparison.Ordinal) ? "UnityEngine.UI"
+            : name == "UnityEngine.RectTransformUtility" || name == "UnityEngine.Canvas" || name == "UnityEngine.RenderMode" ? "UnityEngine.UIModule"
             : name == "UnityEngine.Collider" ? "UnityEngine.PhysicsModule"
             : "UnityEngine.CoreModule";
         var type = AppDomain.CurrentDomain.GetAssemblies().Select(value => value.GetType(name))
