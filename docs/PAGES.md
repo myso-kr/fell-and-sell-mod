@@ -8,7 +8,13 @@ lang: en
 The site follows the sibling Combolands repository: Jekyll source in `docs/`, a
 custom layout/CSS, and English `/` and Korean `/ko/` home pages. No remote theme,
 analytics, client framework, generated art or external webfont is required.
-The intended URL is `https://myso-kr.github.io/fell-and-sell-mod/` after deployment.
+Published on 2026-10-09 at [the English home](https://myso-kr.github.io/fell-and-sell-mod/)
+and [한국어 홈](https://myso-kr.github.io/fell-and-sell-mod/ko/). The repository is public
+and Pages publishes from `main /docs`. Both homes, the documentation directory,
+Korean guide, installation page and CSS returned HTTP 200 in deployment checks.
+
+The Gemfile uses the [GitHub Pages dependency versions](https://pages.github.com/versions/)
+for Jekyll, relative links and GFM parsing.
 
 ## Routes and content
 

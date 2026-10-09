@@ -8,7 +8,7 @@ permalink: /ko/guide/
 
 Steam판 **Fell & Sell**을 한국어로 표시하는 MelonLoader 기반 비공식 모드입니다.
 
-[영어 README](https://github.com/myso-kr/fell-and-sell-mod/blob/main/README.md) · [다운로드](https://github.com/myso-kr/fell-and-sell-mod/releases) ·
+[한국어 웹사이트](https://myso-kr.github.io/fell-and-sell-mod/ko/) · [영어 README](https://github.com/myso-kr/fell-and-sell-mod/blob/main/README.md) · [다운로드](https://github.com/myso-kr/fell-and-sell-mod/releases) ·
 [변경 이력](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) · [문제 신고](https://github.com/myso-kr/fell-and-sell-mod/issues)
 
 ## 번역 범위와 검증 상태

@@ -8,8 +8,10 @@ A MelonLoader language mod for the Steam version of **Fell & Sell**.
 **[한국어 안내](docs/ko/README.md)** · [Documentation](docs/README.md) ·
 [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases) · [Changelog](CHANGELOG.md)
 
-A bilingual GitHub Pages site is configured under `docs/`; see
-[Pages setup](docs/PAGES.md) for publication and local preview.
+**[Website](https://myso-kr.github.io/fell-and-sell-mod/)** ·
+**[한국어 웹사이트](https://myso-kr.github.io/fell-and-sell-mod/ko/)**
+
+The site publishes from `main /docs`; see [Pages setup](docs/PAGES.md) for local preview and maintenance.
 
 **v0.3.0 covers all 1,243 extracted localization entries**: 1,128 Game entries
 and 115 UI entries. Items, crafting recipes, effects, tutorials, dialogue and
