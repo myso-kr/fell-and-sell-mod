@@ -1,6 +1,6 @@
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(FellAndSell.Mod.Plugin), "Fell & Sell Korean Patch", "0.2.0", "myso-kr")]
+[assembly: MelonInfo(typeof(FellAndSell.Mod.Plugin), "Fell & Sell Korean Patch", "0.3.0", "myso-kr")]
 [assembly: MelonGame("Art Games Studio SA", "Fell & Sell")]
 
 namespace FellAndSell.Mod;

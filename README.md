@@ -2,16 +2,15 @@
 
 MelonLoader-based Korean language patch for the Steam game **Fell & Sell**.
 
-**Status: partial Korean patch, v0.2.0.** 371 of 1243 extracted English entries
-are translated: the complete UI table, core controls and initial tutorials,
-stats, categories, inventory controls, shop buildings and Dungeon + settings.
-English and Japanese are compared by table/entry ID for translation context.
-Untranslated entries retain the game's selected base language.
+**Status: full extracted-table Korean translation, v0.3.0.** All 1243 English
+entries are translated: 1128 Game entries and 115 UI entries, including items,
+crafting recipes, effects, tutorials, dialogue and quests. English and Japanese
+are compared by table/entry ID for translation context.
 
 Verified on game 1.7.1 / Steam build 25480096 with MelonLoader 0.7.3:
-translation hooks execute, Korean TMP text components are created, and the
-dynamic Noto font contains the authored Hangul glyphs. Visual layout, gameplay
-screens and the remaining item descriptions and quests still need review.
+translation hooks execute and the dynamic Noto font covers the authored Hangul.
+Visual layout and every gameplay screen still require in-game review. Coverage
+refers to the extracted localization tables; hardcoded text is not guaranteed.
 
 ## Build
 
@@ -33,18 +32,18 @@ Install [MelonLoader](https://github.com/LavaGang/MelonLoader) separately into t
 folder containing `Fell & Sell.exe`. Extract the package over that folder.
 It adds `Mods/FellAndSellMod.dll`, `UserData/FellAndSell/locale/ko/strings.json`,
 and the licensed font under `UserData/FellAndSell/fonts/`.
-Start through Steam. Check `MelonLoader/Latest.log` for `i18n: loaded 371 Korean
+Start through Steam. Check `MelonLoader/Latest.log` for `i18n: loaded 1243 Korean
 entries`, installed string hooks and `font: verified ... missing=0`.
-The patch overlays either English or Japanese (or another selected locale);
-choose English or Japanese in the game's language options for the untranslated
-fallback text. A separate Korean entry in the language menu is not implemented.
+The patch overlays either English or Japanese (or another selected locale).
+New entries absent from the catalog retain the selected base language.
+A separate Korean entry in the language menu is not implemented.
 
 For local development, close the game and deploy:
 
 ```powershell
 pwsh -NoProfile -File tools/deploy.ps1 -GameDir 'C:\Program Files (x86)\Steam\steamapps\common\Fell & Sell'
 python -m unittest discover -s tests
-.\.venv\Scripts\python.exe tools/check-translations.py
+.\.venv\Scripts\python.exe tools/check-translations.py --require-complete
 ```
 
 The last command requires the local English/Japanese extraction described in

@@ -9,9 +9,9 @@
 5. Implement TMP Hangul font fallback and verify menu and scene transitions.
 6. Verify in-game rendering and uninstall behavior, then produce a release archive.
 
-Current status: steps 1–3 complete. Steps 4 and 5 have a working first pass:
-371 translated entries, English/Japanese context, runtime formatting hooks,
-and a licensed dynamic Hangul font. Remaining translations and visual/gameplay
-review are still outstanding. Runtime logs verify hooks and glyph coverage;
-they do not establish that every screen's layout fits.
+Current status: steps 1–5 implemented, including all 1243 translations,
+English/Japanese context, formatting hooks and licensed dynamic Hangul fallback.
+Release packaging and runtime checks are available. Step 6 still needs visual
+review of gameplay screens and uninstall testing. Runtime logs and glyph checks
+do not establish that every screen's layout fits.
 See [game survey](GAME-SURVEY.md) for build and extraction details.

@@ -33,5 +33,15 @@ keep the numeric effects and probability distinctions. Placeholders such as
 `{0}`, `{Inventory}` and `{inventory}` are case-sensitive and unchanged.
 Rich text tags and `[ESC]`-style key labels remain intact.
 
-Coverage in v0.2.0: 371/1243 entries (29.8%). The UI table is complete; the Game
-table is partial. This is a development build, not a complete Korean release.
+Coverage in v0.3.0: 1243/1243 entries (100%): Game 1128 and UI 115.
+Furniture recipe names are derived from their corresponding Korean furniture
+names. Japanese mushroom-cap names and the Moon decoration recipe are resolved
+using English and item context. Proper names in credits and punctuation-only
+entries remain unchanged intentionally.
+
+The source quest `quest.comfort_level_4.name` names level 9 while its objective
+requires level 10. Korean preserves this source discrepancy instead of changing
+the gameplay requirement. Death-save descriptions distinguish fatal blows from
+critical hits. Numeric effects and formatting tokens are preserved.
+
+All extracted entries are covered; visual layout and gameplay review are pending.

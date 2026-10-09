@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — complete extracted-table translation
+
+- Translate all 1243 entries (1128 Game and 115 UI), using Japanese as context.
+- Complete items, furniture recipes, combat effects, tutorials, dialogue and quests.
+- Align recipe names with their furniture names and preserve all formatting tokens.
+- Add strict coverage validation to reject missing translation entries.
+- Full visual and gameplay review remains pending.
+
 ## 0.2.0 — partial Korean patch
 
 - Compare English and Japanese by numeric table/entry ID for translation context.

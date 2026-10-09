@@ -11,6 +11,12 @@ spec.loader.exec_module(validation)
 
 
 class TranslationValidationTests(unittest.TestCase):
+    def test_complete_coverage_rejects_missing_entries(self):
+        source = {"UI/1": {"text": "Back"}}
+        self.assertEqual([], validation.check(source, {}))
+        self.assertEqual(["Missing translation: UI/1"], validation.check(source, {}, True))
+        self.assertEqual([], validation.check(source, {"UI/1": "뒤로"}, True))
+
     def test_preserves_reordered_placeholders(self):
         source = {"UI/1": {"text": "Slot {0}: {1}"}}
         self.assertEqual([], validation.check(source, {"UI/1": "{1} — 슬롯 {0}"}))

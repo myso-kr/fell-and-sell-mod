@@ -11,8 +11,10 @@ def tokens(text: str) -> Counter:
     return Counter(re.findall(r"\{[^{}]+\}|</?[^<>]+>|\[[A-Za-z0-9_/]+\]", text))
 
 
-def check(source: dict, translations: dict) -> list[str]:
+def check(source: dict, translations: dict, require_complete: bool = False) -> list[str]:
     errors = []
+    if require_complete:
+        errors.extend(f"Missing translation: {key}" for key in source.keys() - translations.keys())
     for key, translation in translations.items():
         if key not in source:
             errors.append(f"Unknown key: {key}")
@@ -27,10 +29,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=Path("generated/strings.en.json"))
     parser.add_argument("--catalog", type=Path, default=Path("locale/ko/strings.json"))
+    parser.add_argument("--require-complete", action="store_true")
     args = parser.parse_args()
     source = json.loads(args.source.read_text(encoding="utf-8"))
     translations = json.loads(args.catalog.read_text(encoding="utf-8"))
-    errors = check(source, translations)
+    errors = check(source, translations, args.require_complete)
     if errors:
         raise SystemExit("\n".join(errors))
     print(f"[OK] {len(translations)}/{len(source)} entries; format tokens preserved")

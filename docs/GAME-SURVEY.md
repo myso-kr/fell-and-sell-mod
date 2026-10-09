@@ -53,19 +53,21 @@ python -m venv .venv
 `generated/strings.en.json` and `generated/extraction-report.json` are ignored.
 No source strings or game assemblies are committed.
 
-## Next investigation
+## Translation runtime verification
 
 The generated localization API exposes `TableEntry.Table`, `KeyId`,
-`LocalizedValue` and `StringTableEntry.GetLocalizedString`. v0.2.0 patches raw
+`LocalizedValue` and `StringTableEntry.GetLocalizedString`. v0.3.0 patches raw
 retrieval and replaces the source template before formatting, clearing its
 SmartFormat cache when changed. Runtime logs confirm translation hook hits.
 
 TMP types are generated under `Il2CppTMPro`, unlike the Mono sibling project's
 `TMPro` namespace. Runtime resolution accounts for both namespaces. A dynamic
-Noto Sans CJK KR font is registered on five loaded font assets. The 371-entry
-catalog uses 402 distinct Hangul glyphs; the latest run reports zero missing.
-An earlier 263-entry run confirmed seven Korean TMP text components.
+Noto Sans CJK KR font is registered on five loaded font assets. The complete
+1243-entry catalog uses 699 distinct Hangul glyphs; the v0.3.0 run reports zero
+missing glyphs and 20 Korean TMP text components. Initialization and translation
+hooks execute successfully on game 1.7.1 / build 25480096.
 
-Next: finish translations, inspect UI layout and gameplay screens visually,
-verify Japanese base-language switching, and exercise formatted strings and
-late-loaded scene fonts in actual gameplay.
+Next: inspect UI layout and gameplay screens visually, verify Japanese
+base-language switching, and exercise formatted strings and late-loaded scene
+fonts in actual gameplay. Complete table coverage does not prove all-screen
+layout correctness or cover text outside these tables.
