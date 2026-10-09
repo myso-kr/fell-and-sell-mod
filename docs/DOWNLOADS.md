@@ -1,6 +1,9 @@
 ---
+layout: default
 title: "Downloads / 다운로드"
 lang: en
+permalink: /DOWNLOADS.html
+description: "Downloads / 다운로드"
 ---
 
 # Downloads / 다운로드
@@ -50,15 +53,8 @@ GitHub에 로그인한 뒤 **Actions → CI → main 브랜치의 성공한 실�
 **안쪽 패치 ZIP**을 게임 폴더에 풉니다. Source code ZIP은 설치용이 아닙니다.
 MelonLoader는 별도로 설치하고 Steam으로 실행하세요.
 
-## Releases and build automation
+## Preview and release packages
 
-CI runs on main pushes, PRs and manual dispatch. Release runs for existing
-`vX.Y.Z` tags, validates tag/code/changelog agreement and builds through the same
-reusable workflow. It attaches the ZIP and checksum to a **draft prerelease**.
-Drafts are visible only to repository collaborators until a maintainer publishes
-them; the workflow does not automatically publish or overwrite published assets.
+A preview artifact is an installable build available for 30 days after a successful CI run. Releases remain available until removed by the maintainer. A version tag alone does not mean that a release package has been published.
 
-There is no public release merely because a tag or green CI run exists.
-[Release procedure](RELEASING.md) describes maintainer review and publication.
-[Installation](INSTALLATION.md) covers hashes, updates and removal;
-[한국어 안내](ko/README.md) provides the user guide in Korean.
+[Installation](INSTALLATION.md) covers checksums, updates and removal. [한국어 안내](ko/README.md) provides the installation guide in Korean.

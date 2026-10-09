@@ -25,6 +25,7 @@ public sealed class Plugin : MelonMod
 
     public override void OnSceneWasInitialized(int buildIndex, string sceneName)
     {
+        Autoplay.Lifecycle.Invalidate("scene initialized: " + sceneName);
         I18n.FontFallback.Register();
     }
 
@@ -40,6 +41,12 @@ public sealed class Plugin : MelonMod
     }
 
     public override void OnGUI() => Autoplay.Supervisor.Draw();
-    public override void OnSceneWasUnloaded(int buildIndex, string sceneName) => Autoplay.Supervisor.Reset();
+    public override void OnLateUpdate() => Autoplay.Supervisor.Late();
+    public override void OnSceneWasUnloaded(int buildIndex, string sceneName)
+    {
+        Autoplay.Supervisor.Reset();
+        Autoplay.Lifecycle.Clear();
+        LoggerInstance.Msg("lifecycle: scene unloaded: " + sceneName);
+    }
     public override void OnDeinitializeMelon() => Autoplay.Supervisor.Reset();
 }

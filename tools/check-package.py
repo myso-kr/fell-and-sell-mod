@@ -32,7 +32,7 @@ def check(archive: Path):
         assert {n for n in names if n.endswith((".dll", ".exe"))} == {"Mods/FellAndSellMod.dll"}, "Unexpected runtime binaries"
         assert not any(".jekyll-cache" in n or n.startswith(("generated/", "extracted/")) for n in names), "Generated output included"
         data = json.loads(package.read("UserData/FellAndSell/locale/ko/strings.json"))
-        assert len(data) == sum(json.loads((ROOT / "release-metadata.json").read_text())["translation_counts"].values()), "Catalog coverage mismatch"
+        assert len(data) == sum(json.loads((ROOT / ".spec/release-metadata.json").read_text())["translation_counts"].values()), "Catalog coverage mismatch"
 
 
 if __name__ == "__main__":

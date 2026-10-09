@@ -1,6 +1,9 @@
 ---
+layout: default
 title: "Troubleshooting"
 lang: en
+permalink: /TROUBLESHOOTING.html
+description: "Troubleshooting"
 ---
 
 # Troubleshooting
@@ -69,8 +72,7 @@ by stable table/entry IDs rather than English phrases.
 
 The panel uses the bundled Noto font and its own TMP Canvas. Check
 `panel: Noto glyph check 102; missing=0`. The panel temporarily suppresses player
-actions while open; closing it with F8 or Esc returns control. It does not change
-the game's persistent input-block flag. Native inventory/pause screens can still
+actions while open; closing it with F8 or Esc returns control.  Native inventory/pause screens can still
 block movement according to the game's rules.
 
 The map appears only for a generated dungeon, not the town or main menu. Enable
@@ -101,5 +103,4 @@ F8 toggles log their saved values, for example `settings: RouteGuide=True` and
 to be enabled and F8 to be closed. If a toggle does not change, include the
 `settings:` lines from `MelonLoader/Latest.log` in the report.
 
-For unreachable routes, include the `route:` diagnostics. These distinguish
-source/target sampling, agent ID, snapped endpoints and native path status.
+For unreachable routes, include the `route:` diagnostics. Copy the status lines together with the destination and what was shown on screen.

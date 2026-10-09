@@ -4,27 +4,15 @@
 
 ## 0.4.0 — exploration helper preview
 
-- Add default-off nearby pickup extension with native pickup rules, temporary radius and line-of-sight gating.
-- Add a read-only dungeon map with rooms, corridors, stairs, chest/exit/boss markers and optional loaded enemies.
-- Add NavMesh route display, map pins and complete-path automatic movement through the normal controller.
-- Restore temporary input/radius state; stop on manual input, combat, damage, menus, death, loss of focus or no progress.
-- Preserve the game's existing achievement handling; add Korean settings and F8/F9/F10 controls.
-- Follow sibling conventions: pure decisions, read boundaries, one automation writer and feature folders.
-- Collect internal plans and design under `.spec/`; add game-independent safety tests and metadata-only anchor checks.
-- New extension gameplay verification remains pending. Translation display confirmation below predates this extension.
-
-- Record project-owner confirmation of completed in-game text display review on 2026-10-09.
-
-- Share an Actions package build between CI and tag releases, and retain verified CI artifacts for 30 days.
-- Check version, public claims, catalog counts, package payloads and checksum; generate release notes from recorded metadata.
-- Build version-tag packages into draft prereleases and document artifact downloads in both languages.
-
-- Add a bilingual Jekyll Pages site, custom responsive layout, dark mode and site-link checks.
-
-- Add English and Korean public-facing guides, installation/troubleshooting and contribution instructions.
-- Document runtime anchors, release checks and private security reporting.
-- Add bilingual issue forms and a pull request template.
-- Include the linked documentation in mod archives.
+- Refresh the map and exit guidance when changing floors.
+- Keep nearby pickup working independently of the game’s auto-pickup option.
+- Add optional nearby loot pickup and reveal/markers on the game's existing M map and minimap.
+- Guide to the next-floor exit by default; choose a destination with left-click and return to exit guidance with right-click.
+- Replace the floating route line with a moving light and short trail that fades with distance and terrain occlusion.
+- Add manually started automatic movement; stop on manual input, combat, damage, menus, death, loss of focus or no progress.
+- Preserve achievement handling and add Korean F8 settings, F9 map reveal and F10 movement controls.
+- Confirm settings toggles, map display, destination selection and return to exit guidance with the project owner. Pickup, automatic movement and the new guide-light appearance remain under review.
+- Provide English/Korean player guides and verified preview packages through GitHub Actions.
 
 ## 0.3.0 — complete extracted-table translation
 

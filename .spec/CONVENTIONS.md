@@ -1,8 +1,3 @@
----
-title: "Directory conventions"
-lang: en
----
-
 # Directory conventions
 
 | Directory | Contents |
@@ -11,10 +6,10 @@ lang: en
 | locale/ | Authored translations and licensed fonts |
 | tools/ | Build, repository/package checks, notes and packaging commands |
 | .github/workflows/ | Shared package build, CI, tag releases and docs validation |
-| release-metadata.json | Committed tested game/build, coverage and glyph counts |
+| .spec/release-metadata.json | Committed tested game/build, coverage and glyph counts |
 | generated/ | Ignored extraction and inspection output |
 | tests/ | Game-independent translation, movement policy, reflection and interop-list fixtures |
-| docs/ | User guides, runtime notes and publication procedure |
+| docs/ | Player guides and GitHub Pages source only |
 | .spec/ | Internal plans, design, architecture, anchors and verification status |
 
 Release layout: `Mods/FellAndSellMod.dll` and
@@ -27,3 +22,7 @@ and PascalCase C# files/types. Plugin only wires modules. Read game state into p
 snapshots, keep decisions game-independent, and centralize automation writes in
 `autoplay/Exec.cs`. UI draws and queues commands; it does not mutate game state.
 See the [architecture specification](https://github.com/myso-kr/fell-and-sell-mod/blob/main/.spec/ARCHITECTURE.md).
+
+## Public and technical documentation
+
+`docs/` is exclusively the player guide and Pages source: install/download/use/help/glossary. Every page has explicit layout, title, description, language and permalink. Implementation details, planning, runtime anchors, test evidence, release/deployment procedures and recorded metadata belong under `.spec/`. Root README/CHANGELOG describe user-visible behaviour; CONTRIBUTING directs developers to `.spec/`. Source/build tooling remains in src/tools/tests/workflows.

@@ -19,3 +19,15 @@
 - 시작 화면 회귀: 싱글턴 getter 호출로 UI/플레이어가 생성될 수 있으므로 자동화는 backing field만 읽는다.
   신규 기능이 모두 꺼지면 게임 상태 조회를 생략한다. 기본 메뉴 복구는 소유자가 확인했다.
 - 배포: v0.4.0 확장 프리뷰. v0.3.0의 번역 검수 확인을 신규 기능의 실행 검증으로 확대 해석하지 않는다.
+
+## Current input and pickup boundary
+
+The earlier panel predicate override is superseded: leave the game's global block queries and release processing untouched. Suppress owned-panel actions at controller methods and lease zero movement input around HandleMovement; native gravity still runs. Never clear unknown game block flags.
+
+Pickup now requests the native PerformProximityScan while enabled. Both that request and native Update use one scan-prefix cadence. Keep native TryPickup eligibility/weight/filter behaviour and pause/death state; no direct inventory writes. Treat sibling colliders owned by the same ItemPickup as one target for visibility.
+
+## Floor recreation and native pickup option scope
+
+Treat scene callbacks, generator recreation, map initialization and progression floor changes as invalidation boundaries. Queue native hook notifications and clean up owned objects in OnUpdate, reacquire existing components, restart default exit planning, and version copied map buffers even when the game reuses its texture. No discovery flags or game map reset methods are invoked.
+
+Native scan and TryPickup both consult the global auto-pickup option. Override its getter only in a permitted scan on the current thread and restore the scope through a Harmony finalizer. This lets the mod toggle work when the global option is disabled, without persisting an options change or bypassing item eligibility. Shared cadence applies to both native and mod scans. Owner confirmed floor refresh and nearby pickup after installing the follow-up build.

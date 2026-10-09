@@ -30,7 +30,8 @@
   <a class="brand" translate="no" href="{% if ko %}{{ '/ko/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">Fell <span>&amp;</span> Sell <small>KO PATCH</small></a>
   <nav aria-label="{% if ko %}주 메뉴{% else %}Main navigation{% endif %}">
     <a href="{% if ko %}{{ '/ko/guide/' | relative_url }}{% else %}{{ '/INSTALLATION.html' | relative_url }}{% endif %}">{% if ko %}설치{% else %}Install{% endif %}</a>
-    <a href="{{ '/guide/' | relative_url }}">{% if ko %}문서{% else %}Docs{% endif %}</a>
+    <a href="{% if ko %}{{ '/ko/guide/' | relative_url }}{% else %}{{ '/guide/' | relative_url }}{% endif %}">{% if ko %}문서{% else %}Docs{% endif %}</a>
+    <a href="{% if ko %}{{ '/ko/features/' | relative_url }}{% else %}{{ '/features/' | relative_url }}{% endif %}">{% if ko %}탐험 기능{% else %}Explore{% endif %}</a>
     <a href="https://github.com/myso-kr/fell-and-sell-mod">GitHub</a>
   </nav>
   <nav class="languages" aria-label="{% if ko %}홈 언어{% else %}Home language{% endif %}">

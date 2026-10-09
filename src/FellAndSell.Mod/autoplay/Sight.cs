@@ -7,8 +7,18 @@ internal static class Sight
         if (!Alive.Is(State.Player) || !Alive.Is(collider)) return false;
         var player = Reflect.Get(State.Player!, "transform")!;
         var target = Reflect.Get(collider, "transform")!;
-        var origin = State.Position(Reflect.Get(player, "position")!);
-        origin = origin with { Y = origin.Y + 0.75f };
+        foreach (var name in new[] { "ItemPickup", "CoinPickup", "GoldPickup" })
+        {
+            var get = collider.GetType().GetMethods().Single(method => method.Name == "GetComponentInParent"
+                && method.IsGenericMethodDefinition && method.GetParameters().Length == 0);
+            var item = get.MakeGenericMethod(Anchors.Type("Il2Cpp." + name)).Invoke(collider, null);
+            if (!Alive.Is(item)) continue;
+            target = Reflect.Get(item!, "transform")!;
+            break;
+        }
+        var controller = Reflect.Get(State.Player!, "CharacterController");
+        var origin = Alive.Is(controller) ? State.Position(Reflect.Get(Reflect.Get(controller!, "bounds")!, "center")!)
+            : State.Position(Reflect.Get(player, "position")!);
         var destination = State.Position(Reflect.Get(Reflect.Get(collider, "bounds")!, "center")!);
         var length = origin.Distance(destination);
         if (length < 0.01f) return true;

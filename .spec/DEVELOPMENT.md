@@ -1,8 +1,3 @@
----
-title: "Development"
-lang: en
----
-
 # Development
 
 ## Toolchain
@@ -73,7 +68,7 @@ notes for 30 days. CI and Release share `.github/workflows/build.yml`.
 The CI workflow runs on main pushes, PRs and manual dispatch. Release runs for
 `v*` tags or a manually selected existing tag, validates the version and creates
 a draft prerelease with the same package. It does not overwrite published releases.
-[Downloads](DOWNLOADS.md) explains artifact retrieval.
+[Downloads](../docs/DOWNLOADS.md) explains artifact retrieval.
 
 Source tables are deliberately absent,
 so full extracted-source coverage is a local maintainer check. CI does not install

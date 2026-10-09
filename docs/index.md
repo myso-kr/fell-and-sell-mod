@@ -1,8 +1,10 @@
 ---
+layout: default
 title: "Korean patch"
 description: "Play Fell & Sell with Korean localization. 1,243 translated entries, installation and support guides."
 lang: en
 home: true
+permalink: /
 ---
 
 <p class="eyebrow">Fell &amp; Sell · Unofficial language mod</p>
@@ -81,7 +83,7 @@ remove its DLL and `UserData/FellAndSell/` to uninstall the Korean patch.
 v0.4.0 adds nearby pickup, a read-only dungeon map, route display and automatic movement.
 All new features default off. F8 opens settings, F9 toggles the map and F10 starts/stops movement.
 The owner verified the base menu, Korean panel and input return after closing it;
-dungeon helper gameplay checks remain pending. Achievements retain their existing handling.
+map display, selected destinations and return to the next-floor route are confirmed. The guide light and fade were confirmed. Pickup and automatic movement remain under review. Achievements retain their existing handling.
 [Controls and scope](EXPANSION.md)
 
 ## Help improve the patch
@@ -92,4 +94,4 @@ versions and a screenshot or relevant log excerpt in an
 [한국어 안내](ko/README.md) includes the installation and feedback guide in Korean.
 
 [Documentation](README.md) · [Troubleshooting](TROUBLESHOOTING.md) ·
-[Translation glossary](TRANSLATION.md) · [Runtime anchors](ANCHORS.md)
+[Translation glossary](TRANSLATION.md)

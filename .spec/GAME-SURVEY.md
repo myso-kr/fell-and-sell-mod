@@ -1,8 +1,3 @@
----
-title: "Game survey — 2026-10-09"
-lang: en
----
-
 # Game survey — 2026-10-09
 
 ## Verified runtime
@@ -60,7 +55,7 @@ No source strings or game assemblies are committed.
 
 ## Automated package checks
 
-The recorded target values also live in `release-metadata.json` for release notes.
+The recorded target values also live in `.spec/release-metadata.json` for release notes.
 GitHub Actions builds without the game and checks versions, catalog counts,
 package payloads, font notices and SHA-256. The runtime observations below remain
 local game evidence, separate from CI success.

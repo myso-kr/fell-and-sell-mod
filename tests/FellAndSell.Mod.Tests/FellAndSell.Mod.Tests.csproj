@@ -8,10 +8,13 @@
     <Compile Include="../../src/FellAndSell.Mod/Reflect.cs" Link="linked/Reflect.cs" />
     <Compile Include="../../src/FellAndSell.Mod/Sequence.cs" Link="linked/Sequence.cs" />
     <Compile Include="../../src/FellAndSell.Mod/panel/Pointer.cs" Link="linked/Pointer.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/autoplay/Cadence.cs" Link="linked/Cadence.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/autoplay/PickupScope.cs" Link="linked/PickupScope.cs" />
     <Compile Include="../../src/FellAndSell.Mod/autoplay/Snapshot.cs" Link="linked/Snapshot.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Follow.cs" Link="linked/Follow.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Target.cs" Link="linked/Target.cs" />
     <Compile Include="../../src/FellAndSell.Mod/guide/Search.cs" Link="linked/Search.cs" />
+    <Compile Include="../../src/FellAndSell.Mod/guide/Wisp.cs" Link="linked/Wisp.cs" />
     <Compile Include="../../src/FellAndSell.Mod/map/Snapshot.cs" Link="linked/MapSnapshot.cs" />
     <Compile Include="../../src/FellAndSell.Mod/map/Height.cs" Link="linked/Height.cs" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />

@@ -34,11 +34,16 @@ def check(root: Path, base: str) -> list[str]:
     pages = {}
     errors = []
     for path in root.rglob("*.html"):
+        relative = path.relative_to(root)
+        if path.stem.upper() in {"ANCHORS", "CONVENTIONS", "DEVELOPMENT", "GAME-SURVEY", "PAGES", "PLAN", "RELEASING", "STATUS"} or ".spec" in relative.parts:
+            errors.append(f"Technical record published as a player page: {relative}")
         page = Page()
         page.feed(path.read_text(encoding="utf-8"))
         pages[path.resolve()] = page
         if page.lang not in ("en", "ko") or not page.canonical or not page.main:
             errors.append(f"{path}: missing language, canonical or main element")
+        elif page.lang != ("ko" if relative.parts[0] == "ko" else "en"):
+            errors.append(f"{relative}: page language disagrees with its public route")
     for path, page in pages.items():
         for link in page.links:
             url = urlsplit(link)
@@ -59,7 +64,7 @@ def check(root: Path, base: str) -> list[str]:
                 errors.append(f"{path.name}: missing link target: {link}")
             elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
                 errors.append(f"{path.name}: missing fragment: {link}")
-    for required in ("index.html", "ko/index.html", "guide/index.html", "ko/guide/index.html", "404.html"):
+    for required in ("index.html", "ko/index.html", "guide/index.html", "ko/guide/index.html", "features/index.html", "ko/features/index.html", "404.html"):
         if not (root / required).exists():
             errors.append(f"Missing required page: {required}")
     if not pages:

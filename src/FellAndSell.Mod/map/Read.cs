@@ -8,7 +8,9 @@ internal static class Read
     internal static Snapshot? Current { get; private set; }
     private static object? _layout;
     private static long _next;
-    internal static void Clear() { Current = null; _layout = null; _next = 0; }
+    internal static long Revision { get; private set; }
+    internal static void RefreshTexture() => Revision++;
+    internal static void Clear() { Current = null; _layout = null; _next = 0; RefreshTexture(); }
     internal static void Tick()
     {
         if (Environment.TickCount64 < _next) return;
@@ -23,9 +25,16 @@ internal static class Read
             _layout = null;
             return;
         }
-        if (!Equals(layout, _layout)) { Guide.Move.Stop(); Guide.Route.Clear(); _layout = layout; }
+        if (!Equals(layout, _layout))
+        {
+            Guide.Move.Stop(); Guide.Route.Clear(); Guide.Overlay.Reset(); Overlay.Reset();
+            _layout = layout; RefreshTexture();
+        }
         var floor = Convert.ToInt32(Reflect.Get(layout, "currentFloor"));
-        if (Current != null && Current.Floor != floor) { Guide.Move.Stop(); Guide.Route.Clear(); }
+        if (Current != null && Current.Floor != floor)
+        {
+            Guide.Move.Stop(); Guide.Route.Clear(); Guide.Overlay.Reset(); Overlay.Reset(); RefreshTexture();
+        }
         if (!Config.Map && !Config.Guide) { Current = null; return; }
         var tiles = new List<Tile>();
         foreach (var group in new[] { "rooms", "corridors", "stairs" })

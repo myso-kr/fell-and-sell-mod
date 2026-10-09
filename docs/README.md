@@ -1,28 +1,47 @@
 ---
-title: "Documentation"
+layout: default
+title: "Player guide"
+description: "Downloads, installation, exploration controls and help for the Fell & Sell Korean patch."
 lang: en
 permalink: /guide/
 ---
 
-# Documentation
+# Player guide
 
-| Document | Purpose |
+Install the Korean patch, choose the exploration features you want, and find help when something goes wrong.
+
+<div class="guide-grid" markdown="1">
+
+<div class="guide-card" markdown="1">
+### Start playing
+[Download a build](DOWNLOADS.md) and follow the [installation guide](INSTALLATION.md). Update and removal instructions are included.
+</div>
+
+<div class="guide-card" markdown="1">
+### Explore the dungeon
+[Exploration controls](EXPANSION.md) covers F8 settings, the native M map, next-floor guidance and automatic movement.
+</div>
+
+<div class="guide-card" markdown="1">
+### Get help
+[Resolve common problems](TROUBLESHOOTING.md), check the [translation glossary](TRANSLATION.md), or [report an issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
+</div>
+
+</div>
+
+## Choose a guide
+
+| Guide | What you can do |
 |---|---|
-| [한국어 안내](ko/README.md) | Korean installation, status and feedback guide |
-| [Downloads / 다운로드](DOWNLOADS.md) | CI artifacts, release assets and gh retrieval |
-| [Installation](INSTALLATION.md) | Package verification, install, update and uninstall |
-| [Troubleshooting](TROUBLESHOOTING.md) | Diagnosis and useful bug reports |
-| [Development](DEVELOPMENT.md) | Build, extraction, tests and deployment |
-| [Translation decisions](TRANSLATION.md) | Glossary, context and coverage |
-| [Runtime anchors](ANCHORS.md) | API dependencies and update checks |
-| [Game survey](GAME-SURVEY.md) | Observed game versions and runtime evidence |
-| [Conventions](CONVENTIONS.md) | Source and package structure |
-| [탐험 도우미](EXPANSION.md) | Extension preview controls and verification scope |
-| [Development specifications](https://github.com/myso-kr/fell-and-sell-mod/tree/main/.spec) | Internal plans, architecture and implementation status |
-| [Releasing](RELEASING.md) | Maintainer publication checklist |
-| [Contributing](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CONTRIBUTING.md) | Translation and code contributions |
-| [Security](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md) | Private security reporting |
-| [Changelog](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) | Changes by version |
+| [Downloads](DOWNLOADS.md) | Get an installable package |
+| [Installation](INSTALLATION.md) | Install, update and remove the patch |
+| [Exploration helper](EXPANSION.md) | Use pickup, map and route controls |
+| [Troubleshooting](TROUBLESHOOTING.md) | Find logs and resolve common problems |
+| [Korean glossary](TRANSLATION.md) | Understand translated terms and coverage |
+| [한국어 안내](ko/README.md) | Read the Korean installation and feature guides |
 
-The same Markdown guides serve the repository and the Jekyll Pages site.
-[Pages setup and maintenance](PAGES.md) describes build validation and deployment.
+## Send feedback
+
+Describe the affected screen and what you expected. Include the game/mod versions and a screenshot or relevant log excerpt in an [issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
+
+[Changes by version](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) · [Licenses](https://github.com/myso-kr/fell-and-sell-mod/blob/main/THIRD-PARTY.md)

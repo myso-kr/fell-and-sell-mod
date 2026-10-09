@@ -1,8 +1,3 @@
----
-title: "GitHub Pages setup"
-lang: en
----
-
 # GitHub Pages setup
 
 The site follows the sibling Combolands repository: Jekyll source in `docs/`, a
@@ -26,7 +21,7 @@ for Jekyll, relative links and GFM parsing.
 | `/ko/guide/` | Complete Korean user guide |
 | `/INSTALLATION.html` | Installation, checksum, updates and uninstall |
 | `/TROUBLESHOOTING.html` | Diagnosis and known limits |
-| `/DEVELOPMENT.html` | Build, extraction and checks |
+| `/features/`, `/ko/features/` | English/Korean exploration controls |
 | `/404.html` | Recovery links for a missing page |
 
 Other reference Markdown files render to corresponding `.html` paths. Front
@@ -80,7 +75,7 @@ See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/
 CI and Release build the mod through the reusable Build package workflow.
 Documentation validates the rendered site; GitHub's pages-build-deployment job
 publishes `main /docs`. A CI artifact is not a Pages deployment or a public release.
-[Downloads](DOWNLOADS.md) and [release procedure](RELEASING.md) describe those paths.
+[Downloads](../docs/DOWNLOADS.md) and [release procedure](RELEASING.md) describe those paths.
 
 ## Design and maintenance
 
@@ -94,3 +89,5 @@ Keep versions, coverage and known limits synchronized across both home pages,
 README and the Korean guide. Link to the releases list until a real packaged
 release exists. For design changes, check both languages at desktop and mobile
 widths, dark mode, keyboard navigation and the rendered link checker.
+
+Technical reference pages were removed from the Pages source and moved into .spec. Old implementation links must not be reintroduced into player navigation.

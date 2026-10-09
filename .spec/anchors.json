@@ -4,13 +4,24 @@
       "_Instance_k__BackingField",
       "pickupRadius",
       "TryPickup",
-      "IsInventoryOpen"
+      "IsInventoryOpen",
+      "PerformProximityScan",
+      "scanInterval",
+      "IsPlayerDead",
+      "_pauseAutoPickupUntil",
+      "_hitColliders"
     ],
     "Il2Cpp.FirstPersonController": [
       "_Instance_k__BackingField",
       "HandleMovement",
       "IsPlayerBlocked",
-      "CharacterController"
+      "CharacterController",
+      "HandleRotation",
+      "OnInteract",
+      "OnInteractHold",
+      "OnDashPressed",
+      "HandleJumping",
+      "HandleCrouch"
     ],
     "Il2Cpp.PlayerInputHandler": [
       "_Instance_k__BackingField",
@@ -26,7 +37,9 @@
     ],
     "Il2Cpp.CustomDungeonGenerator": [
       "isGenerating",
-      "navMeshSurface"
+      "navMeshSurface",
+      "BeginGeneration",
+      "ClearDungeon"
     ],
     "Il2Cpp.DungeonMinimapManager": [
       "_instance",
@@ -36,7 +49,9 @@
       "GetActiveEnemies",
       "MapTexture",
       "_fullMapBuffer",
-      "WorldToMapNormalized"
+      "WorldToMapNormalized",
+      "InitializeMap",
+      "RedrawFullMapBuffer"
     ],
     "Il2CppFellSell.Minimap.DungeonMapLayoutData": [
       "currentFloor",
@@ -77,6 +92,30 @@
     ],
     "Il2Cpp.NextFloorTrigger": [
       "OnTriggerEnter"
+    ],
+    "Il2Cpp.PlayerCombat": [
+      "HandlePrimaryAttack",
+      "HandleSecondaryAttack"
+    ],
+    "Il2Cpp.PlayerInteraction": [
+      "HandleInteraction",
+      "HandleSecondaryInteraction"
+    ],
+    "Il2Cpp.PlayerConsumableController": [
+      "StartConsume"
+    ],
+    "Il2Cpp.ItemPickup": [
+      "CanAutoPickup"
+    ],
+    "Il2Cpp.CoinPickup": [],
+    "Il2Cpp.GoldPickup": [],
+    "Il2Cpp.OptionsManager": [
+      "_Instance_k__BackingField",
+      "IsAutoPickupEnabled"
+    ],
+    "Il2Cpp.DungeonManager": [
+      "_Instance_k__BackingField",
+      "currentFloor"
     ]
   },
   "UnityEngine.AIModule": {

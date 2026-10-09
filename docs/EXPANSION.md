@@ -1,47 +1,51 @@
 ---
-title: "탐험 도우미 — 확장 프리뷰"
-lang: ko
+layout: default
+title: "Exploration helper"
+description: "Native map reveal, next-floor guidance, a moving guide light and optional nearby pickup."
+lang: en
+permalink: /features/
 ---
 
-# 탐험 도우미 — v0.4.0 프리뷰
+# Exploration helper — v0.4.0 preview
 
-기존 1,243개 한국어 번역에 주변 자동줍기, 기존 지도 확장, 경로 표시와 자동 이동을 추가한
-개발 프리뷰입니다. **코드 빌드·순수 로직 테스트·설치 빌드의 API 이름 검사를 완료했으며,
-던전 수집·지도·이동의 인게임 검증은 아직 완료하지 않았습니다.** 소유자가 기본 메뉴,
-F8 한글·버튼, 설정창 종료 후 이동·마우스 복원을 확인했습니다. 기존 번역 표시 검수와 별도입니다.
+Use the game's M map to choose a destination or follow the default route to the next floor. A moving light travels ahead along the route and leaves a short glow trail. It fades with distance and when terrain blocks the view.
 
-## 조작
+The owner confirmed the settings toggles, map display, destination selection and right-click return to next-floor guidance. The moving light and fade were also confirmed. Nearby pickup and route/map refresh after changing floors were confirmed. Automatic movement remains under review.
 
-| 조작 | 동작 |
+## Controls
+
+| Control | Action |
 |---|---|
-| F8 | 한국어 설정창 열기/닫기 |
-| F9 | 기존 지도 확장 켜기/끄기 |
-| F10 | 완전 경로의 자동 이동 시작/정지 |
-| Esc | 자동 이동 정지·설정창 닫기 |
-| M 지도에서 좌클릭 (경로 안내 켜짐) | 사용자 목적지 핀 · 가까운 상자/출구/보스에 맞춤 |
+| F8 | Open or close the Korean settings panel |
+| F9 | Toggle unexplored-area display on the existing map |
+| M | Open the game's map |
+| Left-click the M map | Choose a destination while route guidance is enabled |
+| Right-click the M map | Clear your chosen destination and return to next-floor guidance; stop movement |
+| F10 | Start or stop movement along a complete route |
+| Esc | Stop movement and close the settings panel |
 
-| M 지도에서 우클릭 | 사용자 목적지 해제, 계단 기본 안내 복귀, 자동 이동 정지 |
+All new features start disabled. Enable them individually in F8 and close the panel to interact with the M map. Guidance selects the next-floor exit by default. A selected destination takes priority until you right-click or change floors. When a new floor loads, the map refreshes and guidance returns to that floor’s exit.
 
-새 기능은 모두 기본 꺼짐입니다. 설정창에서 주변 수집·지도·적 표시·경로 안내를
-개별 활성화하세요. 경로 안내를 켜면 현재 던전의 다음 층 이동 트리거를 기본 목적지로 안내합니다. 지도에서 선택한 목적지가 있으면 우선하며, 우클릭하면 사용자 핀을 해제하고 기본 계단 안내로 돌아갑니다. 목적지 선택 후 설정창의 시작 버튼이나 F10으로 이동을 시작합니다.
-이동은 매번 직접 시작해야 하며 수동 이동·전투·피격·메뉴·사망·포커스 상실 시 중단합니다.
-막힌 상태가 2.5초 지속되면 멈춥니다. 자동 전투나 닫힌 문을 자동으로 여는 기능은 없습니다.
+## Guide light and map routes
 
-## 동작 범위
+The light moves along the route ahead of the player, including turns and stairs. Distance reduces its opacity, and walls or terrain gradually hide it. Complete routes use a warm gold light; partial routes use amber. The M map also shows the route: green for complete, orange for partial.
 
-- 자동줍기: 주변의 정상 수집 가능한 아이템만 대상으로 하며 게임의 무게·필터·유예 처리를 유지합니다.
-  기본 반경은 3m, 설정 범위는 1–4m입니다. 멀리 있는 아이템으로 이동하지 않습니다.
-- 지도: 현재 생성된 던전의 방·복도·계단과 상자·출구·보스를 기존 M 지도와 미니맵의 모드 전용 레이어로 표시합니다.
-  적 표시를 켜면 현재 로드된 적만 표시합니다. 원본 지도와 저장된 탐색 기록에 쓰지 않습니다.
-- 경로: 녹색은 완전 경로, 주황색은 부분 경로입니다. 부분 경로는 자동 이동할 수 없습니다.
-  지도 클릭 후 F10은 기본 지도 창을 닫고 이동을 시작합니다. 방 내부 클릭은 해당 방의 높이를 사용합니다. 목적지 주변의 제한된 이동 지점 후보를 검사해 완전 경로를 우선하고, 부분 경로는 자동 이동하지 않습니다.
-- 도전과제: 게임의 업적·통계 처리를 그대로 유지합니다.
+Clicking inside a room uses that room's elevation. A nearby chest, exit or boss marker can become the destination. A partial or unreachable route cannot start automatic movement.
 
-설정은 `UserData/MelonPreferences.cfg`의 `[FellAndSell]`에 저장됩니다.
-패널과 게임 번역 모두 동봉 Noto 폰트와 TextMeshPro를 사용합니다.
-F8 설정창이 열린 동안 게임 입력은 임시 차단하며 닫으면 원래 상태로 복원합니다.
-오류가 나면 `MelonLoader/Latest.log`의 기능 이름과 오류를 함께 보내주세요.
+## Automatic movement
 
-[개발 문서 목록](https://github.com/myso-kr/fell-and-sell-mod/tree/main/.spec) ·
-[구현 상태](https://github.com/myso-kr/fell-and-sell-mod/blob/main/.spec/STATUS.md) ·
-[설치 안내](INSTALLATION.md)
+Start each journey explicitly with F10 or the panel's start button. The map closes when movement starts. Manual movement, combat, damage, menus, death or loss of focus interrupts it. If no progress is made for 2.5 seconds, movement stops.
+
+Closed doors require your interaction. This feature does not fight enemies or open doors for you.
+
+## Pickup and map reveal
+
+Nearby pickup uses a 3m default radius, configurable from 1–4m. It applies to eligible nearby loot and respects the game's weight, filters and pickup delay. It does not pursue distant items.
+
+Map reveal applies to the existing map and minimap. Enemy markers show currently loaded enemies. Exploration records are preserved, and achievements retain their existing game behaviour.
+
+## Report a problem
+
+Include the affected control, the F8 status message and relevant lines from `MelonLoader/Latest.log` in an [issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
+
+[Installation](INSTALLATION.md) · [Troubleshooting](TROUBLESHOOTING.md) · [한국어 조작 안내](ko/EXPANSION.md)

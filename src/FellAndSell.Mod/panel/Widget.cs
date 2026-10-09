@@ -57,7 +57,7 @@ internal static class Widget
         DrawButton(5, Text.Get("stop"));
         Gui.Label(32, 305, 350, Text.Get("keys"));
         Gui.Label(32, 335, 350, Text.Get("achievements"));
-        var failed = new[] { "state", "pickup", "pickup-sight", "map", "enemies", "route", "movement", "hooks" }
+        var failed = new[] { "state", "pickup", "pickup-sight", "map", "enemies", "route", "fairy", "movement", "hooks" }
             .Where(name => !Log.Available(name));
         Gui.Label(32, 365, 350, Supervisor.Current.Ready ? Text.Get("ready") : Text.Get("waiting"));
         Gui.Label(32, 395, 350, string.Join(", ", failed));

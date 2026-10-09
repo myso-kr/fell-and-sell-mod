@@ -1,8 +1,3 @@
----
-title: "Maintainer release procedure"
-lang: en
----
-
 # Maintainer release procedure
 
 The repository and Pages site are public. Mod CI builds and uploads an installable
@@ -15,7 +10,7 @@ The draft is not a public download until a maintainer publishes it.
 
 1. Checks Directory.Build.props, MelonInfo, newest versioned changelog heading,
    public version/count claims and optional release-tag agreement.
-2. Checks committed catalog/glyph counts against `release-metadata.json`, required
+2. Checks committed catalog/glyph counts against `.spec/release-metadata.json`, required
    notices and exclusion of tracked game/extraction artifacts.
 3. Runs validator fixtures, JSON/PowerShell checks, DLL build and ZIP packaging.
 4. Verifies catalog/font payloads, redistribution notices and ZIP SHA-256.
@@ -29,7 +24,7 @@ all-screen layout correctness.
 ## Prepare a version
 
 Update Directory.Build.props and Plugin.cs together, add a versioned changelog
-entry and update public version/coverage claims. `release-metadata.json` holds the
+entry and update public version/coverage claims. `.spec/release-metadata.json` holds the
 verified game/build, loader, table counts and glyph count. Change those values only
 with actual local evidence. Keep known limitations visible in both languages.
 
@@ -78,6 +73,6 @@ visual/gameplay review is incomplete. Publishing is a separate maintainer decisi
 
 After publication, verify anonymous downloads, the checksum and the installation
 links. Update public docs if a download path or supported build changes. The
-[download guide](DOWNLOADS.md) explains temporary CI artifacts and public assets.
+[download guide](../docs/DOWNLOADS.md) explains temporary CI artifacts and public assets.
 Pages continues to publish from `main /docs`; [site validation](PAGES.md) is separate
 from the mod build and release pipeline.

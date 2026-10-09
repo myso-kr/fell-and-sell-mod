@@ -14,7 +14,7 @@ internal static class Route
     private static bool _enabled;
     private static readonly Dictionary<string, string> Diagnostics = [];
     internal static void Select(Point goal) { Clear(); Target.Select(goal); _next = 0; }
-    internal static void Clear() { Target.Reset(); Corners = []; Complete = false; Status = "idle"; Diagnostics.Clear(); }
+    internal static void Clear() { Target.Reset(); Corners = []; Complete = false; Status = "idle"; _next = 0; Diagnostics.Clear(); }
     internal static void Cancel() { Clear(); Move.Stop(); _next = 0; }
     internal static void Tick(Snapshot state)
     {

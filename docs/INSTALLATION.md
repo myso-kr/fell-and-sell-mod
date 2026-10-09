@@ -1,6 +1,9 @@
 ---
+layout: default
 title: "Installation, updates and removal"
 lang: en
+permalink: /INSTALLATION.html
+description: "Installation, updates and removal"
 ---
 
 # Installation, updates and removal
@@ -20,7 +23,7 @@ Before a public release exists, use the latest successful
 Sign in to GitHub, download the `fell-and-sell-mod-v0.4.0` artifact and extract
 the outer artifact archive first. Install the mod ZIP inside it, not the outer
 archive. CI artifacts are kept for 30 days. [Download instructions](DOWNLOADS.md)
-include a gh command; [building locally](DEVELOPMENT.md) is also supported.
+explain both release packages and preview builds.
 
 ## Verify a package
 

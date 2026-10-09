@@ -24,7 +24,7 @@ def check(tag=""):
     headings = re.findall(r"^## (\d+\.\d+\.\d+)\b", (ROOT / "CHANGELOG.md").read_text(encoding="utf-8"), re.M)
     if not headings or headings[0] != current:
         errors.append("Newest versioned changelog heading differs from code")
-    metadata = json.loads((ROOT / "release-metadata.json").read_text(encoding="utf-8"))
+    metadata = json.loads((ROOT / ".spec/release-metadata.json").read_text(encoding="utf-8"))
     catalog = json.loads((ROOT / "locale/ko/strings.json").read_text(encoding="utf-8"))
     for table, count in metadata["translation_counts"].items():
         if sum(key.startswith(table + "/") for key in catalog) != count:
@@ -47,6 +47,17 @@ def check(tag=""):
     for name in ("LICENSE", "NOTICE", "THIRD-PARTY.md", "locale/fonts/OFL-Noto.txt", "locale/fonts/NotoSansCJKkr-Regular.otf"):
         if not (ROOT / name).is_file() or not (ROOT / name).stat().st_size:
             errors.append(f"Missing license or bundled component: {name}")
+    technical = {"ANCHORS", "ARCHITECTURE", "CONVENTIONS", "DEVELOPMENT", "GAME-SURVEY", "PAGES", "PLAN", "RELEASING", "RUNBOOK", "STATUS"}
+    for path in (ROOT / "docs").rglob("*.md"):
+        if any(part.startswith(".") for part in path.relative_to(ROOT / "docs").parts):
+            continue
+        body = path.read_text(encoding="utf-8")
+        if path.stem.upper() in technical or ".spec/" in body:
+            errors.append(f"Technical record in public Pages source: {path.relative_to(ROOT)}")
+        front = re.match(r"\A---\n(.*?)\n---", body, re.S)
+        if not front or any(not re.search(r"^" + key + r":\s*\S", front[1], re.M)
+                            for key in ("layout", "title", "description", "lang", "permalink")):
+            errors.append(f"Missing explicit page metadata: {path.relative_to(ROOT)}")
     for name in subprocess.check_output(["git", "ls-files"], cwd=ROOT, text=True).splitlines():
         if name.startswith(("extracted/", "dist/")) or name.startswith("generated/") and name != "generated/README.md":
             errors.append(f"Generated data is tracked: {name}")

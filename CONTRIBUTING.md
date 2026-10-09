@@ -18,36 +18,13 @@ If you cannot extract the source locally, submit the correction and say so; the
 maintainer can run the full token/coverage check. Do not add game source strings,
 game binaries, generated interop assemblies or unlicensed screenshots/assets to PRs.
 
-## Code changes and validation
+## Code contributions
 
-Follow [development](docs/DEVELOPMENT.md) and [directory conventions](docs/CONVENTIONS.md).
-Keep hooks separate from the entry point. Explain the problem, resulting behavior
-and validation. For a gameplay-sensitive hook change, report the exact game build
-and in-game evidence, distinguishing log checks from visual review.
+Describe the problem, resulting behaviour and evidence. Include the game version for gameplay changes, and distinguish a successful build from an in-game check.
 
-```powershell
-python tools/check-repository.py
-python -m unittest discover -s tests
-pwsh -NoProfile -File tools/verify.ps1
-pwsh -NoProfile -File tools/package.ps1
-python tools/check-package.py
-```
+Contributor instructions, source conventions and validation commands live in the [development guide](https://github.com/myso-kr/fell-and-sell-mod/blob/main/.spec/DEVELOPMENT.md) and [conventions](https://github.com/myso-kr/fell-and-sell-mod/blob/main/.spec/CONVENTIONS.md).
 
-With a local extraction, also run:
-
-```powershell
-python tools/check-translations.py --require-complete
-```
-
-Fixture tests and compilation do not require the game. CI cannot verify source
-coverage without locally extracted tables or exercise a retail game session.
-CI uploads a verified package for review on each successful run; see
-[downloads](docs/DOWNLOADS.md). Downloading Actions artifacts requires GitHub sign-in.
-The Release workflow prepares a draft from a version tag; publishing the draft is
-a separate maintainer action. Update `release-metadata.json` when verified game
-metadata, translation counts or glyph counts change.
-
-Do not commit `generated/`, `dist/`, local logs, credentials or game files.
+Keep generated output, local logs, credentials and game binaries out of pull requests.
 
 ## Review and licensing
 

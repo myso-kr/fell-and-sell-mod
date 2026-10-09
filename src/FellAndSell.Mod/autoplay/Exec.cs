@@ -8,6 +8,7 @@ internal static class Exec
         if (Map.Window.Open) Reflect.Call(Anchors.Instance("DungeonMapWindow")!, "CloseMap");
     }
     internal static void PickupRadius(object owner, float radius) => Reflect.Set(owner, "pickupRadius", radius);
+    internal static void PickupScan(object owner) => Reflect.Call(owner, "PerformProximityScan");
     private static object? _input, _original;
     private static object? _cursorLock;
     private static bool _cursorVisible;
@@ -15,9 +16,11 @@ internal static class Exec
     {
         if (open)
         {
-            if (_cursorLock != null) return;
-            _cursorLock = Anchors.Static("UnityEngine.Cursor", "lockState");
-            _cursorVisible = (bool)Anchors.Static("UnityEngine.Cursor", "visible")!;
+            if (_cursorLock == null)
+            {
+                _cursorLock = Anchors.Static("UnityEngine.Cursor", "lockState");
+                _cursorVisible = (bool)Anchors.Static("UnityEngine.Cursor", "visible")!;
+            }
             Cursor("lockState", Enum.Parse(Anchors.Type("UnityEngine.CursorLockMode"), "None"));
             Cursor("visible", true);
         }

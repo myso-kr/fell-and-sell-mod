@@ -1,8 +1,3 @@
----
-title: "Runtime anchors and game-update checks"
-lang: en
----
-
 # Runtime anchors and game-update checks
 
 These connections were observed in game 1.7.1 / Steam build 25480096. They are

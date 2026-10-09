@@ -14,5 +14,5 @@ internal static class Overlay
         Map.Tick(Anchors.Instance("DungeonMapWindow"), manager);
         Hud.Tick(Anchors.Instance("DungeonMinimapHUD"), manager);
     }
-    internal static void Reset() { Map.Reset(); Hud.Reset(); }
+    internal static void Reset() { Map.Reset(); Hud.Reset(); _next = 0; }
 }

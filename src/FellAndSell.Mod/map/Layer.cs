@@ -6,11 +6,12 @@ internal sealed class Layer
     private object? _parent, _root, _image, _source, _texture;
     private readonly List<(object Root, object Rect, object Image)> _marks = [];
     private int _used;
+    private long _revision = -1;
     internal void Tick(object? owner, object manager)
     {
         var parent = owner == null ? null : Reflect.Get(owner, "_mapRawImage");
         if (!Alive.Is(parent)) { Reset(); return; }
-        if (!Equals(parent, _parent))
+        if (!Equals(parent, _parent) || !Alive.Is(_root) || !Alive.Is(_image))
         {
             Reset();
             _parent = parent;
@@ -31,7 +32,7 @@ internal sealed class Layer
         if (Read.Current == null) return;
         var source = Reflect.Get(manager, "MapTexture");
         if (!Alive.Is(source)) return;
-        if (!Equals(source, _source))
+        if (!Equals(source, _source) || _revision != Read.Revision || !Alive.Is(_texture))
         {
             Destroy(_texture);
             var width = Convert.ToInt32(Reflect.Get(source!, "width"));
@@ -42,6 +43,7 @@ internal sealed class Layer
             Reflect.Call(_texture, "Apply", false, false);
             Reflect.Set(_image!, "texture", _texture);
             _source = source;
+            _revision = Read.Revision;
         }
         Reflect.Set(_image!, "uvRect", Reflect.Get(parent!, "uvRect"));
         _used = 0;
@@ -97,6 +99,7 @@ internal sealed class Layer
         Destroy(_root); Destroy(_texture);
         _parent = _root = _image = _source = _texture = null;
         _marks.Clear();
+        _revision = -1;
     }
     private static void Destroy(object? value)
     {

@@ -15,3 +15,16 @@
 | 참고 | [I18N.md](I18N.md) | 한글 패치 구현 이력 |
 
 생성 데이터는 `generated/`에만 두고 커밋하지 않는다. 게임 DLL을 재배포하지 않는다.
+
+## Technical reference
+
+- [Conventions](CONVENTIONS.md): source structure, public/technical boundary
+- [Development](DEVELOPMENT.md): build, extraction and validation
+- [Runtime details](RUNTIME-ANCHORS.md): localization anchors
+- [Game survey](GAME-SURVEY.md): observed runtime evidence
+- [Translation decisions](TRANSLATION.md): terminology and source inconsistencies
+- [Pages maintenance](PAGES.md): site build and deployment
+- [Releasing](RELEASING.md): maintainer publication procedure
+- [Recorded verification](release-metadata.json): machine-readable target and review scope
+
+Only user-facing guides and Pages source belong in `docs/`. Implementation records and release/deployment procedures stay here. The package does not contain `.spec/`.

@@ -11,7 +11,6 @@ A MelonLoader language mod for the Steam version of **Fell & Sell**.
 **[Website](https://myso-kr.github.io/fell-and-sell-mod/)** ·
 **[한국어 웹사이트](https://myso-kr.github.io/fell-and-sell-mod/ko/)**
 
-The site publishes from `main /docs`; see [Pages setup](docs/PAGES.md) for local preview and maintenance.
 
 **v0.4.0 covers all 1,243 extracted localization entries**: 1,128 Game entries
 and 115 UI entries. Items, crafting recipes, effects, tutorials, dialogue and
@@ -81,48 +80,16 @@ clipping and crashes through [Issues](https://github.com/myso-kr/fell-and-sell-m
 Include the game/mod versions, affected screen and relevant log excerpts.
 Remove personal paths and credentials before sharing logs.
 
-## Build and contribute
+## Contributions
 
-Build with .NET SDK 8 targeting the loader's `net6.0` runtime. Python 3.12 runs
-the validator tests; PowerShell 7 runs the build tools.
-
-```powershell
-dotnet build FellAndSell.Mod.sln -c Release
-python -m unittest discover -s tests
-pwsh -NoProfile -File tools/package.ps1
-```
-
-CI runs the same package build and uploads the ZIP, SHA-256 file and release notes
-as `fell-and-sell-mod-v0.4.0`, retained for 30 days. GitHub sign-in is required
-for Actions artifact downloads. The Release workflow rebuilds an existing `vX.Y.Z`
-tag and attaches its package to a draft prerelease for maintainer review.
-[Downloads](docs/DOWNLOADS.md) explains both routes.
-
-The resulting archive and SHA-256 file are under `dist/`. Game files are not
-needed for compilation or fixture tests. Source extraction and full translation
-coverage checks require a local game installation; see
-[development](docs/DEVELOPMENT.md) and [CONTRIBUTING](CONTRIBUTING.md).
-
-## How it works
-
-Harmony hooks intercept Unity.Localization entries by table name and numeric ID,
-then replace their templates before formatting. A dynamic **Noto Sans CJK KR**
-font provides Hangul through TextMeshPro fallback assets. It registers again as
-fonts appear after scene loads. Unknown IDs retain the selected base language.
-
-[Runtime anchors](docs/ANCHORS.md) describe the game APIs this depends on.
-[Translation decisions](docs/TRANSLATION.md) record the glossary and source
-inconsistencies. There is no translation toggle or font-size setting in this version.
+Report translation or gameplay issues through [Issues](https://github.com/myso-kr/fell-and-sell-mod/issues). See [CONTRIBUTING](CONTRIBUTING.md) for contribution guidance.
 
 ## Exploration helper preview
 
 [v0.4.0 adds an exploration helper](docs/EXPANSION.md): native nearby pickup,
-a read-only dungeon map with markers, NavMesh routes and manually started automatic movement.
+existing-map reveal and markers, next-floor guidance and manually started automatic movement.
 New features default off. F8 opens settings, F9 toggles the map and F10 starts/stops movement.
-Achievements retain the game's existing behaviour. Extension gameplay verification is pending;
-the earlier text review applies to the Korean translation, not these new features.
-Internal plans, decisions and implementation status live in
-[.spec/](https://github.com/myso-kr/fell-and-sell-mod/tree/main/.spec).
+Achievements retain the game's existing behaviour. The owner confirmed map display, destination selection and right-click return to the next-floor route. The moving light and fade were confirmed. Nearby pickup and route/map refresh after changing floors were confirmed. Automatic movement remains under review.
 
 ## License
 

@@ -44,3 +44,14 @@
 - 지도 방 클릭은 worldCenter 높이를 사용한다. 대상 주변 9개 후보를 제한적으로 조회하고, 완전 경로/목적지 오차/경로 길이 순서로 선택한다. 연결되지 않은 NavMesh는 그대로 실패한다.
 - 기본 agent 0은 게임에 남아 있는 native CalculatePath를 쓰고 비기본 agent는 필터 경로를 쓴다.
 - 우클릭은 사용자 목표를 지우고 계단 기본 안내로 돌아간다. 순수 회귀 33개 및 실제 던전 확인.
+
+## Fairy guidance and documentation separation
+
+- Use arc-length route animation instead of the persistent world line. Own all UI/texture objects and dispose them on lifecycle reset; fade with distance and ray occlusion. Verify motion/fade policies without the game and ask for in-game appearance review.
+- Move technical reference and recorded metadata out of docs. Repair links and language-specific player navigation; validate rendered Pages and prevent future technical-page publication in CI.
+
+## Floor refresh and pickup follow-up
+
+- Queue invalidation on generator recreation/map initialization and observe progression floor changes. Dispose stale owned overlays and reset route, leases and feature guards; reacquire existing scene components. Refresh map copies on buffer revision even with reused native textures.
+- Scope the native auto-pickup option override to safe native scans, preserving global settings and native item eligibility. Regression coverage: cadence, inactive scope, exception cleanup and nested scans.
+- Installed and owner confirmed next-floor map/guidance refresh and nearby loot collection. Current pure suite: 44 cases; input recurrence and automatic movement remain separate checks.
