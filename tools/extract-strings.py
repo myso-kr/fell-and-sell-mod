@@ -19,6 +19,13 @@ def extract(game_dir: Path, output: Path) -> dict:
     bundles = game_dir / "Fell & Sell_Data/StreamingAssets/aa/StandaloneWindows64"
     shared_tables = read_tables(bundles / "localization-assets-shared_assets_all.bundle")
     english_tables = read_tables(bundles / "localization-string-tables-english_assets_all.bundle")
+    japanese_tables = read_tables(bundles / "localization-string-tables-日本語_assets_all.bundle")
+    japanese = {
+        f"{table['m_Name'].removesuffix('_ja')}/{entry['m_Id']}": entry["m_Localized"]
+        for table in japanese_tables
+        if "m_TableData" in table
+        for entry in table["m_TableData"]
+    }
     shared = {
         table["m_TableCollectionName"]: {
             entry["m_Id"]: entry["m_Key"] for entry in table["m_Entries"]
@@ -44,7 +51,11 @@ def extract(game_dir: Path, output: Path) -> dict:
             name = shared[collection].get(entry["m_Id"])
             if name is None:
                 missing_keys.append(stable_key)
-            strings[stable_key] = {"key": name, "text": entry["m_Localized"]}
+            strings[stable_key] = {
+                "key": name,
+                "text": entry["m_Localized"],
+                "ja": japanese.get(stable_key),
+            }
             counts[collection] += 1
     if not strings:
         raise ValueError("No English entries found")

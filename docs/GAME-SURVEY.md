@@ -55,7 +55,17 @@ No source strings or game assemblies are committed.
 
 ## Next investigation
 
-Inspect the generated `Unity.Localization.dll` string table entry APIs and actual
-runtime call sites before choosing Harmony hooks. Verify smart strings and
-formatting tokens, asynchronous table loading and language switching. Inspect
-TMP font assets and select a licensed Hangul font before adding translations.
+The generated localization API exposes `TableEntry.Table`, `KeyId`,
+`LocalizedValue` and `StringTableEntry.GetLocalizedString`. v0.2.0 patches raw
+retrieval and replaces the source template before formatting, clearing its
+SmartFormat cache when changed. Runtime logs confirm translation hook hits.
+
+TMP types are generated under `Il2CppTMPro`, unlike the Mono sibling project's
+`TMPro` namespace. Runtime resolution accounts for both namespaces. A dynamic
+Noto Sans CJK KR font is registered on five loaded font assets. The 371-entry
+catalog uses 402 distinct Hangul glyphs; the latest run reports zero missing.
+An earlier 263-entry run confirmed seven Korean TMP text components.
+
+Next: finish translations, inspect UI layout and gameplay screens visually,
+verify Japanese base-language switching, and exercise formatted strings and
+late-loaded scene fonts in actual gameplay.

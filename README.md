@@ -2,10 +2,16 @@
 
 MelonLoader-based Korean language patch for the Steam game **Fell & Sell**.
 
-**Status: initial scaffold only.** The project builds a logging-only MelonMod.
-Translation hooks, translated strings and Hangul fonts are not implemented.
-The entry point has been verified in game version 1.7.1 / Steam build 25480096
-with MelonLoader 0.7.3. Korean rendering has not been tested.
+**Status: partial Korean patch, v0.2.0.** 371 of 1243 extracted English entries
+are translated: the complete UI table, core controls and initial tutorials,
+stats, categories, inventory controls, shop buildings and Dungeon + settings.
+English and Japanese are compared by table/entry ID for translation context.
+Untranslated entries retain the game's selected base language.
+
+Verified on game 1.7.1 / Steam build 25480096 with MelonLoader 0.7.3:
+translation hooks execute, Korean TMP text components are created, and the
+dynamic Noto font contains the authored Hangul glyphs. Visual layout, gameplay
+screens and the remaining item descriptions and quests still need review.
 
 ## Build
 
@@ -18,15 +24,32 @@ pwsh -NoProfile -File tools/package.ps1
 ```
 
 The NuGet loader reference is for compilation only; loader binaries are not shipped.
-Unity and game interop references will be added after the first loader startup.
+Unity and game APIs are resolved from the installed loader's generated interop
+assemblies at runtime; game assemblies are not needed to build the project.
 
 ## Development installation
 
 Install [MelonLoader](https://github.com/LavaGang/MelonLoader) separately into the
 folder containing `Fell & Sell.exe`. Extract the package over that folder.
-It adds `Mods/FellAndSellMod.dll` and `UserData/FellAndSell/locale/ko/strings.json`.
-Check `MelonLoader/Latest.log` for the scaffold initialization message.
-The empty catalog does not translate the game yet.
+It adds `Mods/FellAndSellMod.dll`, `UserData/FellAndSell/locale/ko/strings.json`,
+and the licensed font under `UserData/FellAndSell/fonts/`.
+Start through Steam. Check `MelonLoader/Latest.log` for `i18n: loaded 371 Korean
+entries`, installed string hooks and `font: verified ... missing=0`.
+The patch overlays either English or Japanese (or another selected locale);
+choose English or Japanese in the game's language options for the untranslated
+fallback text. A separate Korean entry in the language menu is not implemented.
+
+For local development, close the game and deploy:
+
+```powershell
+pwsh -NoProfile -File tools/deploy.ps1 -GameDir 'C:\Program Files (x86)\Steam\steamapps\common\Fell & Sell'
+python -m unittest discover -s tests
+.\.venv\Scripts\python.exe tools/check-translations.py
+```
+
+The last command requires the local English/Japanese extraction described in
+[game survey](docs/GAME-SURVEY.md). Translations preserve placeholders, rich text
+tags and button labels; missing entries use the game's original text.
 
 Remove those added mod files to uninstall the mod. Remove the separately installed
 loader according to its own instructions if desired.

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — partial Korean patch
+
+- Compare English and Japanese by numeric table/entry ID for translation context.
+- Translate 371 entries, including all 115 UI table entries.
+- Patch raw and formatted localization retrieval before placeholder formatting.
+- Add licensed Noto Sans CJK KR dynamic font fallback and glyph verification.
+- Add deployment tool and translation-token validation with fixture tests.
+- Item descriptions, remaining tutorials and quests are not fully translated.
+
 ## 0.1.0 — scaffold
 
 - Add IL2CPP MelonMod entry point and build configuration.

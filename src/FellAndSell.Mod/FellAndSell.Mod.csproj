@@ -8,8 +8,13 @@
   <ItemGroup>
     <!-- Download only the official package; runtime dependencies are provided by the installed loader. -->
     <PackageDownload Include="LavaGang.MelonLoader" Version="[0.7.3]" />
+    <PackageDownload Include="HarmonyX" Version="[2.10.2]" />
     <Reference Include="MelonLoader">
       <HintPath>$(NuGetPackageRoot)lavagang.melonloader/0.7.3/lib/net6.0/MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(NuGetPackageRoot)harmonyx/2.10.2/lib/netstandard2.0/0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

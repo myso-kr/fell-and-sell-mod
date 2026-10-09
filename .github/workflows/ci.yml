@@ -14,6 +14,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Translation validator tests
+        run: python -m unittest discover -s tests
       - name: Verify and package
         shell: pwsh
         run: ./tools/package.ps1
