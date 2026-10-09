@@ -15,6 +15,13 @@ def compose():
     section = re.search(r"^## " + re.escape(version) + r"[^\n]*\n(.*?)(?=^## |\Z)", changelog, re.M | re.S)
     if not section:
         raise ValueError("Missing versioned changelog entry")
+    if metadata.get("visual_review_complete"):
+        review = metadata["visual_review"]
+        visual = f"In-game text display review was confirmed complete by the {review['reported_by']} on {review['reported_on']}."
+        visual_ko = "프로젝트 소유자가 인게임 텍스트 표시 검수 완료를 확인했습니다."
+    else:
+        visual = "In-game text display review remains pending."
+        visual_ko = "인게임 텍스트 표시 검수는 아직 완료하지 않았습니다."
     return f"""# Fell & Sell Korean patch v{version}
 
 {section.group(1).strip()}
@@ -28,8 +35,9 @@ UI {metadata['translation_counts']['UI']}. Recorded local glyph check:
 {metadata['hangul_glyphs']} Hangul glyphs, zero missing.
 
 GitHub Actions builds and verifies the ZIP and SHA-256 without the game installed.
-This does not replace in-game testing. All-screen layout, gameplay and Japanese
-switching remain unreviewed; this is a preview build.
+This does not replace in-game testing. {visual}
+Broader gameplay, Japanese switching and uninstall checks remain unrecorded;
+this is a preview build.
 
 ## Install / 설치
 
@@ -40,7 +48,7 @@ Do not install GitHub's source-code archive or extract the outer Actions artifac
 as if it were the mod package.
 
 MelonLoader를 별도로 설치한 뒤 패치 ZIP을 게임 폴더에 풀고 Steam으로 실행하세요.
-모든 화면 배치와 플레이 검수는 아직 완료하지 않았습니다.
+{visual_ko} 전반적인 플레이·일본어 전환·제거 테스트는 별도 확인 항목입니다.
 
 [한국어 안내](https://myso-kr.github.io/fell-and-sell-mod/ko/) ·
 [Installation](https://myso-kr.github.io/fell-and-sell-mod/INSTALLATION.html)

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Record project-owner confirmation of completed in-game text display review on 2026-10-09.
+
 - Share an Actions package build between CI and tag releases, and retain verified CI artifacts for 30 days.
 - Check version, public claims, catalog counts, package payloads and checksum; generate release notes from recorded metadata.
 - Build version-tag packages into draft prereleases and document artifact downloads in both languages.
@@ -22,7 +24,7 @@ Startup checks loaded 1243 entries and verified 699 Hangul glyphs with no missin
 - Complete items, furniture recipes, combat effects, tutorials, dialogue and quests.
 - Align recipe names with their furniture names and preserve all formatting tokens.
 - Add strict coverage validation to reject missing translation entries.
-- Full visual and gameplay review remains pending.
+- In-game text display review was subsequently confirmed complete by the project owner on 2026-10-09; broader gameplay checks remain separate.
 
 ## 0.2.0 — partial Korean patch
 

@@ -79,7 +79,12 @@ Noto Sans CJK KR font is registered on five loaded font assets. The complete
 missing glyphs and 20 Korean TMP text components. Initialization and translation
 hooks execute successfully on game 1.7.1 / build 25480096.
 
-Next: inspect UI layout and gameplay screens visually, verify Japanese
-base-language switching, and exercise formatted strings and late-loaded scene
-fonts in actual gameplay. Complete table coverage does not prove all-screen
-layout correctness or cover text outside these tables.
+## Owner-reported text display review
+
+On 2026-10-09 the project owner confirmed that in-game text display review was
+complete. This is user-provided verification, separate from the automated runtime
+logs above.
+
+Broader gameplay, Japanese base-language switching and uninstall tests remain
+separate checks with no completion recorded. Text outside the extracted tables
+may still need additional work.

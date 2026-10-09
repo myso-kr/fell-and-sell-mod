@@ -21,7 +21,9 @@ context. Proper names and punctuation-only entries are intentionally retained.
 Tested on Windows 11, game **1.7.1 / Steam build 25480096**, Unity 6000.3.10f1
 (IL2CPP), and MelonLoader **0.7.3 x64**. Runtime checks confirm translation hooks,
 1,243 loaded entries, 699 supported Hangul glyphs and 20 Korean TMP components.
-Every gameplay screen's layout has not yet been visually reviewed. Text outside
+The project owner confirmed completion of in-game text display review on
+2026-10-09. Broader gameplay, Japanese switching and uninstall tests are separate
+checks and remain unrecorded. Text outside
 the extracted tables and future game updates may require additional work.
 
 This is an unofficial fan project by myso-kr, not endorsed by the game developer

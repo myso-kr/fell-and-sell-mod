@@ -49,7 +49,9 @@ requires level 10. Korean preserves this source discrepancy instead of changing
 the gameplay requirement. Death-save descriptions distinguish fatal blows from
 critical hits. Numeric effects and formatting tokens are preserved.
 
-All extracted entries are covered; visual layout and gameplay review are pending.
+All extracted entries are covered. The project owner confirmed completion of
+in-game text display review on 2026-10-09. Broader gameplay and language-switching
+checks remain separate.
 CI checks the committed counts against `release-metadata.json` and validates fixtures
 and catalog shape. Full source-token/coverage checks still run locally against
 ignored game extraction; a green Actions run does not prove translation semantics.

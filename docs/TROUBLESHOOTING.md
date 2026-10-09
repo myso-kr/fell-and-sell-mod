@@ -66,8 +66,8 @@ by stable table/entry IDs rather than English phrases.
 
 ## Known limits
 
-- No exhaustive visual/gameplay review, uninstall test or Japanese-switching
-  gameplay test has been completed.
+- The project owner confirmed in-game text display review on 2026-10-09. Broader
+  gameplay, uninstall and Japanese-switching tests remain unrecorded.
 - The loader logged a `Class::Init` signature fallback warning during successful
   test launches. That observation does not establish that every similar warning
   is harmless; include surrounding errors when reporting a crash.

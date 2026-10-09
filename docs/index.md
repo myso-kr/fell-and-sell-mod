@@ -23,10 +23,10 @@ home: true
 </dl>
 
 <div class="note" markdown="1">
-**Complete table coverage; visual review is ongoing.** All extracted Game and UI
+**Complete table coverage; text display review completed.** All extracted Game and UI
 entries are covered. Runtime checks confirm translation hooks and 699 Hangul
-glyphs without missing characters. Every gameplay screen's layout has not yet
-been reviewed. Text outside these tables may require additional work.
+glyphs without missing characters. The project owner confirmed in-game text
+display review on 2026-10-09. Text outside these tables may require additional work.
 </div>
 
 ## From dungeon loot to shop shelves
@@ -69,7 +69,8 @@ Version-tag builds prepare a draft prerelease for review, not a public download.
 | Runtime | Unity 6000.3.10f1 IL2CPP / MelonLoader 0.7.3 x64 |
 | Catalog and formatting | 1,243 entries, complete coverage and token checks passed |
 | Font | 699 Hangul glyphs, zero missing |
-| Remaining review | All-screen layout, gameplay and Japanese switching |
+| Text display | Reviewed in-game, confirmed by the project owner on 2026-10-09 |
+| Remaining checks | Broader gameplay, Japanese switching and uninstall |
 
 The mod adds its own files and changes localization templates in memory. It does
 not patch original game binaries or implement save editing. Close the game and

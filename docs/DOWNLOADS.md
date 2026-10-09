@@ -9,7 +9,9 @@ Public [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases) are the
 stable download location once a maintainer publishes a package. Until then, use
 an artifact from a successful [CI run](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml).
 A successful build checks the package; it does not guarantee every gameplay screen
-has been reviewed. Current builds are previews with complete extracted-table coverage.
+has been reviewed. The project owner confirmed in-game text display review on
+2026-10-09; broader gameplay, Japanese switching and uninstall checks remain
+separate. Current builds are previews with complete extracted-table coverage.
 
 ## Download a CI build
 

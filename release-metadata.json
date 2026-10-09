@@ -9,5 +9,10 @@
     "UI": 115
   },
   "hangul_glyphs": 699,
-  "visual_review_complete": false
+  "visual_review_complete": true,
+  "visual_review": {
+    "scope": "In-game text display",
+    "reported_by": "project owner",
+    "reported_on": "2026-10-09"
+  }
 }
