@@ -1,94 +1,39 @@
 ---
 layout: default
-title: "한국어 패치"
-description: "Fell & Sell 한국어 패치. 전체 1,243개 번역 항목과 설치·문제 해결 안내."
-lang: ko
+title: "Fell & Sell 한국어 패치"
+description: "Fell & Sell 한국어 번역과 탐험 도우미. 프리뷰 다운로드부터 설치, 조작법과 문제 해결까지 안내합니다."
+lang: "ko"
+permalink: "/ko/"
+page_id: "home"
+page_type: "home"
+summary: "한국어 메뉴와 게임 문구, 던전 탐험을 돕는 선택 기능을 함께 제공합니다."
 home: true
-permalink: /ko/
+heading: "상점을 꾸리고,"
+heading_second: "한국어로 탐험하세요."
 ---
 
-<p class="eyebrow">Fell &amp; Sell · 비공식 한국어 패치</p>
+<p class="eyebrow">비공식 팬 패치 · v{{ site.data.patch.version }} 프리뷰</p>
+<div class="actions"><a class="button primary" href="{{ '/ko/downloads/' | relative_url }}">프리뷰 다운로드</a><a class="button" href="{{ '/ko/installation/' | relative_url }}">설치 안내</a></div>
+<p class="note">프리뷰를 받으려면 GitHub 로그인이 필요합니다. 게임은 별도로 구매해야 합니다.</p>
 
-# 모험에서 상점까지,<br>한국어로 만나세요.
+## 상점부터 던전까지, 한국어로
 
-<p class="lead">아이템과 제작법, 퀘스트와 대화를 한국어로. Steam판 Fell &amp; Sell을 위한 MelonLoader 기반 언어 모드입니다.</p>
+메뉴·아이템·가구·제작·효과·튜토리얼·대화·퀘스트의 {{ site.data.patch.translated_entries }}개 문구를 번역했습니다. 영어의 의미를 바탕으로 일본어 번역의 맥락도 참고했습니다. 설치 후 한국어가 자동으로 적용됩니다.
 
-<div class="actions">
-<a class="button" href="{{ '/DOWNLOADS.html' | relative_url }}">빌드 받기</a>
-<a class="button secondary" href="{{ '/ko/guide/' | relative_url }}">설치 안내</a>
-</div>
+## 탐험을 더 편하게
 
-<dl class="ledger">
-<div><dt>번역 항목</dt><dd>1,243 / 1,243</dd></div>
-<div><dt>패치 버전</dt><dd>0.4.0</dd></div>
-<div><dt>검증한 게임 버전</dt><dd>1.7.1</dd></div>
-</dl>
+<kbd>F8</kbd>에서 원하는 기능을 켜세요. 주변 전리품을 줍고, 기존 <kbd>M</kbd> 지도에서 던전을 확인하며, 움직이는 빛을 따라 다음 층으로 갈 수 있습니다. 지도에서 다른 목적지를 선택하고 우클릭하면 계단 안내로 돌아갑니다.
 
-<div class="note" markdown="1">
-**전체 번역 테이블을 다루며, 인게임 텍스트 표시 검수를 완료했습니다.** 추출한 Game·UI 항목을
-모두 번역했고 한글 글리프 699개는 누락 없이 확인했습니다. 2026-10-09에 프로젝트
-소유자가 인게임 텍스트 표시 검수 완료를 확인했습니다. 테이블 밖의 문구는 추가 작업이 필요할 수 있습니다.
-</div>
+[탐험 도우미 조작법]({{ '/ko/features/' | relative_url }})
 
-## 전리품부터 상점 진열대까지
+## 기능 확인 상태
 
-Game 항목 1,128개와 UI 항목 115개를 번역했습니다. 장비·가구·제작법·전투 효과·
-튜토리얼·대화·퀘스트가 포함됩니다. 영어 원문을 기준으로 일본어 번역을 함께 비교해
-맥락을 확인했고, 가구와 제작법 이름을 일치시켰습니다.
+{% include feature-status.html %}
 
-게임의 기본 언어를 영어 또는 일본어로 선택해도 한국어가 자동 적용됩니다.
-언어 메뉴에 한국어 항목이 따로 추가되지는 않습니다. 이후 업데이트로 추가된 미등록
-항목은 선택한 원래 언어로 표시될 수 있습니다.
+## 세 단계로 시작하기
 
-## 세 단계로 설치하기
+1. 소스 압축파일 대신 [패키지 프리뷰를 다운로드]({{ '/ko/downloads/' | relative_url }})하세요.
+2. [MelonLoader와 패치 전체를 설치]({{ '/ko/installation/' | relative_url }})하세요.
+3. Steam에서 실행하고 <kbd>F8</kbd>에서 필요한 탐험 기능을 켜세요.
 
-1. Steam의 설치된 파일 메뉴에서 `Fell & Sell.exe`가 있는 폴더를 엽니다.
-2. [MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3)를 별도로 설치합니다.
-3. 패치 ZIP을 게임 폴더에 풀고 Steam으로 실행합니다.
-
-```text
-Fell & Sell/
-├─ Mods/FellAndSellMod.dll
-└─ UserData/FellAndSell/
-   ├─ locale/ko/strings.json
-   └─ fonts/NotoSansCJKkr-Regular.otf + OFL-Noto.txt
-```
-
-GitHub의 Source code ZIP은 설치용 패치가 아닙니다. 배포본이 아직 없다면
-[다운로드 안내](../DOWNLOADS.md)를 따라 성공한 CI 아티팩트를 받을 수 있습니다.
-GitHub 로그인이 필요하며 아티팩트는 30일 동안 보관합니다. 바깥 ZIP을 먼저 풀고
-안에 있는 패치 ZIP을 설치하세요. Actions는 게임 설치 없이 DLL·ZIP·체크섬을 만들고,
-버전 태그 빌드는 검토용 릴리스 초안을 준비합니다. 초안은 일반 사용자에게 공개되지 않습니다.
-[한국어 설치·제거 안내](README.md)와 [체크섬 확인 방법](../INSTALLATION.md)도 제공합니다.
-
-## 확인한 범위
-
-| 항목 | 확인 결과 |
-|---|---|
-| 게임 | 1.7.1 / Steam 빌드 25480096, Windows 11 |
-| 실행 환경 | Unity 6000.3.10f1 IL2CPP / MelonLoader 0.7.3 x64 |
-| 번역과 서식 | 1,243개 항목, 누락·토큰 검사 통과 |
-| 글꼴 | 한글 글리프 699개, 누락 0개 |
-| 텍스트 표시 | 2026-10-09 프로젝트 소유자의 인게임 검수 완료 확인 |
-| 남은 확인 | 전반적인 플레이, 일본어 전환, 제거 테스트 |
-
-원본 게임 바이너리는 수정하지 않습니다. 번역은 실행 중 메모리에서 적용되며 세이브
-편집 기능은 없습니다. 게임을 종료하고 모드 DLL과 `UserData/FellAndSell/`을 삭제하면
-한국어 패치를 제거할 수 있습니다.
-
-## 탐험 도우미 프리뷰
-
-v0.4.0에 주변 자동줍기·기존 지도 확장·경로 표시·자동 이동을 추가했습니다.
-새 기능은 기본 꺼짐이며 F8 설정, F9 지도, F10 이동/정지를 사용합니다.
-기본 메뉴·F8 한글·패널 종료 후 이동/마우스 복원은 소유자가 확인했습니다.
-지도 표시·목적지 선택·우클릭 후 계단 경로 복귀는 확인됐습니다. 빛 이동·투명도도 확인됐습니다. 자동줍기·자동 이동은 확인 중입니다. 게임의 도전과제 처리는 유지합니다.
-[조작과 적용 범위](EXPANSION.md)
-
-## 어색한 번역도 알려주세요
-
-뜻이 틀리거나 버튼 밖으로 문구가 나오는 경우
-[이슈](https://github.com/myso-kr/fell-and-sell-mod/issues)로 알려주세요.
-화면 이름, 게임·패치 버전, 스크린샷이나 관련 로그를 함께 보내면 확인에 도움이 됩니다.
-
-[한국어 안내](README.md) · [전체 문서](../README.md) ·
-[문제 해결](../TROUBLESHOOTING.md) · [번역 용어집](../TRANSLATION.md)
+확인한 환경은 게임 {{ site.data.patch.game_version }} (Steam 빌드 {{ site.data.patch.steam_build }}), MelonLoader {{ site.data.patch.loader_version }} x64, {{ site.data.patch.platform }}입니다. 다른 조합은 확인하지 않았습니다. 문제가 생기면 [문제 해결]({{ '/ko/help/' | relative_url }})을 확인하세요.

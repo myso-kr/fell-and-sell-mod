@@ -1,16 +1,15 @@
 ---
 layout: default
 title: "Exploration helper"
-description: "Native map reveal, next-floor guidance, a moving guide light and optional nearby pickup."
+description: "Use nearby pickup, the existing M map, next-floor guide light and manually started automatic movement."
 lang: en
 permalink: /features/
+page_id: features
+page_type: article
+summary: "Follow a moving light to the next floor, using the existing M map."
 ---
 
-# Exploration helper — v0.4.0 preview
-
-Use the game's M map to choose a destination or follow the default route to the next floor. A moving light travels ahead along the route and leaves a short glow trail. It fades with distance and when terrain blocks the view.
-
-The owner confirmed the settings toggles, map display, destination selection and right-click return to next-floor guidance. The moving light and fade were also confirmed. Nearby pickup and route/map refresh after changing floors were confirmed. Automatic movement remains under review.
+<nav class="toc" aria-label="On this page"><p>On this page</p><ul><li><a href="#controls">Controls</a></li><li><a href="#guide-light-and-map-routes">Guidance</a></li><li><a href="#automatic-movement">Movement</a></li><li><a href="#pickup-and-map-reveal">Pickup and map</a></li><li><a href="#feature-availability">Availability</a></li></ul></nav>
 
 ## Controls
 
@@ -44,8 +43,12 @@ Nearby pickup uses a 3m default radius, configurable from 1–4m. It applies to 
 
 Map reveal applies to the existing map and minimap. Enemy markers show currently loaded enemies. Exploration records are preserved, and achievements retain their existing game behaviour.
 
+## Feature availability
+
+{% include feature-status.html %}
+
 ## Report a problem
 
 Include the affected control, the F8 status message and relevant lines from `MelonLoader/Latest.log` in an [issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
 
-[Installation](INSTALLATION.md) · [Troubleshooting](TROUBLESHOOTING.md) · [한국어 조작 안내](ko/EXPANSION.md)
+[Installation]({{ '/installation/' | relative_url }}) · [Troubleshooting]({{ '/help/' | relative_url }})

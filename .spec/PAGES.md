@@ -1,93 +1,96 @@
-# GitHub Pages setup
+# GitHub Pages maintenance
 
-The site follows the sibling Combolands repository: Jekyll source in `docs/`, a
-custom layout/CSS, and English `/` and Korean `/ko/` home pages. No remote theme,
-analytics, client framework, generated art or external webfont is required.
-Published on 2026-10-09 at [the English home](https://myso-kr.github.io/fell-and-sell-mod/)
-and [한국어 홈](https://myso-kr.github.io/fell-and-sell-mod/ko/). The repository is public
-and Pages publishes from `main /docs`. Both homes, the documentation directory,
-Korean guide, installation page and CSS returned HTTP 200 in deployment checks.
+The public site follows the sibling repositories: static Jekyll under `docs/`,
+paper/forest-green styling, system fonts and no JavaScript or remote theme.
+Published at https://myso-kr.github.io/fell-and-sell-mod/.
+Pages deploys from **main /docs**; the Documentation workflow validates rather
+than deploying. CI artifacts, draft releases and Pages deployments are separate.
 
-The Gemfile uses the [GitHub Pages dependency versions](https://pages.github.com/versions/)
-for Jekyll, relative links and GFM parsing.
+## Canonical routes
 
-## Routes and content
+Each route below has a Korean counterpart prefixed with `/ko`:
 
-| Route | Purpose |
+| English | Purpose |
 |---|---|
-| `/` | English introduction and installation entry |
-| `/ko/` | Korean introduction and installation entry |
-| `/guide/` | Documentation directory |
-| `/ko/guide/` | Complete Korean user guide |
-| `/INSTALLATION.html` | Installation, checksum, updates and uninstall |
-| `/TROUBLESHOOTING.html` | Diagnosis and known limits |
-| `/features/`, `/ko/features/` | English/Korean exploration controls |
-| `/404.html` | Recovery links for a missing page |
+| `/` | Introduction and preview entry |
+| `/guide/` | Player guide directory |
+| `/downloads/` | Successful main build, artifact and inner package instructions |
+| `/installation/` | Requirements, install, optional checksum, update and removal |
+| `/features/` | Controls, map, fairy guide, pickup, movement and availability |
+| `/help/` | Symptom navigation, checks and optional logs |
+| `/glossary/` | Translation coverage, terms and feedback |
 
-Other reference Markdown files render to corresponding `.html` paths. Front
-matter supplies titles and language. The `jekyll-relative-links` plugin converts
-local Markdown links, including permalink targets. Links to documents outside
-`docs/` use their repository URLs. Keep `baseurl` set to `/fell-and-sell-mod` and
-use `relative_url` for site navigation and assets. Canonical and home-page
-hreflang tags are provided by the layout.
+`/404.html` offers English and Korean recovery links. Legacy `/DOWNLOAD.html`,
+`/DOWNLOADS.html`, `/INSTALLATION.html`, `/TROUBLESHOOTING.html` and
+`/TRANSLATION.html` redirect to the corresponding lowercase English route,
+with an explicit fallback link and canonical metadata.
 
-## Build locally
+## Source ownership
 
-Ruby and Bundler are needed only for documentation development, not to use the mod.
-From the repository root:
+- `_data/pages.json`: paired routes keyed by page identity. Main navigation and
+  language switching use these pairs; switching language preserves the current guide.
+- `_data/patch.json`: public compatibility, available preview URLs, translation
+  count and scoped feature availability. `check-repository.py` compares it with
+  version/catalog and `.spec/release-metadata.json`; raw internal evidence is not published.
+- `_data/ui.json`: shared English/Korean layout labels.
+- `_layouts/default.html`: one H1, article breadcrumb, responsive main navigation,
+  current-page state, paired hreflang/canonical metadata and common footer.
+- `_includes/feature-status.html`: shared home/feature availability. Automatic
+  movement remains preview; broader map/enemy coverage is not claimed fully verified.
+- Markdown: player-only copy, H2/H3 body headings, explicit metadata including
+  `page_id` and `page_type`. Long guides use anchor navigation. CLI and logs sit
+  in keyboard-operable native disclosures.
+- CSS: readable source, responsive layouts, visible focus, light/dark tokens,
+  Korean word grouping and bounded code blocks. No packaged game font is fetched.
+
+Use `relative_url` for project navigation/assets and `absolute_url` for metadata.
+Source filenames may remain uppercase for repository links; canonical web routes
+are lowercase folders. The package includes `_data`, `_includes` and `aliases`
+alongside layout, CSS and guides. Technical records and build caches stay out.
+
+## Local checks
 
 ```powershell
 bundle install --gemfile docs/Gemfile
 bundle exec --gemfile docs/Gemfile jekyll build --source docs --destination generated/site
+python tools/check-repository.py
 python tools/check-site.py generated/site
-bundle exec --gemfile docs/Gemfile jekyll serve --source docs --destination generated/site
+python -m pip install -r tools/requirements-site.txt
+python -m playwright install chromium
+python tools/check-site-browser.py generated/site --screenshots generated/pages-preview
 ```
 
-The local preview normally uses `http://127.0.0.1:4000/fell-and-sell-mod/`.
-Generated HTML, caches and dependencies are ignored. The Documentation workflow
-uses GitHub's Jekyll Pages build action and checks rendered links, fragments,
-language and canonical metadata on pushes and pull requests. It validates the
-site without publishing a pull request preview.
+Use `--channel msedge` with an installed Edge browser instead of downloading
+Chromium locally. The browser tool serves the rendered files through an isolated
+request fixture and never follows external download links. CI installs pinned
+Playwright and Chromium on Ubuntu. Keep generated screenshots ignored.
 
-## Enable deployment with gh
+The static checker covers all 20 output pages, fragments/assets, exact canonical
+routes, heading hierarchy, seven locale pairs, unique menu destinations, current
+states, compatibility/status, preview action and five legacy redirects. The browser
+checker covers 15 canonical pages at 320/390/1280px in light/dark mode (90 views),
+first-screen download action, skip/main focus, keyboard disclosures, contextual
+language switching, two locale user journeys and five actual redirects.
 
-The chosen publishing source is **Deploy from a branch → main → /docs**, matching
-the sibling repository. GitHub manages the resulting Pages build/deployment.
-The separate Documentation workflow is a validation check, not a deploy job.
+A successful check is not an accessibility certification or exhaustive cross-browser
+coverage. Edge is the local browser; bundled Chromium is used in Documentation CI.
+
+## Download and deployment verification
+
+Currently no public release exists. The site links to successful main CI runs;
+GitHub sign-in is required for artifacts, retained for 30 days. The outer artifact
+contains the installable mod ZIP. Never silently publish an existing draft release
+as part of site upkeep. When publishing a release intentionally, change the public
+distribution wording and download action in both languages together.
+
+After pushing, inspect CI, Documentation and pages-build-deployment at the exact
+head SHA. Check live canonical/legacy URLs and one locale pair's navigation.
 
 ```powershell
-gh api --method POST repos/myso-kr/fell-and-sell-mod/pages -f 'source[branch]=main' -f 'source[path]=/docs'
-gh api repos/myso-kr/fell-and-sell-mod/pages
-gh api --method POST repos/myso-kr/fell-and-sell-mod/pages/builds
+gh run list --commit <sha>
 gh api repos/myso-kr/fell-and-sell-mod/pages/builds/latest
+gh api repos/myso-kr/fell-and-sell-mod/actions/runs/<successful-ci-id>/artifacts
 ```
 
-If Pages already exists, inspect its settings before using PATCH to change the
-source. Confirm the deployment status and anonymously open both home pages and a
-reference page. A private repository may require a paid plan; an HTTP 422 saying
-the plan does not support Pages requires changing the plan or owner-authorized
-repository publication. Making the repository public also exposes its Git history.
-
-See [GitHub's publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-
-## Mod builds and site deployment are separate
-
-CI and Release build the mod through the reusable Build package workflow.
-Documentation validates the rendered site; GitHub's pages-build-deployment job
-publishes `main /docs`. A CI artifact is not a Pages deployment or a public release.
-[Downloads](../docs/DOWNLOADS.md) and [release procedure](RELEASING.md) describe those paths.
-
-## Design and maintenance
-
-The original CSS uses a paper-colored background, forest-green links and concise
-navigation. System fonts support Korean without downloading the bundled 16 MB
-game font. Dark mode follows the user's system setting. Visible focus, skip links,
-mobile wrapping and scrollable code/table content support keyboard and small-screen
-reading. No screenshot is presented as verified gameplay evidence.
-
-Keep versions, coverage and known limits synchronized across both home pages,
-README and the Korean guide. Link to the releases list until a real packaged
-release exists. For design changes, check both languages at desktop and mobile
-widths, dark mode, keyboard navigation and the rendered link checker.
-
-Technical reference pages were removed from the Pages source and moved into .spec. Old implementation links must not be reintroduced into player navigation.
+The original audit is [PAGES-AUDIT.md](PAGES-AUDIT.md); the redesign implementation
+and deployment evidence are [PAGES-IMPROVEMENT.md](PAGES-IMPROVEMENT.md).

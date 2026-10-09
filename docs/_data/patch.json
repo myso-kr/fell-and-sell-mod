@@ -1,0 +1,51 @@
+{
+  "version": "0.4.0",
+  "game_version": "1.7.1",
+  "steam_build": "25480096",
+  "loader_version": "0.7.3",
+  "platform": "Windows 11",
+  "translated_entries": 1243,
+  "distribution": "preview",
+  "builds_url": "https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml?query=branch%3Amain",
+  "releases_url": "https://github.com/myso-kr/fell-and-sell-mod/releases",
+  "loader_url": "https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3",
+  "issues_url": "https://github.com/myso-kr/fell-and-sell-mod/issues",
+  "features": [
+    {
+      "id": "translation",
+      "en": "Korean menus and game text",
+      "ko": "한국어 메뉴와 게임 문구",
+      "status": "confirmed"
+    },
+    {
+      "id": "pickup",
+      "en": "Nearby eligible loot pickup",
+      "ko": "주변 전리품 자동줍기",
+      "status": "confirmed"
+    },
+    {
+      "id": "route",
+      "en": "Map destinations and exit guidance",
+      "ko": "지도 목적지와 계단 안내",
+      "status": "confirmed"
+    },
+    {
+      "id": "fairy",
+      "en": "Moving guide light and fade",
+      "ko": "움직이는 안내 빛과 투명도",
+      "status": "confirmed"
+    },
+    {
+      "id": "floor_refresh",
+      "en": "Map and guidance after changing floors",
+      "ko": "층 이동 후 지도·경로 갱신",
+      "status": "confirmed"
+    },
+    {
+      "id": "auto_movement",
+      "en": "Manually started automatic movement",
+      "ko": "직접 시작하는 자동 이동",
+      "status": "preview"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{% assign ui = site.data.ui[page.lang] %}
+<div class="status-list" aria-label="{{ ui.status_heading }}">
+{% for feature in site.data.patch.features %}<div class="status-row" data-feature="{{ feature.id }}" data-status="{{ feature.status }}"><span>{{ feature[page.lang] }}</span><strong class="status status-{{ feature.status }}">{{ ui[feature.status] }}</strong></div>{% endfor %}
+</div>
+<p class="muted">{{ ui.status_note }}</p>

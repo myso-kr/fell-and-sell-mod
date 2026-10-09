@@ -29,8 +29,12 @@ def check(archive: Path):
             assert packaged == original, f"Payload mismatch: {target}"
         for name in ("Mods/FellAndSellMod.dll", "README.md", "LICENSE", "NOTICE", "THIRD-PARTY.md", "docs/ko/README.md", "docs/INSTALLATION.md"):
             assert name in names and package.getinfo(name).file_size > 0, f"Missing package file: {name}"
+        for source in (ROOT / "docs").rglob("*"):
+            relative = source.relative_to(ROOT).as_posix()
+            if source.is_file() and source.relative_to(ROOT / "docs").parts[0] in {"_data", "_includes", "aliases"}:
+                assert relative in names, f"Missing site dependency: {relative}"
         assert {n for n in names if n.endswith((".dll", ".exe"))} == {"Mods/FellAndSellMod.dll"}, "Unexpected runtime binaries"
-        assert not any(".jekyll-cache" in n or n.startswith(("generated/", "extracted/")) for n in names), "Generated output included"
+        assert not any(".jekyll-cache" in n or n.startswith(("generated/", "extracted/", ".spec/")) for n in names), "Technical/generated output included"
         data = json.loads(package.read("UserData/FellAndSell/locale/ko/strings.json"))
         assert len(data) == sum(json.loads((ROOT / ".spec/release-metadata.json").read_text())["translation_counts"].values()), "Catalog coverage mismatch"
 

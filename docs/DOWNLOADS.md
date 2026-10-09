@@ -1,60 +1,52 @@
 ---
 layout: default
-title: "Downloads / 다운로드"
-lang: en
-permalink: /DOWNLOADS.html
-description: "Downloads / 다운로드"
+title: "Download"
+description: "Get the packaged Fell & Sell preview from a successful GitHub Actions build. Includes ZIP extraction steps and release availability."
+lang: "en"
+permalink: "/downloads/"
+page_id: "downloads"
+page_type: "article"
+summary: "The current patch is available as a preview build."
 ---
 
-# Downloads / 다운로드
+<p class="eyebrow">v{{ site.data.patch.version }} preview · Windows · MelonLoader {{ site.data.patch.loader_version }} x64</p>
+<div class="actions"><a class="button primary download-cta" href="{{ site.data.patch.builds_url }}">Find a successful build</a></div>
+<p class="note">GitHub sign-in required · Build files retained for 30 days</p>
 
-Public [Releases](https://github.com/myso-kr/fell-and-sell-mod/releases) are the
-stable download location once a maintainer publishes a package. Until then, use
-an artifact from a successful [CI run](https://github.com/myso-kr/fell-and-sell-mod/actions/workflows/ci.yml).
-A successful build checks the package; it does not guarantee every gameplay screen
-has been reviewed. The project owner confirmed in-game text display review on
-2026-10-09; broader gameplay, Japanese switching and uninstall checks remain
-separate. Current builds are previews with complete extracted-table coverage.
+## Download in your browser
 
-## Download a CI build
+1. Follow the button above and sign in to GitHub.
+2. Open a **main build with a green check**. If the latest run failed, choose an earlier successful one.
+3. Under **Artifacts**, download `fell-and-sell-mod-v{{ site.data.patch.version }}`. Check the build's version information if it provides a different version.
+4. Extract the downloaded outer ZIP first. The `fell-and-sell-mod-vX.Y.Z.zip` inside is the installable package; its `.zip.sha256` file is a checksum.
+5. Extract the **inner package ZIP** and put its `Mods` and `UserData` folders in the game folder.
 
-1. Sign in to GitHub and open the CI workflow above.
-2. Select a **successful main-branch run** and confirm its commit/version.
-3. Under **Artifacts**, download `fell-and-sell-mod-v0.4.0`.
-4. Extract the outer artifact ZIP. It contains the installable mod ZIP, its
-   `.zip.sha256` and `release-notes.md`.
-5. Check the SHA-256 and extract the **inner mod ZIP** into the game directory.
-   Install MelonLoader separately and launch through Steam.
+<div class="notice" markdown="1">
+**Which ZIP should I install?** The outer ZIP is GitHub's delivery wrapper. The inner ZIP contains `Mods/FellAndSellMod.dll` and `UserData/FellAndSell/`. GitHub's **Code → Download ZIP** contains source code and cannot be installed as the mod.
+</div>
+<div class="actions"><a class="button" href="{{ '/installation/' | relative_url }}">Next: installation</a></div>
 
-Artifacts are retained for **30 days**. PR artifacts may contain unreviewed changes;
-use a main-branch build unless you specifically intend to test a contribution.
-GitHub sign-in and repository read access are required for artifact downloads.
-See [GitHub's artifact download guide](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts).
+## Missing or unavailable files
 
-```text
-Downloaded Actions artifact/
-├─ fell-and-sell-mod-v0.4.0.zip        install this inner ZIP
-├─ fell-and-sell-mod-v0.4.0.zip.sha256
-└─ release-notes.md
-```
+If Artifacts is missing, check that the run has finished successfully and that you are signed in. Expired files require a more recent successful build. See [download troubleshooting]({{ '/help/#download' | relative_url }}) for extraction problems.
 
-With an authenticated gh CLI, replace `RUN_ID` with the successful run's ID:
+## Public releases
+
+There is no public release yet. Packaged releases will appear under [Releases]({{ site.data.patch.releases_url }}) when available. Use the preview build above for now.
+
+<details markdown="1">
+<summary>Optional: download with GitHub CLI</summary>
+
+Sign in with `gh auth login`, then run this in PowerShell. Choose a successful main run ID from the first command's list.
 
 ```powershell
-gh run list --repo myso-kr/fell-and-sell-mod --workflow ci.yml --branch main --status success --limit 5
-gh run download RUN_ID --repo myso-kr/fell-and-sell-mod -n fell-and-sell-mod-v0.4.0 --dir download
+gh run list --repo myso-kr/fell-and-sell-mod `
+  --workflow ci.yml --branch main --status success --limit 5
+$runId = Read-Host 'Run ID to download'
+gh run download $runId --repo myso-kr/fell-and-sell-mod `
+  --name fell-and-sell-mod-v{{ site.data.patch.version }} `
+  --dir .\patch-download
 ```
 
-## CI 아티팩트 받기
-
-GitHub에 로그인한 뒤 **Actions → CI → main 브랜치의 성공한 실행 → Artifacts**에서
-`fell-and-sell-mod-v0.4.0`을 받으세요. 보관 기간은 30일입니다.
-바깥 ZIP을 풀면 패치 ZIP·SHA-256·릴리스 노트가 나옵니다. 체크섬을 확인한 뒤
-**안쪽 패치 ZIP**을 게임 폴더에 풉니다. Source code ZIP은 설치용이 아닙니다.
-MelonLoader는 별도로 설치하고 Steam으로 실행하세요.
-
-## Preview and release packages
-
-A preview artifact is an installable build available for 30 days after a successful CI run. Releases remain available until removed by the maintainer. A version tag alone does not mean that a release package has been published.
-
-[Installation](INSTALLATION.md) covers checksums, updates and removal. [한국어 안내](ko/README.md) provides the installation guide in Korean.
+The CLI extracts the outer archive for you. Install the package ZIP inside `patch-download` using the [installation guide]({{ '/installation/' | relative_url }}). For another version, change the artifact name to match the build.
+</details>

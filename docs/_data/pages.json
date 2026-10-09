@@ -1,0 +1,30 @@
+{
+  "home": {
+    "en": "/",
+    "ko": "/ko/"
+  },
+  "guide": {
+    "en": "/guide/",
+    "ko": "/ko/guide/"
+  },
+  "downloads": {
+    "en": "/downloads/",
+    "ko": "/ko/downloads/"
+  },
+  "installation": {
+    "en": "/installation/",
+    "ko": "/ko/installation/"
+  },
+  "features": {
+    "en": "/features/",
+    "ko": "/ko/features/"
+  },
+  "troubleshooting": {
+    "en": "/help/",
+    "ko": "/ko/help/"
+  },
+  "glossary": {
+    "en": "/glossary/",
+    "ko": "/ko/glossary/"
+  }
+}

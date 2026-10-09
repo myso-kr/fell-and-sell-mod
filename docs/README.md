@@ -1,47 +1,25 @@
 ---
 layout: default
-title: "Player guide"
-description: "Downloads, installation, exploration controls and help for the Fell & Sell Korean patch."
-lang: en
-permalink: /guide/
+title: "Player guides"
+description: "Find download, installation, exploration controls, translation terms and troubleshooting guides."
+lang: "en"
+permalink: "/guide/"
+page_id: "guide"
+page_type: "article"
+summary: "Choose the guide you need."
 ---
 
-# Player guide
-
-Install the Korean patch, choose the exploration features you want, and find help when something goes wrong.
-
-<div class="guide-grid" markdown="1">
-
-<div class="guide-card" markdown="1">
-### Start playing
-[Download a build](DOWNLOADS.md) and follow the [installation guide](INSTALLATION.md). Update and removal instructions are included.
+<div class="cards">
+<section class="card"><h2><a href="{{ '/downloads/' | relative_url }}">Download</a></h2><p>Get the preview package and identify the installable ZIP.</p></section>
+<section class="card"><h2><a href="{{ '/installation/' | relative_url }}">Install, update and remove</a></h2><p>Follow the loader and patch installation steps.</p></section>
+<section class="card"><h2><a href="{{ '/features/' | relative_url }}">Exploration helper</a></h2><p>Learn pickup, M map, guide light and movement controls.</p></section>
+<section class="card"><h2><a href="{{ '/help/' | relative_url }}">Troubleshooting</a></h2><p>Resolve text, controls, map and download problems.</p></section>
 </div>
 
-<div class="guide-card" markdown="1">
-### Explore the dungeon
-[Exploration controls](EXPANSION.md) covers F8 settings, the native M map, next-floor guidance and automatic movement.
-</div>
+## Translation and terminology
 
-<div class="guide-card" markdown="1">
-### Get help
-[Resolve common problems](TROUBLESHOOTING.md), check the [translation glossary](TRANSLATION.md), or [report an issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
-</div>
+See the [coverage and glossary]({{ '/glossary/' | relative_url }}) for Korean terms and translation feedback.
 
-</div>
+## Before you start
 
-## Choose a guide
-
-| Guide | What you can do |
-|---|---|
-| [Downloads](DOWNLOADS.md) | Get an installable package |
-| [Installation](INSTALLATION.md) | Install, update and remove the patch |
-| [Exploration helper](EXPANSION.md) | Use pickup, map and route controls |
-| [Troubleshooting](TROUBLESHOOTING.md) | Find logs and resolve common problems |
-| [Korean glossary](TRANSLATION.md) | Understand translated terms and coverage |
-| [한국어 안내](ko/README.md) | Read the Korean installation and feature guides |
-
-## Send feedback
-
-Describe the affected screen and what you expected. Include the game/mod versions and a screenshot or relevant log excerpt in an [issue](https://github.com/myso-kr/fell-and-sell-mod/issues).
-
-[Changes by version](https://github.com/myso-kr/fell-and-sell-mod/blob/main/CHANGELOG.md) · [Licenses](https://github.com/myso-kr/fell-and-sell-mod/blob/main/THIRD-PARTY.md)
+The game is required separately. Exploration features start disabled; enable the ones you want in F8 after installation. Use the language buttons above to open the same guide in Korean or English.

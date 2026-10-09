@@ -1,106 +1,57 @@
 ---
-layout: default
+layout: "default"
 title: "Troubleshooting"
-lang: en
-permalink: /TROUBLESHOOTING.html
-description: "Troubleshooting"
+description: "Fix download, startup, Korean text, input, map, guidance and nearby pickup problems; find logs and report an issue."
+lang: "en"
+permalink: "/help/"
+page_id: "troubleshooting"
+page_type: "article"
+summary: "Choose the symptom, try the relevant checks, then report what remains."
 ---
 
-# Troubleshooting
+<nav class="toc" aria-label="Choose a symptom"><p>Choose a symptom</p><ul><li><a href="#download">Download</a></li><li><a href="#startup">Startup</a></li><li><a href="#text">Korean text</a></li><li><a href="#input">Controls</a></li><li><a href="#map">Map and route</a></li><li><a href="#pickup">Pickup</a></li><li><a href="#report">Report</a></li></ul></nav>
 
-Start by recording game version, Steam build, MelonLoader version and mod version.
-Translation startup and the F8 panel have been checked with
-1.7.1 / 25480096 / 0.7.3 x64 / 0.4.0. Exploration-helper gameplay is a preview.
+## Download or extraction problems {#download}
 
-## Find the logs
+Sign in to GitHub and open a successful main build. Expired artifacts require a newer successful run. Extract the outer artifact ZIP, then the mod package ZIP inside it. The inner package contains `Mods` and `UserData`. A repository source ZIP cannot be installed. [Download steps]({{ '/downloads/' | relative_url }})
 
-- `<game folder>/MelonLoader/Latest.log`: loader startup, mod initialization,
-  catalog, hooks and font messages. Copy it before another launch overwrites it.
-- `%USERPROFILE%/AppData/LocalLow/Art Games Studio SA/Fell _ Sell/Player.log`:
-  Unity/game messages. The sanitized directory name differs from the executable.
+## Mod does not load or the game fails to start {#startup}
 
-Expected mod messages include 1,243 loaded entries, installed raw/formatted hooks,
-and 699 Hangul glyphs with `missing=0`. The number of observed fonts or text
-components can vary by scene and launch timing; these are diagnostics, not fixed requirements.
+Check that the loader is beside the correct executable and `FellAndSellMod.dll` is directly inside Mods. Start through Steam. If needed, close the game and temporarily move this DLL out of Mods to check whether the problem occurs without the patch. Preserve other mods' files when testing them separately.
 
-## Downloaded files do not contain Mods or UserData
+Loader installation problems are covered by the [MelonLoader project](https://github.com/LavaGang/MelonLoader). Include the first relevant startup error when reporting a crash.
 
-GitHub Actions wraps the package in an artifact download. Extract that outer ZIP
-first, then install the inner `fell-and-sell-mod-vX.Y.Z.zip`. Do not install a
-source-code archive, release-notes file or outer artifact as the mod.
-An expired CI artifact requires a newer successful run or a public release.
-[Downloads](DOWNLOADS.md) explains the two ZIP layers.
+## Missing, square or clipped Korean text {#text}
 
-## Mod does not load or game fails to start
+Reinstall the **complete package** with the game closed. Copying only the DLL leaves out translations and fonts. Check the file locations in [Installation]({{ '/installation/#install' | relative_url }}). For square labels, check the OTF font under `UserData/FellAndSell/fonts/`.
 
-Confirm the DLL is directly under Mods and the loader is installed beside the
-correct executable. Start from Steam: direct executable launch can request a
-Steam restart and exit. Review the first error in Latest.log, rather than only
-its final line. For loader installation failures, consult the
-[MelonLoader project](https://github.com/LavaGang/MelonLoader).
+Korean applies automatically; there is no added Korean language-menu entry. Credits, proper names and punctuation-only text may remain unchanged. New text outside covered entries may appear in the selected base language. For incorrect or clipped text, include a screenshot, the displayed sentence and the expected meaning. See the [glossary]({{ '/glossary/' | relative_url }}).
 
-To isolate a startup regression, close the game and move this mod DLL outside
-Mods temporarily, then test again. If needed, test without other mods one at a
-time, preserving their files. Report whether the same problem occurs without
-this patch. Do not replace game binaries or grant broad filesystem permissions
-as a translation fix.
+## F8 or gameplay controls stop responding {#input}
 
-## English or Japanese remains
+Close F8 with F8 or Esc, and close the game's inventory or pause screen. Return focus to the game. Normal movement and camera controls should resume after the panel closes. Intermittent input problems have been addressed, but report any recurrence with the open menus and your previous action.
 
-Check `i18n: loaded 1243 Korean entries` and the hook-installation message.
-A missing catalog or invalid JSON produces a translation initialization error.
-Confirm the catalog is under UserData/FellAndSell, not beside the DLL.
-New IDs or text outside the extracted tables may remain in the selected base
-language. Include the screen and original text in a report. Credits containing
-proper names and punctuation-only entries may be unchanged intentionally.
+Automatic movement stops on manual input, combat, damage, menus or loss of focus. F10 starts it again only on a complete route.
 
-## Hangul appears as squares
+## Map or guidance does not appear {#map}
 
-Confirm both the OTF and OFL notice were extracted to the fonts directory.
-Look for font creation, glyph verification or font error messages. Reinstall the
-complete package with the game closed; copying only the DLL is insufficient.
-Report the affected scene if a late-loaded font has no fallback.
+Enter a generated dungeon, enable the desired features in F8, close F8 and open M. Enable route guidance before selecting a destination. Guidance defaults to the next-floor stairs; right-click the M map to return to that target.
 
-## Text overflows or a translation is misleading
+The map and guide should refresh after changing floors. Report the old and new floor if they do not. Partial routes cannot start automatic movement. Closed doors require interaction. For an unreachable destination, include its location, the F8 status and a screenshot.
 
-Full table coverage does not guarantee every layout fits. Send a screenshot,
-the displayed sentence, expected meaning and reproduction steps. For effect
-errors, include the numerical value and item/effect name. Translations are keyed
-by stable table/entry IDs rather than English phrases.
+## Nearby pickup does not collect an item {#pickup}
 
-## F8 panel or movement problems
+Enable nearby pickup in F8 and stand within the configured radius (3m by default). Check weight limits, pickup filters and the game's pickup delay. It collects eligible nearby loot rather than moving to distant items. If manually collecting the same item works, report the item and your settings.
 
-The panel uses the bundled Noto font and its own TMP Canvas. Check
-`panel: Noto glyph check 102; missing=0`. The panel temporarily suppresses player
-actions while open; closing it with F8 or Esc returns control.  Native inventory/pause screens can still
-block movement according to the game's rules.
+## Send a useful report {#report}
 
-The map appears only for a generated dungeon, not the town or main menu. Enable
-route guidance and choose a map target before starting automatic movement.
-Partial/invalid routes cannot start movement. Any feature failure reports its
-name in Latest.log; report that entry and the screen state.
+[Open an issue]({{ site.data.patch.issues_url }}) with game, loader and patch versions, other mods, reproduction steps, expected and actual behaviour, and a screenshot when useful. Remove personal paths and private information before posting. Use [private reporting](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md) for security concerns.
 
-## Known limits
+<details markdown="1">
+<summary>Find logs to attach to your report</summary>
 
-- The project owner confirmed in-game text display review on 2026-10-09. Broader
-  gameplay, uninstall and Japanese-switching tests remain unrecorded.
-- The loader logged a `Class::Init` signature fallback warning during successful
-  test launches. That observation does not establish that every similar warning
-  is harmless; include surrounding errors when reporting a crash.
-- The source quest `quest.comfort_level_4.name` names level 9, while its objective
-  says level 10. The patch preserves that discrepancy.
-- Future game updates may change API signatures, table IDs or fonts.
+- `<game folder>/MelonLoader/Latest.log`: startup and feature errors. Copy it before another launch overwrites it.
+- `%USERPROFILE%/AppData/LocalLow/Art Games Studio SA/Fell _ Sell/Player.log`: game messages.
 
-## Submit a report
-
-Use [Issues](https://github.com/myso-kr/fell-and-sell-mod/issues). Include versions,
-other installed mods, steps, expected/actual behavior, and relevant log excerpts.
-Remove usernames, personal paths, tokens and unrelated private data before posting.
-Security concerns belong in [the private reporting process](https://github.com/myso-kr/fell-and-sell-mod/blob/main/SECURITY.md).
-
-F8 toggles log their saved values, for example `settings: RouteGuide=True` and
-`settings: EnemyMarkers=True`. Route destination clicks require route guidance
-to be enabled and F8 to be closed. If a toggle does not change, include the
-`settings:` lines from `MelonLoader/Latest.log` in the report.
-
-For unreachable routes, include the `route:` diagnostics. Copy the status lines together with the destination and what was shown on screen.
+For toggle issues, include `settings:` lines. For route issues, include `route:` lines and the destination. Include surrounding errors rather than only the final line.
+</details>

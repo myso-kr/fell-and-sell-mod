@@ -17,3 +17,12 @@ jobs:
           destination: ./_site
       - name: Check rendered links and page metadata
         run: python3 tools/check-site.py _site
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install browser checks
+        run: |
+          python -m pip install -r tools/requirements-site.txt
+          python -m playwright install --with-deps chromium
+      - name: Check all pages in light and dark mode
+        run: python tools/check-site-browser.py _site

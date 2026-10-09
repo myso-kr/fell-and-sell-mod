@@ -26,3 +26,10 @@ See the [architecture specification](https://github.com/myso-kr/fell-and-sell-mo
 ## Public and technical documentation
 
 `docs/` is exclusively the player guide and Pages source: install/download/use/help/glossary. Every page has explicit layout, title, description, language and permalink. Implementation details, planning, runtime anchors, test evidence, release/deployment procedures and recorded metadata belong under `.spec/`. Root README/CHANGELOG describe user-visible behaviour; CONTRIBUTING directs developers to `.spec/`. Source/build tooling remains in src/tools/tests/workflows.
+
+Pages additionally declare `page_id` and `page_type`. The layout owns the sole H1,
+navigation, paired language routes and metadata. Public `_data/patch.json` holds
+only player-facing compatibility and feature status; repository validation compares
+it with internal evidence. Canonical routes use lowercase folders and preserve old
+`.html` links through aliases. Do not introduce duplicated menu destinations,
+unmatched language pages or release claims without an available public package.

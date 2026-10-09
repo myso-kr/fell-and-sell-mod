@@ -24,6 +24,8 @@
 - [Game survey](GAME-SURVEY.md): observed runtime evidence
 - [Translation decisions](TRANSLATION.md): terminology and source inconsistencies
 - [Pages maintenance](PAGES.md): site build and deployment
+- [Pages audit](PAGES-AUDIT.md): download flow, locale routing, public content and validation findings
+- [Pages improvement](PAGES-IMPROVEMENT.md): complete bilingual redesign and verification
 - [Releasing](RELEASING.md): maintainer publication procedure
 - [Recorded verification](release-metadata.json): machine-readable target and review scope
 
